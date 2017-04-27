@@ -1,0 +1,14 @@
+AlgoDat2:
+
+Wall follower (Jens)
+Tremaux's algorithm (Emir)
+Recursive (Flo)
+Shortest path algorithm (Rudi)
+
+
+
+Wand: 0
+Weg: 1
+Lösungsweg: 2
+Start: 3
+End: 4
