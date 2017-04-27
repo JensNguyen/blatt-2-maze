@@ -9,6 +9,6 @@ Shortest path algorithm (Rudi)
 
 Wand: 0
 Weg: 1
-Lösungsweg: 2
-Start: 3
-End: 4
+Start: 2
+End: 3
+(Lösungsweg: 4)
