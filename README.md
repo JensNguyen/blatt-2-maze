@@ -10,7 +10,7 @@ Tremaux's algorithm (Emir)
 
 Recursive (Flo)
 
-Shortest path algorithm (Rudi)
+Shortest path algorithm (breadth-first search) (Rudi)
 
 
 
