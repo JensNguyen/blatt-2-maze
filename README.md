@@ -10,7 +10,7 @@ Recursive (Flo)
 Shortest path algorithm (breadth-first search) (Rudi)  
 
 
-###Bezeichnungen für Startfeld
+### Bezeichnungen für Startfeld
 . = open (Weg)  
 \# = blocked (Wand)  
 S = start  
