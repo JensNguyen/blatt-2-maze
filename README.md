@@ -18,4 +18,6 @@ G = goal
 \+ = path (Lösungsweg)  
 
 Compiler: c++11  
-JUnit-Tests: gTest
+JUnit-Tests: gTest  
+
+TODO: Travis CI
