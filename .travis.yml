@@ -1,12 +1,10 @@
 language: cpp
 
-install:
+script:
   - dir
   - mkdir build
   - cd build
-  - cmake .. -G "MinGW Makefiles"
+  - cmake .. -G "Unix Makefiles"
   - cd ..
   - dir
-
-script:
-  - dir && make && make test
+  - ./configure && make && make test
