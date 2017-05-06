@@ -1,7 +1,9 @@
 language: cpp
 
 script:
+  - cmake -G "MinGW Makefiles"
   - mkdir build
   - cd build
   - cmake ..
+  - cd ..
   - make && make test
