@@ -1,9 +1,6 @@
 language: cpp
 
 script:
-  - dir
-  - mkdir build
-  - cd build
-  - cmake .. -G "Unix Makefiles"
+  - cmake ./ -G "Unix Makefiles"
   - dir
   - make && make test
