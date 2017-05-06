@@ -4,7 +4,7 @@ install:
   - dir
   - mkdir build
   - cd build
-  - cmake .. -G "Unix Makefiles"
+  - cmake .. -G "MinGW Makefiles"
   - cd ..
   - dir
 
