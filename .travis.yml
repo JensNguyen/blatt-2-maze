@@ -1,6 +1,10 @@
 language: cpp
 
+install:
+  - sudo apt-get install libgtest-dev
 script:
-  - cmake ./ -G "Unix Makefiles"
+  - mkdir build
+  - cd build
+  - cmake .. -G "Unix Makefiles"
   - dir
-  - make && make test
+  - make && ctest
