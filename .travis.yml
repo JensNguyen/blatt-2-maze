@@ -6,6 +6,4 @@ script:
   - cd build
   - cmake .. -G "Unix Makefiles"
   - dir
-  - cd ..
-  - dir
   - make && make test
