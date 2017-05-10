@@ -20,7 +20,7 @@ class Tremaux {
     int directionX;
     int directionY;
     
-    bool atJunction(int currDirX, int currDirY, char front, char left, char right);
+    bool foundJunction(int currDirX, int currDirY, char front, char left, char right);
     
     char getLeft(int currDirX, int currDirY);
     char getRight(int currDirX, int currDirY);
