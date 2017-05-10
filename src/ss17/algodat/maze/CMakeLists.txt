@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 2.6)
 
 # Jede weitere Source-File muss zur maze-Bibliothek hinzugefügt werden, um aus
 # Tests sowie der main erreichbar zu sein!
