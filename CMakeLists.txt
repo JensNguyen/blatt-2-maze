@@ -14,3 +14,6 @@ include(CTest)
 add_subdirectory(src/ss17/algodat/maze)
 add_subdirectory(test/ss17/algodat/maze)
 add_subdirectory(gtest)
+
+enable_testing()
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
