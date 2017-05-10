@@ -8,7 +8,7 @@
 
 class Tremaux {
 
-    char maze[];
+    char* maze;
     const int ROWS;
     const int COLUMNS;
 
