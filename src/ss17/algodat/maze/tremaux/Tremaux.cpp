@@ -8,19 +8,13 @@
 
 int Tremaux::solve() {
     // Find starting point and direction
-    int positionX = 0;
-    int positionY = 0;
-
-    int directionX = 0;
-    int directionY = 0;
-
     for (int i = 0; i < ROWS; i++) {
         std::cout << "row: " << i << std::endl;
         for (int j = 0; j < COLUMNS; j++) {
             if (maze[i*COLUMNS + j] == 'S') {
                 // Start position
-                positionX = i;
-                positionY = j;
+                positionX = j;
+                positionY = i;
                 
                 // Start direction
                 if (i != ROWS-1 && maze[(i+1)*COLUMNS + j] == '.') {
@@ -42,6 +36,10 @@ int Tremaux::solve() {
         }
     }
     
+    // Go initial step manually
+    positionX += directionX;
+    positionY += directionY;
+    
     std::cout << "dirX: " << directionX << ", dirY: " << directionY << std::endl;
 
     // ###### Test rotation ######
@@ -50,18 +48,20 @@ int Tremaux::solve() {
 //        int cY = 1;
 //        int dX = -1;
 //        int dY = 0;
+//        
 //        char curr = maze[cY * COLUMNS + cX];
 //        char left = getLeft(dX, dY);
 //        char right = getRight(dX, dY);
 //        char front = getFront(dX, dY);
 //        char back = getBack(dX, dY);
 //
-//        std::cout << "curr: " << curr
-//                  << ", front: " << front
-//                  << ", back: " << back
-//                  << ", left: " << left
-//                  << ", right: " << right
-//                  << std::endl;
+//        std::cout << "x: " << positionX << ", y: " << positionY
+//                << ", curr: " << curr
+//                << ", front: " << front
+//                << ", back: " << back
+//                << ", left: " << left
+//                << ", right: " << right
+//                << std::endl;
 //    }
     // #################
     
@@ -71,41 +71,71 @@ int Tremaux::solve() {
     bool notSolved = true;
 
     while (notSolved) {
-        char nextPosition = maze[(positionY + directionY) * COLUMNS + positionX + directionX];
-
-
-        if (nextPosition == '.') {
-            char left = getLeft(directionX, directionY);
-            char right = getRight(directionX, directionY);
-            if (left == '#' && right == '#') {
-                // keep going
-                positionX += directionX;
-                positionY += directionY;
-            } else if (left == '.') {
-                // Mark back slot and left slot as visited once. Keep going in left direction.
+        char front = getFront(directionX, directionY);
+        char back = getBack(directionX, directionY);
+        char left = getLeft(directionX, directionY);
+        char right = getRight(directionX, directionY);
+        
+        if (!(left == '#' || left == 'X' || left == 'S')) {
+            
+        }
+        
+        if (left == '.') {
+            // Mark back slot and left slot as visited once. Keep going in left direction.
+            if (back != 'X' && back != 'S')
                 setBack(directionX, directionY, 'O');
-                setLeft(directionX, directionY, 'O');
-            } else if (right == '.') {
-                // Mark back slot and right slot as visited once. Keep going in right direction.
-
-            }
-        } else if (nextPosition == '#') {
-
-        } else if (nextPosition == 'O') {
-
-        } else if (nextPosition == 'X') {
-
-        } else if (nextPosition == 'S') {
-
-        } else if (nextPosition == 'G') {
+            setLeft(directionX, directionY, 'O');
+            turnLeft();
+        } else if (right == '.') {
+            // Mark back slot and right slot as visited once. Keep going in right direction.
+            if (back != 'X' && back != 'S')
+                setBack(directionX, directionY, 'O');
+            setRight(directionX, directionY, 'O');
+            turnRight();
+        } else if (front == '.') {
+            // Mark back slot and front slot as visited once. Keep going in forward.
+            if (back != 'X' && back != 'S')
+                setBack(directionX, directionY, 'O');
+            setFront(directionX, directionY, 'O');
+        } else if (left == 'O') {
             
+        } else if (right == 'O') {
             
+        } else if (front == 'O') {
+            
+        } else if (left == 'X') {
+
+        } else if (right == 'X') {
+
+        } else if (front == 'X') {
+
+        } else if (left == 'S') {
+
+        } else if (right == 'S') {
+
+        } else if (front == 'S') {
+
+        } else if (left == 'G') {
+            notSolved = false;
+        } else if (right == 'G') {
+            notSolved = false;
+        } else if (front == 'G') {
             notSolved = false;
         }
+        
+        
+        positionX += directionX;
+        positionY += directionY;
     }
 
     return -1;
 }
+
+
+bool Tremaux::foundJunction(int currDirX, int currDirY, char front, char left, char right) {
+    return left != '#' && left != 'S' && right != '#' && right != 'S';
+}
+
 
 char Tremaux::getLeft(int currDirX, int currDirY) {
     // counterclockwise rotation: (x', y') == (-y, x); 
@@ -145,5 +175,25 @@ void Tremaux::setBack(int currDirX, int currDirY, char newValue) {
     maze[(positionY - currDirY) * COLUMNS + positionX - currDirX] = newValue;
 }
 
+
+
+void Tremaux::turnAround() {
+    directionX *= -1;
+    directionY *= -1;
+}
+
+void Tremaux::turnLeft() {
+    int newDirX = -directionY;
+    int newDirY = -directionX;
+    directionX = newDirX;
+    directionY = newDirY;
+}
+
+void Tremaux::turnRight() {
+    int newDirX = directionY;
+    int newDirY = directionX;
+    directionX = newDirX;
+    directionY = newDirY;
+}
 
 
