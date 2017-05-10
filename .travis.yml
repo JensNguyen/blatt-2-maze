@@ -1,8 +1,14 @@
 language: cpp
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+
 script:
   - mkdir build
   - cd build
   - cmake .. -G "Unix Makefiles"
   - dir
-  - make && ctest
+  - make
+  - ctest
