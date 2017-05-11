@@ -5,15 +5,16 @@ sudo: false
 dist: trusty
 language: cpp
 
-include:
-  - compiler: gcc
-    addons:
-      apt:
-        sources:
-          - ubuntu-toolchain-r-test
-        packages:
-          - g++-6
-    env: COMPILER=g++-6
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+      env: COMPILER=g++-6
 
 script:
   - cmake --version
