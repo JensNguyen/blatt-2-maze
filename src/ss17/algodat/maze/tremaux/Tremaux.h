@@ -25,9 +25,9 @@ class Tremaux {
     
     bool isRetracing;
     
-    bool foundJunction(int currDirX, int currDirY, char front, char left, char right);
+    bool foundJunction(char front, char left, char right);
     
-    bool foundGoal(int currDirX, int currDirY, char front, char left, char right);
+    bool foundGoal(char front, char left, char right);
     
     /**
      * Marching FORWARD into a NEW junction.
@@ -43,7 +43,7 @@ class Tremaux {
      * @param right 
      * @return 
      */
-    bool hasMarchedIntoNewJunction(int currDirX, int currDirY, char front, char left, char right);
+    bool hasMarchedIntoNewJunction(char front, char left, char right);
     
     /**
      * Marching FORWARD into an OLD junction.
@@ -58,7 +58,7 @@ class Tremaux {
      * @param right 
      * @return 
      */
-    bool hasMarchedIntoOldJunction(int currDirX, int currDirY, char front, char left, char right);
+    bool hasMarchedIntoOldJunction(char front, char left, char right);
     
     /**
      * Marching FORWARD into a dead end.
@@ -72,7 +72,7 @@ class Tremaux {
      * @param right 
      * @return 
      */
-    bool hasMarchedIntoDeadend(int currDirX, int currDirY, char front, char left, char right);
+    bool hasMarchedIntoDeadend(char front, char left, char right);
     
     /**
      * Retracing BACKWARD into a junction with SOME unlabled passages.
@@ -87,7 +87,7 @@ class Tremaux {
      * @param right 
      * @return 
      */
-    bool hasRetracedIntoSomeUnlabeled(int currDirX, int currDirY, char front, char left, char right);
+    bool hasRetracedIntoSomeUnlabeled(char front, char left, char right);
     
     /**
      * Retracing BACKWARD into a junction with NO unlabled passages.
@@ -101,17 +101,17 @@ class Tremaux {
      * @param right 
      * @return 
      */
-    bool hasRetracedIntoNoUnlabeled(int currDirX, int currDirY, char front, char left, char right);
+    bool hasRetracedIntoNoUnlabeled(char front, char left, char right);
     
-    char getLeft(int currDirX, int currDirY);
-    char getRight(int currDirX, int currDirY);
-    char getFront(int currDirX, int currDirY);
-    char getBack(int currDirX, int currDirY);
+    char getLeft();
+    char getRight();
+    char getFront();
+    char getBack();
 
-    void setLeft(int currDirX, int currDirY, char newValue);
-    void setRight(int currDirX, int currDirY, char newValue);
-    void setFront(int currDirX, int currDirY, char newValue);
-    void setBack(int currDirX, int currDirY, char newValue);
+    void setLeft(char newValue);
+    void setRight(char newValue);
+    void setFront(char newValue);
+    void setBack(char newValue);
     
     void turnAround();
     void turnLeft();

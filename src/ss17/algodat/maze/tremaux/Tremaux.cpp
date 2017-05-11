@@ -5,7 +5,7 @@
 #include "Tremaux.h"
 #include <iostream>
 #include <thread>
-#include <chrono>
+//#include <chrono>
 
 using namespace std;
 
@@ -32,7 +32,6 @@ int Tremaux::solve() {
                 
                 // Completely break out of nested loop.
                 i = ROWS;
-                j = COLUMNS;
                 break;
             }
         }
@@ -41,15 +40,13 @@ int Tremaux::solve() {
     // Save start position
     startPositionX = positionX;
     startPositionY = positionY;
-//    maze[positionY * COLUMNS + positionX] = 'X';
     
     // Go initial step.
     positionX += directionX;
     positionY += directionY;
     
     // Solve the maze
-    // NOTE: 'N' means visited once, 'X' means visited twice 
-
+    
     int counter = 0;
     
     bool notSolved = true;
@@ -58,60 +55,55 @@ int Tremaux::solve() {
         if (counter == 61 || counter == 106)
             cout << " ";
         
-        char front = getFront(directionX, directionY);
-        char back = getBack(directionX, directionY);
-        char left = getLeft(directionX, directionY);
-        char right = getRight(directionX, directionY);
+        char front = getFront();
+        char left = getLeft();
+        char right = getRight();
         
-        if (foundGoal(directionX, directionY, front, left, right)) {
-            setBack(directionX, directionY, 'X');
+        if (foundGoal(front, left, right)) {
+            setBack('X');
             
-            if (front == 'G') {
-                // Nothing here.
-            } else if (left == 'G') {
+            if (left == 'G') {
                 turnLeft();
             } else if (right == 'G') {
                 turnRight();
             }
             
             notSolved = false;
-        } else if (hasMarchedIntoDeadend(directionX, directionY, front, left, right)) {
+        } else if (hasMarchedIntoDeadend(front, left, right)) {
             turnAround();
             startRetracing();
-        } else if (foundJunction(directionX, directionY, front, left, right)) {
+        } else if (foundJunction(front, left, right)) {
             if (!isRetracing) {
-                if (hasMarchedIntoNewJunction(directionX, directionY, front, left, right)) {
-                    setBack(directionX, directionY, 'X');
+                if (hasMarchedIntoNewJunction(front, left, right)) {
+                    setBack('X');
                     if (front == '.') {
-                        setFront(directionX, directionY, 'N');
+                        setFront('N');
                     } else if (left == '.') {
-                        setLeft(directionX, directionY, 'N');
+                        setLeft('N');
                         turnLeft();
                     } else {
-                        setRight(directionX, directionY, 'N');
+                        setRight('N');
                         turnRight();
                     }
-                } else if (hasMarchedIntoOldJunction(directionX, directionY, front, left, right)) {
-                    setBack(directionX, directionY, 'N');
+                } else if (hasMarchedIntoOldJunction(front, left, right)) {
+                    setBack('N');
                     turnAround();
                     startRetracing();
                 } 
             } else {
-                if (hasRetracedIntoSomeUnlabeled(directionX, directionY, front, left, right)) {
+                if (hasRetracedIntoSomeUnlabeled(front, left, right)) {
                     if (front == '.') {
-                        setFront(directionX, directionY, 'N');
+                        setFront('N');
                     } else if (left == '.') {
-                        setLeft(directionX, directionY, 'N');
+                        setLeft('N');
                         turnLeft();
                     } else if (right == '.') {
-                        setRight(directionX, directionY, 'N');
+                        setRight('N');
                         turnRight();
                     }
                     stopRetracing();
-                } else if (hasRetracedIntoNoUnlabeled(directionX, directionY, front, left, right)) {
-                    if (front == 'X') {
-                        // Nothing here.
-                    } else if (left == 'X') {
+                } else if (hasRetracedIntoNoUnlabeled(front, left, right)) {
+                    if (left == 'X') {
                         turnLeft();
                     } else if (right == 'X') {
                         turnRight();
@@ -125,11 +117,10 @@ int Tremaux::solve() {
         positionX += directionX;
         positionY += directionY;
         
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         
+//        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         
         cout << "(" << counter++ << ") " << "x: \t" << positionX << "\t y: " << positionY << endl;
-//        cout << "(" << counter++ << ") " << endl;
         printSolvedMaze();
         cout << endl;
         
@@ -139,104 +130,78 @@ int Tremaux::solve() {
 }
 
 
-bool Tremaux::foundJunction(int currDirX, int currDirY, char front, char left, char right) {
+bool Tremaux::foundJunction(char front, char left, char right) {
     return left != '#' || right != '#';
 }
 
-bool Tremaux::foundGoal(int currDirX, int currDirY, char front, char left, char right) {
+bool Tremaux::foundGoal(char front, char left, char right) {
     return left == 'G' || right == 'G' || front == 'G'; 
 }
 
 
 
-bool Tremaux::hasMarchedIntoNewJunction(int currDirX, int currDirY, char front, char left, char right) {
+bool Tremaux::hasMarchedIntoNewJunction(char front, char left, char right) {
     // A possible deadend and goal will already have been checked, so no worries!
     return ((left != 'N' && left != 'X') || left == '#') &&
             ((right != 'N' && right != 'X') || right == '#') &&
             ((front != 'N' && front != 'X') || front == '#');
 }
 
-bool Tremaux::hasMarchedIntoOldJunction(int currDirX, int currDirY, char front, char left, char right) {
+bool Tremaux::hasMarchedIntoOldJunction(char front, char left, char right) {
     return ((left == 'N' || left == 'X') && left != '#') ||
             ((right == 'N' || right == 'X') && right != '#') ||
             ((front == 'N' || front == 'X') && front != '#');
 }
 
-bool Tremaux::hasMarchedIntoDeadend(int currDirX, int currDirY, char front, char left, char right) {
+bool Tremaux::hasMarchedIntoDeadend(char front, char left, char right) {
     return front == '#' && left == '#' && right == '#';
 }
 
-bool Tremaux::hasRetracedIntoSomeUnlabeled(int currDirX, int currDirY, char front, char left, char right) {
-//    return (left != 'N' && left != 'X' && left != '#') || 
-//            (right != 'N' && right != 'X' && right != '#') || 
-//            (front != 'N' && front != 'X' && front != '#');
+bool Tremaux::hasRetracedIntoSomeUnlabeled(char front, char left, char right) {
     return left == '.' || right == '.' || front == '.';
 }
 
-bool Tremaux::hasRetracedIntoNoUnlabeled(int currDirX, int currDirY, char front, char left, char right) {
+bool Tremaux::hasRetracedIntoNoUnlabeled(char front, char left, char right) {
     return (left == 'N' || left == 'X' || left == '#') && 
             (right == 'N' || right == 'X' || right == '#') && 
             (front == 'N' || front == 'X' || front == '#');
 }
 
 
-char Tremaux::getLeft(int currDirX, int currDirY) {
-    // counterclockwise rotation: (x', y') == (-y, x); 
-    // y direction is logically inverted, so final direction: (x', y') == (-y, -x)
-//    positionX = 2;
-//    positionY = 2;
-//    currDirX = 1;
-//    currDirY = 0;
-//    int idx = (positionY - currDirX) * COLUMNS + positionX + currDirY;
-    return maze[(positionY - currDirX) * COLUMNS + positionX + currDirY];
-    
-//    return maze[(positionY - currDirX) * COLUMNS + positionX - currDirY];
+char Tremaux::getLeft() {
+    // counterclockwise rotation: (x', y') == (-y, x);
+    return maze[(positionY - directionX) * COLUMNS + positionX + directionY];
 }
 
-char Tremaux::getRight(int currDirX, int currDirY) {
+char Tremaux::getRight() {
     // clockwise rotation: (x', y') == (y, -x);
-    // y direction is logically inverted, so final direction: (x', y') == (y, x)
-//    positionX = 2;
-//    positionY = 2;
-//    currDirX = 1;
-//    currDirY = 0;
-//    int idx = (positionY + currDirX) * COLUMNS + positionX - currDirY;
-    return maze[(positionY + currDirX) * COLUMNS + positionX - currDirY];
-
-//    return maze[(positionY + currDirX) * COLUMNS + positionX + currDirY];
+    return maze[(positionY + directionX) * COLUMNS + positionX - directionY];
 }
 
-char Tremaux::getFront(int currDirX, int currDirY) {
-//    positionX = 2;
-//    positionY = 2;
-//    currDirX = 1;
-//    currDirY = 0;
-//    int idx = (positionY + currDirY) * COLUMNS + positionX + currDirX;
-    return maze[(positionY + currDirY) * COLUMNS + positionX + currDirX];
+char Tremaux::getFront() {
+    return maze[(positionY + directionY) * COLUMNS + positionX + directionX];
 }
 
-char Tremaux::getBack(int currDirX, int currDirY) {
-    return maze[(positionY - currDirY) * COLUMNS + positionX - currDirX];
+char Tremaux::getBack() {
+    return maze[(positionY - directionY) * COLUMNS + positionX - directionX];
 }
 
 
 
-void Tremaux::setLeft(int currDirX, int currDirY, char newValue) {
-    maze[(positionY - currDirX) * COLUMNS + positionX + currDirY] = newValue;
-//    maze[(positionY - currDirX) * COLUMNS + positionX - currDirY] = newValue;
+void Tremaux::setLeft(char newValue) {
+    maze[(positionY - directionX) * COLUMNS + positionX + directionY] = newValue;
 }
 
-void Tremaux::setRight(int currDirX, int currDirY, char newValue) {
-    maze[(positionY + currDirX) * COLUMNS + positionX - currDirY] = newValue;
-//    maze[(positionY + currDirX) * COLUMNS + positionX + currDirY] = newValue;
+void Tremaux::setRight(char newValue) {
+    maze[(positionY + directionX) * COLUMNS + positionX - directionY] = newValue;
 }
 
-void Tremaux::setFront(int currDirX, int currDirY, char newValue) {
-    maze[(positionY + currDirY) * COLUMNS + positionX + currDirX] = newValue;
+void Tremaux::setFront(char newValue) {
+    maze[(positionY + directionY) * COLUMNS + positionX + directionX] = newValue;
 }
 
-void Tremaux::setBack(int currDirX, int currDirY, char newValue) {
-    maze[(positionY - currDirY) * COLUMNS + positionX - currDirX] = newValue;
+void Tremaux::setBack(char newValue) {
+    maze[(positionY - directionY) * COLUMNS + positionX - directionX] = newValue;
 }
 
 
