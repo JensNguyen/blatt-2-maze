@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.2)
 
 # Jeder weitere Test muss mit allen drei Befehlen eingebunden werden.
 add_executable(BreathFirstSearchTest shortest_path/breadth_first_search/BreathFirstSearchTest.cpp)
