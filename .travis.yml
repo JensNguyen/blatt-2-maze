@@ -1,9 +1,6 @@
-# Use new trusty images, should yield newer compilers and packages
 sudo: false
 dist: trusty
 language: cpp
-
-
 
 matrix:
   include:
@@ -14,15 +11,14 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-            - doxygen
-            - doxygen-doc
-            - doxygen-latex
-            - doxygen-gui
-            - graphviz
+#             - doxygen
+#             - doxygen-doc
+#             - doxygen-latex
+#             - doxygen-gui
+#             - graphviz
       env: COMPILER=g++-6
 
 
-# Generate and deploy documentation
 # after_success:
 #   - cd $TRAVIS_BUILD_DIR
 #   - chmod +x generateDocumentationAndDeploy.sh
