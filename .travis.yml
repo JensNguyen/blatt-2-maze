@@ -1,9 +1,53 @@
 language: cpp
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
+# Use new trusty images, should yield newer compilers and packages
+sudo: false
+dist: trusty
+language: cpp
+
+
+# Blacklist
+branches:
+  except:
+    - gh-pages
+
+# Environment variables
+env:
+  global:
+    - GH_REPO_NAME: blatt-2-amf0
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile # todo: doxyconf
+    - GH_REPO_REF: github.com:algdat/blatt-2-amf0.git
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+            - doxygen
+            - doxygen-doc
+            - doxygen-latex
+            - doxygen-gui
+            - graphviz
+      env: COMPILER=g++-6
+    - compiler: clang
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-3.9
+          packages:
+            - g++-6
+            - clang-3.9
+            - doxygen
+            - doxygen-doc
+            - doxygen-latex
+            - doxygen-gui
+            - graphviz
+env: COMPILER=clang++-3.9
 
 script:
   - cmake --version
