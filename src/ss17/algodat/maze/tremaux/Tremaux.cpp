@@ -11,7 +11,7 @@ int Tremaux::solve() {
     for (int i = 0; i < ROWS; i++) {
         std::cout << "row: " << i << std::endl;
         for (int j = 0; j < COLUMNS; j++) {
-            if (maze[i*COLUMNS + j] == 'S') {
+            if (maze[i * COLUMNS + j] == 'S') {
                 // Start position
                 positionX = j;
                 positionY = i;
@@ -36,12 +36,16 @@ int Tremaux::solve() {
         }
     }
     
-    // Go initial step manually
+    // Save start position
+    startPositionX = positionX;
+    startPositionY = positionY;
+//    maze[positionY * COLUMNS + positionX] = 'X';
+    
+    // Go initial step.
     positionX += directionX;
     positionY += directionY;
     
-    std::cout << "dirX: " << directionX << ", dirY: " << directionY << std::endl;
-
+    
     // ###### Test rotation ######
 //    {
 //        int cX = 1;
@@ -66,7 +70,7 @@ int Tremaux::solve() {
     // #################
     
     // Solve the maze
-    // NOTE: 'O' means visited once, 'X' means visited twice 
+    // NOTE: 'N' means visited once, 'X' means visited twice 
 
     bool notSolved = true;
 
@@ -76,64 +80,109 @@ int Tremaux::solve() {
         char left = getLeft(directionX, directionY);
         char right = getRight(directionX, directionY);
         
-        if (!(left == '#' || left == 'X' || left == 'S')) {
+        if (foundGoal(directionX, directionY, front, left, right)) {
+            if (front == 'G') {
+                // Nothing here.
+            } else if (left == 'G') {
+                turnLeft();
+            } else if (right == 'G') {
+                turnRight();
+            }
             
+            notSolved = false;
+        } else if (foundJunction(directionX, directionY, front, left, right)) {
+            if (!isRetracing) {
+                if (hasMarchedIntoNewJunction(directionX, directionY, front, left, right)) {
+                    setBack(directionX, directionY, 'X');
+                    if (front == '.') {
+                        setFront(directionX, directionY, 'N');
+                    } else if (left == '.') {
+                        setLeft(directionX, directionY, 'N');
+                        turnLeft();
+                    } else {
+                        setRight(directionX, directionY, 'N');
+                        turnRight();
+                    }
+                } else if (hasMarchedIntoOldJunction(directionX, directionY, front, left, right)) {
+                    setBack(directionX, directionY, 'N');
+                    turnAround();
+                    startRetracing();
+                } 
+            } else {
+                if (hasRetracedIntoSomeUnlabeled(directionX, directionY, front, left, right)) {
+                    if (front == '.') {
+                        setFront(directionX, directionY, 'N');
+                    } else if (left == '.') {
+                        setLeft(directionX, directionY, 'N');
+                        turnLeft();
+                    } else if (right == '.') {
+                        setRight(directionX, directionY, 'N');
+                        turnRight();
+                    }
+                    stopRetracing();
+                } else if (hasRetracedIntoNoUnlabeled(directionX, directionY, front, left, right)) {
+                    if (front == 'X') {
+                        // Nothing here.
+                    } else if (left == 'X') {
+                        turnLeft();
+                    } else if (right == 'X') {
+                        turnRight();
+                    }
+                }
+            }
+            
+        } else if (hasMarchedIntoDeadend(directionX, directionY, front, left, right)) {
+            turnAround();
+            startRetracing();
         }
         
-        if (left == '.') {
-            // Mark back slot and left slot as visited once. Keep going in left direction.
-            if (back != 'X' && back != 'S')
-                setBack(directionX, directionY, 'O');
-            setLeft(directionX, directionY, 'O');
-            turnLeft();
-        } else if (right == '.') {
-            // Mark back slot and right slot as visited once. Keep going in right direction.
-            if (back != 'X' && back != 'S')
-                setBack(directionX, directionY, 'O');
-            setRight(directionX, directionY, 'O');
-            turnRight();
-        } else if (front == '.') {
-            // Mark back slot and front slot as visited once. Keep going in forward.
-            if (back != 'X' && back != 'S')
-                setBack(directionX, directionY, 'O');
-            setFront(directionX, directionY, 'O');
-        } else if (left == 'O') {
-            
-        } else if (right == 'O') {
-            
-        } else if (front == 'O') {
-            
-        } else if (left == 'X') {
-
-        } else if (right == 'X') {
-
-        } else if (front == 'X') {
-
-        } else if (left == 'S') {
-
-        } else if (right == 'S') {
-
-        } else if (front == 'S') {
-
-        } else if (left == 'G') {
-            notSolved = false;
-        } else if (right == 'G') {
-            notSolved = false;
-        } else if (front == 'G') {
-            notSolved = false;
-        }
-        
-        
+        // Move
         positionX += directionX;
         positionY += directionY;
     }
 
-    return -1;
+    return 0;
 }
 
 
 bool Tremaux::foundJunction(int currDirX, int currDirY, char front, char left, char right) {
-    return left != '#' && left != 'S' && right != '#' && right != 'S';
+    return left != '#' || right != '#';
+}
+
+bool Tremaux::foundGoal(int currDirX, int currDirY, char front, char left, char right) {
+    return left == 'G' || right == 'G' || front == 'G'; 
+}
+
+
+
+bool Tremaux::hasMarchedIntoNewJunction(int currDirX, int currDirY, char front, char left, char right) {
+    // A possible deadend and goal will already have been checked, so no worries!
+    return ((left != 'N' && left != 'X') || left == '#') &&
+            ((right != 'N' && right != 'X') || right == '#') &&
+            ((front != 'N' && front != 'X') || front == '#');
+}
+
+bool Tremaux::hasMarchedIntoOldJunction(int currDirX, int currDirY, char front, char left, char right) {
+    return ((left == 'N' || left == 'X') && left != '#') ||
+            ((right == 'N' || right == 'X') && right != '#') ||
+            ((front == 'N' || front == 'X') && front != '#');
+}
+
+bool Tremaux::hasMarchedIntoDeadend(int currDirX, int currDirY, char front, char left, char right) {
+    return front == '#' && left == '#' && right == '#';
+}
+
+bool Tremaux::hasRetracedIntoSomeUnlabeled(int currDirX, int currDirY, char front, char left, char right) {
+//    return (left != 'N' && left != 'X' && left != '#') || 
+//            (right != 'N' && right != 'X' && right != '#') || 
+//            (front != 'N' && front != 'X' && front != '#');
+    return left == '.' || right == '.' || front == '.';
+}
+
+bool Tremaux::hasRetracedIntoNoUnlabeled(int currDirX, int currDirY, char front, char left, char right) {
+    return (left == 'N' || left == 'X') && 
+            (right == 'N' || right == 'X') && 
+            (front == 'N' || front == 'X');
 }
 
 
@@ -196,4 +245,10 @@ void Tremaux::turnRight() {
     directionY = newDirY;
 }
 
+void Tremaux::startRetracing() {
+    isRetracing = true;
+}
 
+void Tremaux::stopRetracing() {
+    isRetracing = false;
+}
