@@ -20,9 +20,7 @@ matrix:
 
 
 # after_success:
-#   - cd $TRAVIS_BUILD_DIR
-#   - chmod +x generateDocumentationAndDeploy.sh
-#   - ./generateDocumentationAndDeploy.sh
+#   <generate documentation>
 
 script:
   - cmake --version
