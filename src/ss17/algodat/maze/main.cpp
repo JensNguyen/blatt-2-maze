@@ -6,6 +6,8 @@
 #include "shortest_path/breadth_first_search/BreathFirstSearch.h"
 #include "tremaux/Tremaux.h"
 
+using namespace std;
+
 int main(){
     BreathFirstSearch *bfs = new BreathFirstSearch();
     std::cout<<bfs->getHello()<<std::endl;
@@ -31,11 +33,13 @@ int main(){
             '#','.','#','#','#','#','#','.','#','#','#','#','#','.','#',
             '#','.','#','#','#','#','#','.','#','#','#','#','#','.','#',
             '#','.','.','.','.','.','.','.','.','.','.','.','.','.','#',
-            '#','.','#','#','#','#','#','#','#','#','#','#','#','G','#'
+            '#','#','#','#','#','#','#','#','#','#','#','#','#','G','#'
     };
 
     Tremaux tremaux = Tremaux(maze, ROWS, COLUMNS);
-    tremaux.solve();
+    cout << "Tremaux finished: " << tremaux.solve() << endl;
+    
+    tremaux.printSolvedMaze();
 
 
     // ###################

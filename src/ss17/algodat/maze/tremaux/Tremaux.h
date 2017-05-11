@@ -128,7 +128,8 @@ public:
                                                   directionX(0), directionY(0), 
                                                   isRetracing(false) {};
     int solve();
-
+    void printSolvedMaze();
+    
 };
 
 

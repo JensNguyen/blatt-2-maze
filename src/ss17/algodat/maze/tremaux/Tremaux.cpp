@@ -5,11 +5,11 @@
 #include "Tremaux.h"
 #include <iostream>
 
+using namespace std;
 
 int Tremaux::solve() {
     // Find starting point and direction
     for (int i = 0; i < ROWS; i++) {
-        std::cout << "row: " << i << std::endl;
         for (int j = 0; j < COLUMNS; j++) {
             if (maze[i * COLUMNS + j] == 'S') {
                 // Start position
@@ -59,13 +59,13 @@ int Tremaux::solve() {
 //        char front = getFront(dX, dY);
 //        char back = getBack(dX, dY);
 //
-//        std::cout << "x: " << positionX << ", y: " << positionY
+//        cout << "x: " << positionX << ", y: " << positionY
 //                << ", curr: " << curr
 //                << ", front: " << front
 //                << ", back: " << back
 //                << ", left: " << left
 //                << ", right: " << right
-//                << std::endl;
+//                << endl;
 //    }
     // #################
     
@@ -76,7 +76,7 @@ int Tremaux::solve() {
 
     while (notSolved) {
         char front = getFront(directionX, directionY);
-        char back = getBack(directionX, directionY);
+//        char back = getBack(directionX, directionY);
         char left = getLeft(directionX, directionY);
         char right = getRight(directionX, directionY);
         
@@ -251,4 +251,14 @@ void Tremaux::startRetracing() {
 
 void Tremaux::stopRetracing() {
     isRetracing = false;
+}
+
+void Tremaux::printSolvedMaze() {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLUMNS; j++) {
+            cout << maze[i * COLUMNS + j];
+            cout << ',';
+        }
+        cout << endl;
+    }
 }
