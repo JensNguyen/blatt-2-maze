@@ -1,5 +1,10 @@
 language: cpp
 
+# Use new trusty images, should yield newer compilers and packages
+sudo: false
+dist: trusty
+language: cpp
+
 include:
   - compiler: gcc
     addons:
@@ -16,4 +21,4 @@ script:
   - cd build
   - cmake .. -G "Unix Makefiles"
   - dir
-  - make && ctest
+- make && ctest
