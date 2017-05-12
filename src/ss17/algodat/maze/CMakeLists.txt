@@ -7,8 +7,6 @@ include_directories(view)
 include_directories(control)
 include_directories(control/recursive_solver)
 
-
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
