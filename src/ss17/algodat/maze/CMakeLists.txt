@@ -13,11 +13,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
-set(CMAKE_PREFIX_PATH $ENV{HOME}/Qt/5.5/gcc_64)
-
 #Find QT-Packeges
-FIND_PACKAGE(Qt4 REQUIRED)
-
+find_package(Qt4 4.8.6 REQUIRED QtWidgets Core QtGui)
 
 
 set(SOURCES
@@ -55,4 +52,4 @@ add_executable(main main.cpp)
 
 #Link qt libraries
 TARGET_INCLUDE_DIRECTORIES (maze_solver PUBLIC ${INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt4::Widgets Qt4::Core)
+TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt4::Widgets Qt4::QtCore Qt4::QtGui)
