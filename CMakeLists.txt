@@ -3,16 +3,19 @@ project(maze)
 
 set(CMAKE_CXX_STANDARD 11)
 
-# Hier werden alle Source-Files eingetragen
 set(SOURCE_FILES
         src/ss17/algodat/maze/main.cpp
-        src/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearch.cpp
-        src/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearch.h
-        test/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearchTest.cpp)
+        src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearch.h
+        src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearch.cpp
+        test/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearchTest.cpp
+        )
 
 include(CTest)
 add_subdirectory(src/ss17/algodat/maze)
 add_subdirectory(test/ss17/algodat/maze)
+
+add_executable(maze ${SOURCE_FILES})
+TARGET_LINK_LIBRARIES(maze LINK_PUBLIC mazesolver)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)

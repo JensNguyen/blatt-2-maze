@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../../../../../../src/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearch.h"
+#include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearch.h"
 
 TEST(Dummy, foobar)
 {
