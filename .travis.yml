@@ -16,7 +16,7 @@ matrix:
 #             - doxygen-latex
 #             - doxygen-gui
 #             - graphviz
-      env: COMPILER=g++-6
+      env: COMPILER=g++-6 QT_BASE=55
 
 sudo: required
 
