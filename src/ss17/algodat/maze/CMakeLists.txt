@@ -52,4 +52,4 @@ add_executable(main main.cpp)
 
 #Link qt libraries
 TARGET_INCLUDE_DIRECTORIES (maze_solver PUBLIC ${INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt5::QtWidgets Qt5::Core)
+TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt5::Widgets Qt5::Core)
