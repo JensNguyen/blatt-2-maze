@@ -18,6 +18,7 @@ find_package(Qt5Core)
 
 
 set(SOURCES
+        main.cpp
         model/maze.cpp
         control/mazealgorithm.cpp
         control/mazegenerator.cpp
