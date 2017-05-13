@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Position.h"
 #include "BreathFirstSearchLib.h"
+#include <stdexcept>
 
 /**
  * Paint the matrix.
