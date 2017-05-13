@@ -2,10 +2,8 @@
 // Created by rudi on 13.05.2017.
 //
 #include <iostream>
-#include <queue>
 #include "Position.h"
 #include "BreathFirstSearchLib.h"
-#include "BreathFirstSearch.h"
 
 /**
  * Paint the matrix.
@@ -21,7 +19,7 @@ void BreathFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
             x = matrix[row*COLUMNS + column];
             cout<<x;
         }
-        cout<<std::endl;
+        cout<<endl;
     }
     cout<<endl;
 }
@@ -38,7 +36,7 @@ void BreathFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
         for(int column = 0; column < COLUMNS; column++){
             cout<<matrix[row*COLUMNS + column];
         }
-        cout<<std::endl;
+        cout<<endl;
     }
     cout<<endl;
 }
@@ -108,7 +106,7 @@ int *BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
                                     const int row){
     if(!(0 <= column && column < COLUMNS
          && 0 <= row && row < ROWS))
-        throw std::invalid_argument( "Row or column out of bounds!" );
+        throw invalid_argument( "Row or column out of bounds!" );
     return &matrix[(row) * COLUMNS + column];
 }
 
@@ -131,7 +129,7 @@ char *BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
                                      const int row){
     if(!(0 <= column && column < COLUMNS
          && 0 <= row && row < ROWS))
-        throw std::invalid_argument( "Row or column out of bounds!" );
+        throw invalid_argument( "Row or column out of bounds!" );
     return &matrix[row * COLUMNS + column];
 }
 
@@ -155,10 +153,10 @@ void BreathFirstSearchLib::setField(const int COLUMNS, const int ROWS,
                                  const int row, int *content){
     if(!(0 <= column && column < COLUMNS
             && 0 <= row && row < ROWS))
-        throw std::invalid_argument( "Row or column out of bounds!" );
+        throw invalid_argument( "Row or column out of bounds!" );
     const int index = row*COLUMNS + column;
     if(!matrix[index] == 0)
-        throw std::invalid_argument( "You can only edit fields which are set "
+        throw invalid_argument( "You can only edit fields which are set "
                                              "to zero!" );
     matrix[index] = *content;
 }
@@ -185,9 +183,9 @@ void BreathFirstSearchLib::setField(const int COLUMNS, const int ROWS,
                                     const char OPEN_ID){
     if(!(0 <= column && column < COLUMNS
          && 0 <= row && row < ROWS))
-        throw std::invalid_argument( "Row or column out of bounds!" );
+        throw invalid_argument( "Row or column out of bounds!" );
     const int index = row*COLUMNS + column;
     if(!matrix[index] == OPEN_ID)
-        throw std::invalid_argument( "You can only edit open fields!" );
+        throw invalid_argument( "You can only edit open fields!" );
     matrix[index] = *content;
 }
