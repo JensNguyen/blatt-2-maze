@@ -5,8 +5,10 @@
 #include <iostream>
 #include "shortest_path/breadth_first_search/BreathFirstSearch.h"
 
+using namespace std;
+
 int main(){
     BreathFirstSearch *bfs = new BreathFirstSearch();
-    std::cout<<bfs->getHello()<<std::endl;
+    cout<<bfs->getHello()<<endl;
     return 0;
 }
