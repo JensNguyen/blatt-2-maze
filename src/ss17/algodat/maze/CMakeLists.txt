@@ -12,9 +12,11 @@ include_directories(control/recursive_solver)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+
+set(CMAKE_PREFIX_PATH $ENV{HOME}/Qt/5.5/gcc_64)
+
 #Find QT-Packeges
-FIND_PACKAGE(Qt5Widgets REQUIRED)
-FIND_PACKAGE(Qt5Core REQUIRED)
+FIND_PACKAGE(Qt4 REQUIRED)
 
 
 
@@ -53,4 +55,4 @@ add_executable(main main.cpp)
 
 #Link qt libraries
 TARGET_INCLUDE_DIRECTORIES (maze_solver PUBLIC ${INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt5::Widgets Qt5::Core)
+TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt4::Widgets Qt4::Core)
