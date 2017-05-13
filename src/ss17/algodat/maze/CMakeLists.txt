@@ -12,6 +12,9 @@ include_directories(control/recursive_solver)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+set(Qt5Widgets_DIR $ENV{HOME}/Qt/5.5/clang_64/lib/cmake/Qt5Widgets)
+set(Qt5Core_DIR $ENV{HOME}/Qt/5.5/clang_64/lib/cmake/Qt5Core)
+
 #Find QT-Packeges
 FIND_PACKAGE(Qt5Widgets REQUIRED)
 FIND_PACKAGE(Qt5Core REQUIRED)
@@ -47,10 +50,10 @@ set(INCLUDE_DIRS
 
 QT5_WRAP_UI(UI_HEADERS ${UI})
 
-add_library(mazesolver ${SOURCES} ${HEADERS} ${UI_HEADERS})
+add_library(maze_solver ${SOURCES} ${HEADERS} ${UI_HEADERS})
+add_executable(main main.cpp)
 
 
 #Link qt libraries
-TARGET_INCLUDE_DIRECTORIES (mazesolver PUBLIC ${INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(mazesolver PUBLIC Qt5::Widgets)
-TARGET_LINK_LIBRARIES(mazesolver PUBLIC Qt5::Core)
+TARGET_INCLUDE_DIRECTORIES (maze_solver PUBLIC ${INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt5::Widgets Qt5::Core)
