@@ -12,10 +12,6 @@ include_directories(control/recursive_solver)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-
-set(Qt5Widgets_DIR /usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets)
-set(Qt5Core_DIR /usr/lib/x86_64-linux-gnu/cmake/Qt5Core)
-
 #Find QT-Packeges
 find_package(Qt5Widgets)
 find_package(Qt5Core)
