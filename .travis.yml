@@ -32,7 +32,7 @@ before_install:
 script:
   - cmake --version
   - qmake --version
-  - ls /usr/local/Trolltech/Qt-4.8.6/
+  - ls /usr/local/
   - mkdir build
   - cd build
   - cmake .. -G "Unix Makefiles"
