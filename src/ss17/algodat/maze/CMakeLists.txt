@@ -13,8 +13,12 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
+set(Qt5Widgets_DIR /usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets)
+set(Qt5Core_DIR /usr/lib/x86_64-linux-gnu/cmake/Qt5Core)
+
 #Find QT-Packeges
-find_package(Qt4 4.8.6 REQUIRED QtWidgets Core QtGui)
+find_package(Qt5Widgets)
+find_package(QtCore)
 
 
 set(SOURCES
@@ -44,7 +48,7 @@ set(INCLUDE_DIRS
     view)
 
 
-QT4_WRAP_UI(UI_HEADERS ${UI})
+QT5_WRAP_UI(UI_HEADERS ${UI})
 
 add_library(maze_solver ${SOURCES} ${HEADERS} ${UI_HEADERS})
 add_executable(main main.cpp)
@@ -52,4 +56,4 @@ add_executable(main main.cpp)
 
 #Link qt libraries
 TARGET_INCLUDE_DIRECTORIES (maze_solver PUBLIC ${INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt4::Widgets Qt4::QtCore Qt4::QtGui)
+TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt5::QtWidgets Qt5::Core)
