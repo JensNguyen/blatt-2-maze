@@ -18,7 +18,7 @@ matrix:
 #             - graphviz
       env: COMPILER=g++-6
 
-sudo: reqired
+sudo: required
 
 before_install:
   - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
