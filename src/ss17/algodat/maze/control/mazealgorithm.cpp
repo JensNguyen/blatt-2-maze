@@ -28,6 +28,7 @@ void MazeSolveAlgorithm::run()
     m_elapsedTime = ((stopTimeSpec.tv_sec-startTimeSpec.tv_sec)*1E3)
                     +((stopTimeSpec.tv_nsec-startTimeSpec.tv_nsec)/1E6);
     signalLCDDisplays(); //signals the gui
+    redraw();
 }
 
 /**

@@ -43,7 +43,6 @@ bool RecursiveMazeSolveAlgorithm::solve(int &steps)
  */
 bool RecursiveMazeSolveAlgorithm::recursiveSolveMaze(int x, int y, int &steps)
 {
-    redraw();
     if(steps != -1)
         steps++;
 
