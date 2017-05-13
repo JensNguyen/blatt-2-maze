@@ -14,7 +14,6 @@ include(CTest)
 add_subdirectory(src/ss17/algodat/maze)
 add_subdirectory(test/ss17/algodat/maze)
 
-add_executable(maze ${SOURCE_FILES})
 TARGET_LINK_LIBRARIES(maze LINK_PUBLIC mazesolver)
 
 # Download and unpack googletest at configure time
