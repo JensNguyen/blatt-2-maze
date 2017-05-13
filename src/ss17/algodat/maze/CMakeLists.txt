@@ -19,6 +19,8 @@ set(Qt5Core_DIR $ENV{HOME}/Qt/5.5/clang_64/lib/cmake/Qt5Core)
 FIND_PACKAGE(Qt5Widgets REQUIRED)
 FIND_PACKAGE(Qt5Core REQUIRED)
 
+
+
 set(SOURCES
         model/maze.cpp
         control/mazealgorithm.cpp
@@ -39,12 +41,19 @@ set(UI
         view/mazegui.ui
         )
 
+set(INCLUDE_DIRS
+    control
+    control/recursive_solver
+    model
+    view)
+
+
 QT5_WRAP_UI(UI_HEADERS ${UI})
 
 add_library(mazesolver ${SOURCES} ${HEADERS} ${UI_HEADERS})
 
 
 #Link qt libraries
-TARGET_INCLUDE_DIRECTORIES (mazesolver PUBLIC view)
+TARGET_INCLUDE_DIRECTORIES (mazesolver PUBLIC ${INCLUDE_DIRS})
 TARGET_LINK_LIBRARIES(mazesolver PUBLIC Qt5::Widgets)
 TARGET_LINK_LIBRARIES(mazesolver PUBLIC Qt5::Core)
