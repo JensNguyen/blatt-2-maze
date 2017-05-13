@@ -31,6 +31,7 @@ before_install:
 
 script:
   - cmake --version
+  - qmake --version
   - mkdir build
   - cd build
   - cmake .. -G "Unix Makefiles"
