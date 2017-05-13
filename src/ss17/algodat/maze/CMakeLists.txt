@@ -18,7 +18,7 @@ set(Qt5Core_DIR /usr/lib/x86_64-linux-gnu/cmake/Qt5Core)
 
 #Find QT-Packeges
 find_package(Qt5Widgets)
-find_package(QtCore)
+find_package(Qt5Core)
 
 
 set(SOURCES
