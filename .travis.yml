@@ -16,16 +16,22 @@ matrix:
 #             - doxygen-latex
 #             - doxygen-gui
 #             - graphviz
-      env: COMPILER=g++-6 QT_BASE=55
+      env: COMPILER=g++-6
+      
+sudo: required
 
-before_install:
-  - git clone https://github.com/qt/qt5.git
-  - cd qt5/
-  - ./init-repository -f --mirror git://github.com/qtproject/
-  - git checkout 5.9
-  - git submodule update
-  - ./configure -prefix $PWD/qtbase -opensource -nomake tests
-  - make -j 4
+# For gcc-6
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 1397BC53640DB551
+sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+
+# For Qt 5.7
+sudo add-apt-repository --yes ppa:beineri/opt-qt57-trusty
+
+sudo apt-get install -qq g++-6 qt57-meta-full
+
+# Before build : 
+QT_ENV_SCRIPT=$(find /opt -name 'qt*-env.sh')
+source $QT_ENV_SCRIPT
 
 # after_success:
 #   <generate documentation>
