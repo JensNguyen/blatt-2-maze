@@ -32,7 +32,8 @@ before_install:
 script:
   - cmake --version
   - qmake --version
-  - apt-file search Qt5CoreConfig.cmake
+  - ls /usr/local
+  - ls /usr/local/Cellar
   - mkdir build
   - cd build
   - cmake .. -G "Unix Makefiles"
