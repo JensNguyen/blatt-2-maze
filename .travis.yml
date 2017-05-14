@@ -20,9 +20,10 @@ matrix:
 
 before_install:
   - git clone https://github.com/qt/qt5.git
-  - cd qt5
-  - git checkout 5.9
+  - cd qt5/
   - ./init-repository
+  - git checkout 5.9
+  - git submodule update
   - ./configure -prefix $PWD/qtbase -opensource -nomake tests
   - make -j 4
 
