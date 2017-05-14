@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 dist: trusty
 language: cpp
 
@@ -17,21 +17,20 @@ matrix:
 #             - doxygen-gui
 #             - graphviz
       env: COMPILER=g++-6
-      
-sudo: required
 
 # For gcc-6
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 1397BC53640DB551
-sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+install:
+  - sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 1397BC53640DB551
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
 
-# For Qt 5.7
-sudo add-apt-repository --yes ppa:beineri/opt-qt57-trusty
+   # For Qt 5.7
+  - sudo add-apt-repository --yes ppa:beineri/opt-qt57-trusty
 
-sudo apt-get install -qq g++-6 qt57-meta-full
+  - sudo apt-get install -qq g++-6 qt57-meta-full
 
-# Before build : 
-QT_ENV_SCRIPT=$(find /opt -name 'qt*-env.sh')
-source $QT_ENV_SCRIPT
+before_script:
+   - QT_ENV_SCRIPT=$(find /opt -name 'qt*-env.sh')
+   - source $QT_ENV_SCRIPT
 
 # after_success:
 #   <generate documentation>
