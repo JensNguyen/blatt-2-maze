@@ -7,6 +7,8 @@ include_directories(view)
 include_directories(control)
 include_directories(control/recursive_solver)
 
+set(Qt5Widgets_DIR /opt/qt55/lib/cmake/Qt5Widgets)
+set(Qt5Core_DIR /opt/qt55/lib/cmake/Qt5Core)
 
 #active automoc
 set(CMAKE_AUTOMOC ON)
