@@ -11,6 +11,7 @@ set(SOURCE_FILES
 
 include(CTest)
 add_subdirectory(src/ss17/algodat/maze)
+add_subdirectory(src/ss17/algodat/maze/control)
 add_subdirectory(test/ss17/algodat/maze)
 
 # Download and unpack googletest at configure time
