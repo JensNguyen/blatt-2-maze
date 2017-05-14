@@ -50,7 +50,7 @@ set(INCLUDE_DIRS
 QT5_WRAP_UI(UI_HEADERS ${UI})
 
 add_library(maze_solver ${SOURCES} ${HEADERS} ${UI_HEADERS})
-add_executable(main main.cpp)
+add_executable(maze_solver main.cpp)
 
 
 #Link qt libraries
