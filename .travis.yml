@@ -19,9 +19,8 @@ matrix:
       env: COMPILER=g++-6 QT_BASE=55
 
 before_install:
-  - cd /home
   - git clone https://github.com/qt/qt5.git
-  - cd /home/qt5-5.5
+  - cd /Qt
   - ./configure -prefix $PWD/qtbase -opensource -nomake tests
   - make -j 4
 
