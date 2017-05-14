@@ -20,7 +20,7 @@ matrix:
 
 before_install:
   - git clone https://github.com/qt/qt5.git
-  - cd /Qt
+  - ls Qt5
   - ./configure -prefix $PWD/qtbase -opensource -nomake tests
   - make -j 4
 
