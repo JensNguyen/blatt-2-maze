@@ -33,7 +33,7 @@ script:
   - cmake --version
   - qmake --version
   - ls /usr/local
-  - ls /usr/local/Cellar
+  - ls /usr/local/share
   - mkdir build
   - cd build
   - cmake .. -G "Unix Makefiles"
