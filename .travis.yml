@@ -22,6 +22,7 @@ before_install:
   - git clone https://github.com/qt/qt5.git
   - ls qt5
   - cd qt5
+  - ./init-repository
   - ./configure -prefix $PWD/qtbase -opensource -nomake tests
   - make -j 4
 
