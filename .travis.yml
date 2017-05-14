@@ -19,6 +19,7 @@ matrix:
       env: COMPILER=g++-6 QT_BASE=55
 
 before_install:
+  - git checkout tags/v5.5
   - git clone https://github.com/qt/qt5.git
   - ls qt5
   - cd qt5
