@@ -36,7 +36,6 @@ before_script:
 script:
   - cmake --version
   - qmake --version
-  - ls /opt/qt55/lib
   - mkdir build
   - cd build
   - cmake .. -G "Unix Makefiles"
