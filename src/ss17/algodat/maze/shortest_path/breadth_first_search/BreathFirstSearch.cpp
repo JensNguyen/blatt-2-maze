@@ -23,15 +23,20 @@ BreathFirstSearch::~BreathFirstSearch(){
 
 /**
  * Solve the maze. You can access the sulution via getSolution.
+ * @return  Length of shortest path through maze. 
  */
-void BreathFirstSearch::solve() {
+int BreathFirstSearch::solve() {
+    int result = -1;
     pushFreeAdjacentFields(BreathFirstSearchLib::getStartPos(COLUMNS, ROWS, maze, START));
-    while(!positionQueue->empty() && lastStep == nullptr){
+    while (!positionQueue->empty() && lastStep == nullptr) {
         consumePosition();
     }
 
-    if(lastStep != nullptr)
-        plotSolution(lastStep);
+    if (lastStep != nullptr) {
+        result = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution, lastStep->getColumn(), lastStep->getRow());
+        plotSolution(*lastStep);
+    }
+    return result;
 }
 
 /**
@@ -48,16 +53,16 @@ char *BreathFirstSearch::getSolution(){
  */
 void BreathFirstSearch::pushFreeAdjacentFields(Position *position) {
     // consume right field
-    consumeField(position, 1, 0);
+    consumeField(*position, 1, 0);
     // consume left field
     if(lastStep == nullptr)
-        consumeField(position, -1, 0);
+        consumeField(*position, -1, 0);
     // consume upper field
     if(lastStep == nullptr)
-        consumeField(position, 0, 1);
+        consumeField(*position, 0, 1);
     // consume lower field
     if(lastStep == nullptr)
-        consumeField(position, 0, -1);
+        consumeField(*position, 0, -1);
 }
 
 /**
@@ -74,12 +79,12 @@ void BreathFirstSearch::consumePosition(){
  * Plots the shortest way from position to start into maze.
  * @param position    Runner to plot the shortest way from start to.
  */
-void BreathFirstSearch::plotSolution(Position *position) {
-    BreathFirstSearchLib::setField(COLUMNS, ROWS, maze, position->getColumn(), position->getRow(), new char(PATH), OPEN);
-    int *steps = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution, position->getColumn(), position->getRow());
-    int newSteps = *steps - 1;
+void BreathFirstSearch::plotSolution(Position position) {
+    BreathFirstSearchLib::setField(COLUMNS, ROWS, maze, position.getColumn(), position.getRow(), new char(PATH), OPEN);
+    int steps = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution, position.getColumn(), position.getRow());
+    int newSteps = steps - 1;
     if(newSteps != 0)
-        plotSolution(searchForNextFieldOnShortestPath(position, newSteps));
+        plotSolution(*searchForNextFieldOnShortestPath(position, newSteps));
 }
 
 /**
@@ -94,35 +99,35 @@ void BreathFirstSearch::plotSolution(Position *position) {
  *                          will give the row-index of the field to check.
  * @return                  True if the specified field is the goal.
  */
-void BreathFirstSearch::consumeField(Position *position,
+void BreathFirstSearch::consumeField(Position position,
                                              const int columnOffset,
                                              const int rowOffset){
-    Position fieldToBeConsumed = Position(position->getColumn() + columnOffset,
-                                          position->getRow() + rowOffset);
+    Position fieldToBeConsumed = Position(position.getColumn() + columnOffset,
+                                          position.getRow() + rowOffset);
 
     if(fieldToBeConsumed.getRow() >=0
        && fieldToBeConsumed.getRow() < ROWS
        && fieldToBeConsumed.getColumn() >=0
        && fieldToBeConsumed.getColumn() < COLUMNS){
-        char* mazeField = BreathFirstSearchLib::getField(COLUMNS, ROWS, maze,
+        char mazeField = BreathFirstSearchLib::getField(COLUMNS, ROWS, maze,
                                    fieldToBeConsumed.getColumn(),
                                    fieldToBeConsumed.getRow());
-        int* solutionField = BreathFirstSearchLib::getField(COLUMNS, ROWS,
+        int solutionField = BreathFirstSearchLib::getField(COLUMNS, ROWS,
                                                             solution,
                                                             fieldToBeConsumed.getColumn(),
                                                             fieldToBeConsumed.getRow());
-        if (*mazeField == OPEN && *solutionField == 0) {
+        if (mazeField == OPEN && solutionField == 0) {
             positionQueue->push(fieldToBeConsumed);
-            int *newStepCount = new int(*BreathFirstSearchLib::getField(
-                    COLUMNS, ROWS, solution, position->getColumn(),
-                    position->getRow()));
+            int *newStepCount = new int(BreathFirstSearchLib::getField(
+                    COLUMNS, ROWS, solution, position.getColumn(),
+                    position.getRow()));
             *newStepCount += 1;
             BreathFirstSearchLib::setField(COLUMNS, ROWS, solution,
                                            fieldToBeConsumed.getColumn(),
                                            fieldToBeConsumed.getRow(),
                                            newStepCount);
-        }else if (*mazeField == GOAL) {
-            this->lastStep = new Position(position->getColumn(), position->getRow());
+        }else if (mazeField == GOAL) {
+            this->lastStep = new Position(position.getColumn(), position.getRow());
         }
     }
 }
@@ -136,30 +141,30 @@ void BreathFirstSearch::consumeField(Position *position,
  *                  steps.
  */
 Position *BreathFirstSearch::searchForNextFieldOnShortestPath(
-        Position *position, int steps) {
-    int *result = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution,
-                                                 position->getColumn(),
-                                                 position->getRow() - 1);
-    if(result != nullptr && *result == steps)
-        return new Position(position->getColumn(), position->getRow() - 1);
+        Position position, int steps) {
+    int result = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution,
+                                                 position.getColumn(),
+                                                 position.getRow() - 1);
+    if(result == steps)
+        return new Position(position.getColumn(), position.getRow() - 1);
 
     result = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution,
-                                            position->getColumn() + 1,
-                                            position->getRow());
-    if(result != nullptr && *result == steps)
-        return new Position(position->getColumn() + 1, position->getRow());
+                                            position.getColumn() + 1,
+                                            position.getRow());
+    if(result == steps)
+        return new Position(position.getColumn() + 1, position.getRow());
 
     result = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution,
-                                            position->getColumn(),
-                                            position->getRow() + 1);
-    if(result != nullptr && *result == steps)
-        return new Position(position->getColumn(), position->getRow() + 1);
+                                            position.getColumn(),
+                                            position.getRow() + 1);
+    if(result == steps)
+        return new Position(position.getColumn(), position.getRow() + 1);
 
     result = BreathFirstSearchLib::getField(COLUMNS, ROWS, solution,
-                                            position->getColumn() - 1,
-                                            position->getRow());
-    if(result != nullptr && *result == steps)
-        return new Position(position->getColumn() - 1, position->getRow());
+                                            position.getColumn() - 1,
+                                            position.getRow());
+    if(result == steps)
+        return new Position(position.getColumn() - 1, position.getRow());
 
     return nullptr;
 }

@@ -53,11 +53,11 @@ void BreathFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
  *                      field was found.
  */
 Position *BreathFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
-                                            char matrix[], const char START_ID){
+                                           char matrix[], const char START_ID){
     // upper row
     int index = 0;
     while(index < COLUMNS){
-        if(*getField(COLUMNS, ROWS, matrix, index, 0) == START_ID)
+        if(getField(COLUMNS, ROWS, matrix, index, 0) == START_ID)
             return new Position(index, 0);
         index++;
     }
@@ -65,7 +65,7 @@ Position *BreathFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
     // lower row
     index = 0;
     while(index < COLUMNS){
-        if(*getField(COLUMNS, ROWS, matrix, index, ROWS - 1) == START_ID)
+        if(getField(COLUMNS, ROWS, matrix, index, ROWS - 1) == START_ID)
             return new Position(index , ROWS - 1);
         index++;
     }
@@ -73,7 +73,7 @@ Position *BreathFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
     // left column
     index = 0;
     while(index < ROWS){
-        if(*getField(COLUMNS, ROWS, matrix, 0, index) == START_ID)
+        if(getField(COLUMNS, ROWS, matrix, 0, index) == START_ID)
             return new Position(0, index);
         index++;
     }
@@ -81,7 +81,7 @@ Position *BreathFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
     // right column
     index = 0;
     while(index < ROWS){
-        if(*getField(COLUMNS, ROWS, matrix, COLUMNS - 1, index) == START_ID)
+        if(getField(COLUMNS, ROWS, matrix, COLUMNS - 1, index) == START_ID)
             return new Position(COLUMNS - 1, index);
         index++;
     }
@@ -102,13 +102,13 @@ Position *BreathFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
  * @param row       Row of value to be extracted.
  * @return          Value of matrix given by column and row.
  */
-int *BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
+int BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
                                     int matrix[], const int column,
                                     const int row){
     if(!(0 <= column && column < COLUMNS
          && 0 <= row && row < ROWS))
         throw invalid_argument( "Row or column out of bounds!" );
-    return &matrix[(row) * COLUMNS + column];
+    return matrix[(row) * COLUMNS + column];
 }
 
 /**
@@ -125,13 +125,13 @@ int *BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
  * @param row       Row of value to be extracted.
  * @return          Value of matrix given by column and row.
  */
-char *BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
+char BreathFirstSearchLib::getField(const int COLUMNS, const int ROWS,
                                      char matrix[], const int column,
                                      const int row){
     if(!(0 <= column && column < COLUMNS
          && 0 <= row && row < ROWS))
         throw invalid_argument( "Row or column out of bounds!" );
-    return &matrix[row * COLUMNS + column];
+    return matrix[row * COLUMNS + column];
 }
 
 /**

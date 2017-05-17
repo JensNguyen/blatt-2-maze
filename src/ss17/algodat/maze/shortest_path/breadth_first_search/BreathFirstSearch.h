@@ -23,10 +23,10 @@ private:
 
     void pushFreeAdjacentFields(Position *position);
     void consumePosition();
-    void plotSolution(Position *position);
-    void consumeField(Position *position, const int columnOffset,
+    void plotSolution(Position position);
+    void consumeField(Position position, const int columnOffset,
                       const int rowOffset);
-    Position *searchForNextFieldOnShortestPath(Position *position, int steps);
+    Position *searchForNextFieldOnShortestPath(Position position, int steps);
 
 public:
     static const char START = 'S';
@@ -37,7 +37,7 @@ public:
 
     BreathFirstSearch(const int COLUMNS, const int ROWS, char *maze);
     ~BreathFirstSearch();
-    void solve();
+    int solve();
     char *getSolution();
 };
 

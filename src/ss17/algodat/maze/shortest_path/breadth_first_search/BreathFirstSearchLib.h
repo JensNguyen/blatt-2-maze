@@ -18,14 +18,14 @@ public:
 
     static void paintMatrix(const int COLUMNS, const int ROWS, int matrix[]);
 
-    static char *getField(const int COLUMNS, const int ROWS, char *matrix,
+    static char getField(const int COLUMNS, const int ROWS, char *matrix,
                             const int column, const int row);
 
-    static int *getField(const int COLUMNS, const int ROWS, int *matrix,
+    static int getField(const int COLUMNS, const int ROWS, int *matrix,
                             const int column, const int row);
 
-    static Position *getStartPos(const int COLUMNS, const int ROWS,
-                            char *matrix, const char START_ID);
+    static Position * getStartPos(const int COLUMNS, const int ROWS,
+                                  char *matrix, const char START_ID);
 
     static void setField(const int COLUMNS, const int ROWS, int *matrix,
                             const int column, const int row, int *content);

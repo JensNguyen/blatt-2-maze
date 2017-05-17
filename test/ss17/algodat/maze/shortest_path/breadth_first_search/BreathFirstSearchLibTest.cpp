@@ -6,24 +6,24 @@ TEST(BreathFirstSearchLibTest, getIntField0){
     int matrix[] = {1, 2, 3,
                      4, 5, 6,
                      7, 8, 9};
-    int *result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
-    EXPECT_EQ(5, *result);
+    int result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
+    EXPECT_EQ(5, result);
 }
 
 TEST(BreathFirstSearchLibTest, getIntField1){
     int matrix[] = {1, 2, 3,
                      4, 5, 6,
                      7, 8, 9};
-    int *result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
-    EXPECT_EQ(3, *result);
+    int result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
+    EXPECT_EQ(3, result);
 }
 
 TEST(BreathFirstSearchLibTest, getIntField2){
     int matrix[] = {1, 2, 3,
                      4, 5, 6,
                      7, 8, 9};
-    int *result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
-    EXPECT_EQ(7, *result);
+    int result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
+    EXPECT_EQ(7, result);
 }
 
 TEST(BreathFirstSearchLibTest, getStartPos0){
@@ -56,24 +56,24 @@ TEST(BreathFirstSearchLibTest, getCharField0){
     char matrix[] = {'a', 'b', 'c',
                       'd', 'e', 'f',
                       'g', 'h', 'i'};
-    char *result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
-    EXPECT_EQ('e', *result);
+    char result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
+    EXPECT_EQ('e', result);
 }
 
 TEST(BreathFirstSearchLibTest, getCharField1){
     char matrix[] = {'a', 'b', 'c',
                       'd', 'e', 'f',
                       'g', 'h', 'i'};
-    char *result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
-    EXPECT_EQ('c', *result);
+    char result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
+    EXPECT_EQ('c', result);
 }
 
 TEST(BreathFirstSearchLibTest, getCharField2){
     char matrix[] = {'a', 'b', 'c',
                       'd', 'e', 'f',
                       'g', 'h', 'i'};
-    char *result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
-    EXPECT_EQ('g', *result);
+    char result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
+    EXPECT_EQ('g', result);
 }
 
 TEST(BreathFirstSearchLibTest, setIntField0){
@@ -81,8 +81,8 @@ TEST(BreathFirstSearchLibTest, setIntField0){
                      0, 0, 0,
                      0, 0, 0};
     BreathFirstSearchLib::setField(3, 3, matrix, 1, 1, new int (1));
-    int *result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
-    EXPECT_EQ(1, *result);
+    int result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
+    EXPECT_EQ(1, result);
 }
 
 TEST(BreathFirstSearchLibTest, setIntField1){
@@ -90,8 +90,8 @@ TEST(BreathFirstSearchLibTest, setIntField1){
                      0, 0, 0,
                      0, 0, 0};
     BreathFirstSearchLib::setField(3, 3, matrix, 2, 0, new int (1));
-    int *result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
-    EXPECT_EQ(1, *result);
+    int result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
+    EXPECT_EQ(1, result);
 }
 
 TEST(BreathFirstSearchLibTest, settIntField2){
@@ -99,8 +99,8 @@ TEST(BreathFirstSearchLibTest, settIntField2){
                      0, 0, 0,
                      0, 0, 0};
     BreathFirstSearchLib::setField(3, 3, matrix, 0, 2, new int (1));
-    int *result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
-    EXPECT_EQ(1, *result);
+    int result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
+    EXPECT_EQ(1, result);
 }
 
 TEST(BreathFirstSearchLibTest, setCharField0){
@@ -108,8 +108,8 @@ TEST(BreathFirstSearchLibTest, setCharField0){
                       BreathFirstSearch::OPEN, BreathFirstSearch::OPEN, BreathFirstSearch::OPEN,
                       BreathFirstSearch::OPEN, BreathFirstSearch::OPEN, BreathFirstSearch::OPEN};
     BreathFirstSearchLib::setField(3, 3, matrix, 1, 1, new char('b'), BreathFirstSearch::OPEN);
-    char *result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
-    EXPECT_EQ('b', *result);
+    char result = BreathFirstSearchLib::getField(3, 3, matrix, 1, 1);
+    EXPECT_EQ('b', result);
 }
 
 TEST(BreathFirstSearchLibTest, setCharField1){
@@ -117,8 +117,8 @@ TEST(BreathFirstSearchLibTest, setCharField1){
                       BreathFirstSearch::OPEN, BreathFirstSearch::OPEN, BreathFirstSearch::OPEN,
                       BreathFirstSearch::OPEN, BreathFirstSearch::OPEN, BreathFirstSearch::OPEN};
     BreathFirstSearchLib::setField(3, 3, matrix, 2, 0, new char ('b'), BreathFirstSearch::OPEN);
-    char *result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
-    EXPECT_EQ('b', *result);
+    char result = BreathFirstSearchLib::getField(3, 3, matrix, 2, 0);
+    EXPECT_EQ('b', result);
 }
 
 TEST(BreathFirstSearchLibTest, setCharField2){
@@ -126,7 +126,7 @@ TEST(BreathFirstSearchLibTest, setCharField2){
                       BreathFirstSearch::OPEN, BreathFirstSearch::OPEN, BreathFirstSearch::OPEN,
                       BreathFirstSearch::OPEN, BreathFirstSearch::OPEN, BreathFirstSearch::OPEN};
     BreathFirstSearchLib::setField(3, 3, matrix, 0, 2, new char('b'), BreathFirstSearch::OPEN);
-    char *result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
-    EXPECT_EQ('b', *result);
+    char result = BreathFirstSearchLib::getField(3, 3, matrix, 0, 2);
+    EXPECT_EQ('b', result);
 }
 
