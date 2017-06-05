@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
-#include "../../../../../../src/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearchLib.h"
-#include "../../../../../../src/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearch.h"
+#include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearchLib.h"
+#include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearch.h"
 
 TEST(BreathFirstSearchLibTest, getIntField0){
     int matrix[] = {1, 2, 3,

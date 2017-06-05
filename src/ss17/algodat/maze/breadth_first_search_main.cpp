@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "shortest_path/breadth_first_search/BreathFirstSearch.h"
-#include "shortest_path/breadth_first_search/BreathFirstSearchLib.h"
+#include "control/shortest_path/breadth_first_search/BreathFirstSearch.h"
+#include "control/shortest_path/breadth_first_search/BreathFirstSearchLib.h"
 
 void printString(const int ROWS, const int COLUMNS, const string &solution);
 
