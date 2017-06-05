@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(SOURCE_FILES
         src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearch.h
         src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearch.cpp
+        src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearchLib.h
+        src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreathFirstSearchLib.cpp
         test/ss17/algodat/maze/shortest_path/breadth_first_search/BreathFirstSearchTest.cpp
         )
 
