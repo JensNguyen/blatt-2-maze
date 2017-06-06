@@ -2,6 +2,12 @@ sudo: true
 dist: trusty
 language: cpp
 
+# Environment variables
+env:
+  global:
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_REF: github.com:algdat/blatt-2-maze.git
+
 matrix:
   include:
     - compiler: gcc
