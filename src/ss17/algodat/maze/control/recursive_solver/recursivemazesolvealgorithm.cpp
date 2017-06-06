@@ -32,7 +32,6 @@ RecursiveMazeSolveAlgorithm::RecursiveMazeSolveAlgorithm(Maze *maze)
  */
 bool RecursiveMazeSolveAlgorithm::solve(int &steps)
 {
-
     return recursiveSolveMaze(m_StartX, m_StartY, steps);
 }
 

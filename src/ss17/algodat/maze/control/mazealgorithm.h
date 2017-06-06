@@ -1,6 +1,6 @@
 #pragma once
 
-#include "maze.h"
+#include "../model/maze.h"
 #include <QThread>
 
 /**

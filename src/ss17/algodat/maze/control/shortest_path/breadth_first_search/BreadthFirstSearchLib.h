@@ -7,10 +7,11 @@
 
 #include <queue>
 #include "Position.h"
+#include "../../../model/maze.h"
 
 using namespace std;
 
-class BreathFirstSearchLib {
+class BreadthFirstSearchLib {
 
 public:
     static void paintMatrix(const int COLUMNS, const int ROWS,
@@ -18,21 +19,14 @@ public:
 
     static void paintMatrix(const int COLUMNS, const int ROWS, int matrix[]);
 
-    static char getField(const int COLUMNS, const int ROWS, char *matrix,
-                            const int column, const int row);
-
     static int getField(const int COLUMNS, const int ROWS, int *matrix,
                             const int column, const int row);
 
     static Position * getStartPos(const int COLUMNS, const int ROWS,
-                                  char *matrix, const char START_ID);
+                                  Maze *maze, const char START_ID);
 
     static void setField(const int COLUMNS, const int ROWS, int *matrix,
                             const int column, const int row, int *content);
-
-    static void setField(const int COLUMNS, const int ROWS, char *matrix,
-                            const int column, const int row, char *content,
-                            const char OPEN_ID);
 };
 
 

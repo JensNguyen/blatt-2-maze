@@ -4,19 +4,20 @@
 
 #ifndef MAZE_BREATH_FIRST_H
 #define MAZE_BREATH_FIRST_H
+#include "../../mazealgorithm.h"
+
+class MazeGui;
 
 #include <queue>
 #include <string.h>
 #include "Position.h"
+#include "../../../model/maze.h"
 #include <cstring>
 
 using namespace std;
 
-class BreathFirstSearch{
+class BreadthFirstSearch: public MazeSolveAlgorithm{
 private:
-    const int ROWS;
-    const int COLUMNS;
-    char *maze;
     int *solution;
     queue<Position> *positionQueue;
     Position *lastStep;
@@ -29,16 +30,13 @@ private:
     Position *searchForNextFieldOnShortestPath(Position position, int steps);
 
 public:
-    static const char START = 'S';
-    static const char GOAL = 'G';
-    static const char OPEN = '.';
-    static const char PATH = '+';
-    static const char BLOCKED = '#';
-
-    BreathFirstSearch(const int COLUMNS, const int ROWS, char *maze);
-    ~BreathFirstSearch();
+    BreadthFirstSearch(Maze *maze);
+    ~BreadthFirstSearch();
+    bool solve(int &steps);
     int solve();
     char *getSolution();
+
+    void fillMazeGui(const int COLUMNS, const int ROWS, const char *maze);
 };
 
 #endif //MAZE_BREATH_FIRST_H

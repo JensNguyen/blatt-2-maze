@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "shortest_path/breadth_first_search/BreathFirstSearch.h"
-#include "shortest_path/breadth_first_search/BreathFirstSearchLib.h"
+#include "shortest_path/breadth_first_search/BreadthFirstSearch.h"
+#include "shortest_path/breadth_first_search/BreadthFirstSearchLib.h"
 
 void printString(const int ROWS, const int COLUMNS, const string &solution);
 
@@ -31,14 +31,14 @@ int main(){
     };
 
     cout<<"Vorgabe"<<endl;
-    BreathFirstSearchLib::paintMatrix(COLUMNS, ROWS, maze);
+    BreadthFirstSearchLib::paintMatrix(COLUMNS, ROWS, maze);
 
-    BreathFirstSearch bfs = BreathFirstSearch(COLUMNS, ROWS, maze);
+    BreadthFirstSearch bfs = BreadthFirstSearch(nullptr, COLUMNS, ROWS, maze);
     int steps = bfs.solve();
 
     cout<<"Loesung"<<endl;
     printf("%d steps required \r\n", steps);
-    BreathFirstSearchLib::paintMatrix(COLUMNS, ROWS, bfs.getSolution());
+    BreadthFirstSearchLib::paintMatrix(COLUMNS, ROWS, bfs.getSolution());
 
     return 0;
 }

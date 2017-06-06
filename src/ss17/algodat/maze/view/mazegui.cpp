@@ -1,8 +1,7 @@
 #include "mazegui.h"
 #include "ui_mazegui.h"
-#include "recursivemazesolvealgorithm.h"
 #include "mazegenerator.h"
-#include <unistd.h>
+#include <control/shortest_path/breadth_first_search/BreadthFirstSearch.h>
 
 /**
  * @brief MazeGui::MazeGui constructor sets up the gui such es the sockets and slots
@@ -115,6 +114,7 @@ void MazeGui::startAlgorithm()
         m_algorithm = new RecursiveMazeSolveAlgorithm(m_maze);
         break;
        case ShortestPath:
+        m_algorithm = new BreadthFirstSearch(m_maze);
         break;
     default:
         break;

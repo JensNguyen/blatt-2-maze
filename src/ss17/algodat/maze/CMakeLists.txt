@@ -26,6 +26,9 @@ set(SOURCES
         control/mazegenerator.cpp
         view/mazegui.cpp
         control/recursive_solver/recursivemazesolvealgorithm.cpp
+        control/shortest_path/breadth_first_search/BreadthFirstSearch.cpp
+        control/shortest_path/breadth_first_search/BreadthFirstSearchLib.cpp
+        control/shortest_path/breadth_first_search/Position.cpp
         )
 
 set(HEADERS
@@ -34,6 +37,9 @@ set(HEADERS
         control/mazegenerator.h
         view/mazegui.h
         control/recursive_solver/recursivemazesolvealgorithm.h
+        control/shortest_path/breadth_first_search/BreadthFirstSearch.h
+        control/shortest_path/breadth_first_search/BreadthFirstSearchLib.h
+        control/shortest_path/breadth_first_search/Position.h
         )
 
 set(UI
@@ -51,7 +57,6 @@ QT5_WRAP_UI(UI_HEADERS ${UI})
 
 add_library(maze_solver ${SOURCES} ${HEADERS} ${UI_HEADERS})
 add_executable(mazesolver main.cpp)
-
 
 #Link qt libraries
 TARGET_LINK_LIBRARIES(maze_solver PUBLIC Qt5::Widgets Qt5::Core)
