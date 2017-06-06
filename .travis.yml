@@ -21,6 +21,7 @@ matrix:
             - doxygen-doc
             - doxygen-latex
             - doxygen-gui
+            - graphviz
       env: COMPILER=g++-6
 
 # For gcc-6
