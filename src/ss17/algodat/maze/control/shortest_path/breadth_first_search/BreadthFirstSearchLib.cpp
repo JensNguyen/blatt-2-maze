@@ -48,7 +48,7 @@ void BreadthFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
  * boarder of the maze.
  * @param COLUMNS       Column count of matrix.
  * @param ROWS          Row count of matrix.
- * @param maze        Matrix to be checked.
+ * @param maze          Matrix to be checked.
  * @param START_ID      ID to be searched for.
  * @return              The position of the start field, or NULL if no start
  *                      field was found.

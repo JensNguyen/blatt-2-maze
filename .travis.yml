@@ -11,11 +11,10 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-#             - doxygen
-#             - doxygen-doc
-#             - doxygen-latex
-#             - doxygen-gui
-#             - graphviz
+            - doxygen
+            - doxygen-doc
+            - doxygen-latex
+            - doxygen-gui
       env: COMPILER=g++-6
 
 # For gcc-6
@@ -41,3 +40,9 @@ script:
   - cmake .. -G "Unix Makefiles"
   - dir
   - make && ctest
+
+# Generate and deploy documentation
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
