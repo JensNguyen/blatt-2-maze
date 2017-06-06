@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 #include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearchLib.h"
-#include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearch.h"
 
 TEST(BreathFirstSearchLibTest, getIntField0){
     int matrix[] = {1, 2, 3,
@@ -26,7 +25,7 @@ TEST(BreathFirstSearchLibTest, getIntField2){
     EXPECT_EQ(7, result);
 }
 
-TEST(BreathFirstSearchLibTest, getStartPos0){
+/*TEST(BreathFirstSearchLibTest, getStartPos0){
     char matrix[] = {BreadthFirstSearch::BLOCKED, BreadthFirstSearch::OPEN, BreadthFirstSearch::PATH,
                       BreadthFirstSearch::GOAL, BreadthFirstSearch::OPEN, BreadthFirstSearch::START,
                       BreadthFirstSearch::BLOCKED, BreadthFirstSearch::OPEN, BreadthFirstSearch::PATH};
@@ -50,9 +49,9 @@ TEST(BreathFirstSearchLibTest, getStartPos2){
     Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, BreadthFirstSearch::START);
     EXPECT_EQ(0, result->getColumn());
     EXPECT_EQ(2, result->getRow());
-}
+}*/
 
-TEST(BreathFirstSearchLibTest, getCharField0){
+/*TEST(BreathFirstSearchLibTest, getCharField0){
     char matrix[] = {'a', 'b', 'c',
                       'd', 'e', 'f',
                       'g', 'h', 'i'};
@@ -74,7 +73,7 @@ TEST(BreathFirstSearchLibTest, getCharField2){
                       'g', 'h', 'i'};
     char result = BreadthFirstSearchLib::getField(3, 3, matrix, 0, 2);
     EXPECT_EQ('g', result);
-}
+}*/
 
 TEST(BreathFirstSearchLibTest, setIntField0){
     int matrix[] = {0, 0, 0,
@@ -103,7 +102,7 @@ TEST(BreathFirstSearchLibTest, settIntField2){
     EXPECT_EQ(1, result);
 }
 
-TEST(BreathFirstSearchLibTest, setCharField0){
+/*TEST(BreathFirstSearchLibTest, setCharField0){
     char matrix[] = {BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
                       BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
                       BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN};
@@ -128,5 +127,5 @@ TEST(BreathFirstSearchLibTest, setCharField2){
     BreadthFirstSearchLib::setField(3, 3, matrix, 0, 2, new char('b'), BreadthFirstSearch::OPEN);
     char result = BreadthFirstSearchLib::getField(3, 3, matrix, 0, 2);
     EXPECT_EQ('b', result);
-}
+}*/
 
