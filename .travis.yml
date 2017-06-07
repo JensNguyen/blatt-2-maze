@@ -2,6 +2,18 @@ sudo: true
 dist: trusty
 language: cpp
 
+
+# Blacklist
+branches:
+  except:
+    - gh-pages
+
+# Environment variables
+env:
+  global:
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_REF: github.com:algdat/blatt-2-maze.git
+
 matrix:
   include:
     - compiler: gcc
@@ -11,12 +23,12 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
-#             - doxygen
-#             - doxygen-doc
-#             - doxygen-latex
-#             - doxygen-gui
-#             - graphviz
-      env: COMPILER=g++-6
+            - doxygen
+            - doxygen-doc
+            - doxygen-latex
+            - doxygen-gui
+            - graphviz
+      env: COMPILER=g++-6 GENERATE_DOC=true
 
 # For gcc-6
 before_install:
@@ -41,3 +53,9 @@ script:
   - cmake .. -G "Unix Makefiles"
   - dir
   - make && ctest
+
+# Generate and deploy documentation
+after_success:
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh

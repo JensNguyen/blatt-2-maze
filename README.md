@@ -1,14 +1,13 @@
 # blatt-2-maze
-blatt-2-maze created by GitHub Classroom
 
-  
-AlgoDat2:  
+### build-Status
+[![Build Status](https://travis-ci.org/algdat/blatt-2-amf0.svg?branch=master)](https://travis-ci.org/algdat/blatt-2-maze.svg?branch=master)
 
+### Aufgabenverteilung
 Wall follower (Jens)  
 Tremaux's algorithm (Emir)  
 Recursive (Flo)  
 Shortest path algorithm (breadth-first search) (Rudi)  
-
 
 ### Bezeichnungen für Startfeld
 . = open (Weg)  
@@ -17,7 +16,10 @@ S = start
 G = goal  
 \+ = path (Lösungsweg)  
 
+### Rahmenbedingungen
 Compiler: c++11  
 JUnit-Tests: gTest  
 
-TODO: Travis CI, Oxygen Documentation
+### ToDo
+- Website
+ 

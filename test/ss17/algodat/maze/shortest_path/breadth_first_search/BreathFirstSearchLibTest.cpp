@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearchLib.h"
 
-TEST(BreathFirstSearchLibTest, getIntField0){
+TEST(BreadthFirstSearchLibTest, getIntField0){
     int matrix[] = {1, 2, 3,
                      4, 5, 6,
                      7, 8, 9};
@@ -9,7 +9,7 @@ TEST(BreathFirstSearchLibTest, getIntField0){
     EXPECT_EQ(5, result);
 }
 
-TEST(BreathFirstSearchLibTest, getIntField1){
+TEST(BreadthFirstSearchLibTest, getIntField1){
     int matrix[] = {1, 2, 3,
                      4, 5, 6,
                      7, 8, 9};
@@ -17,7 +17,7 @@ TEST(BreathFirstSearchLibTest, getIntField1){
     EXPECT_EQ(3, result);
 }
 
-TEST(BreathFirstSearchLibTest, getIntField2){
+TEST(BreadthFirstSearchLibTest, getIntField2){
     int matrix[] = {1, 2, 3,
                      4, 5, 6,
                      7, 8, 9};
@@ -25,57 +25,63 @@ TEST(BreathFirstSearchLibTest, getIntField2){
     EXPECT_EQ(7, result);
 }
 
-/*TEST(BreathFirstSearchLibTest, getStartPos0){
-    char matrix[] = {BreadthFirstSearch::BLOCKED, BreadthFirstSearch::OPEN, BreadthFirstSearch::PATH,
-                      BreadthFirstSearch::GOAL, BreadthFirstSearch::OPEN, BreadthFirstSearch::START,
-                      BreadthFirstSearch::BLOCKED, BreadthFirstSearch::OPEN, BreadthFirstSearch::PATH};
-    Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, BreadthFirstSearch::START);
+TEST(BreadthFirstSearchLibTest, getStartPos0){
+    Maze *matrix = new Maze(3,3);
+    matrix->setMazeField(0, 0, Maze::Wall);
+    matrix->setMazeField(1, 0, Maze::Way);
+    matrix->setMazeField(2, 0, Maze::Result);
+
+    matrix->setMazeField(0, 1, Maze::End);
+    matrix->setMazeField(1, 1, Maze::Way);
+    matrix->setMazeField(2, 1, Maze::Start);
+
+    matrix->setMazeField(0, 2, Maze::Wall);
+    matrix->setMazeField(1, 2, Maze::Way);
+    matrix->setMazeField(2, 2, Maze::Result);
+
+    Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, Maze::Start);
     EXPECT_EQ(2, result->getColumn());
     EXPECT_EQ(1, result->getRow());
 }
 
-TEST(BreathFirstSearchLibTest, getStartPos1){
-    char matrix[] = {BreadthFirstSearch::BLOCKED, BreadthFirstSearch::START, BreadthFirstSearch::PATH,
-                      BreadthFirstSearch::GOAL, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::BLOCKED, BreadthFirstSearch::OPEN, BreadthFirstSearch::PATH};
-    Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, BreadthFirstSearch::START);
+TEST(BreadthFirstSearchLibTest, getStartPos1){
+    Maze *matrix = new Maze(3,3);
+    matrix->setMazeField(0, 0, Maze::Wall);
+    matrix->setMazeField(1, 0, Maze::Start);
+    matrix->setMazeField(2, 0, Maze::Result);
+
+    matrix->setMazeField(0, 1, Maze::End);
+    matrix->setMazeField(1, 1, Maze::Way);
+    matrix->setMazeField(2, 1, Maze::Way);
+
+    matrix->setMazeField(0, 2, Maze::Wall);
+    matrix->setMazeField(1, 2, Maze::Way);
+    matrix->setMazeField(2, 2, Maze::Result);
+
+    Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, Maze::Start);
     EXPECT_EQ(1, result->getColumn());
     EXPECT_EQ(0, result->getRow());
 }
-TEST(BreathFirstSearchLibTest, getStartPos2){
-    char matrix[] = {BreadthFirstSearch::BLOCKED, BreadthFirstSearch::BLOCKED, BreadthFirstSearch::PATH,
-                      BreadthFirstSearch::GOAL, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::START, BreadthFirstSearch::OPEN, BreadthFirstSearch::PATH};
-    Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, BreadthFirstSearch::START);
+TEST(BreadthFirstSearchLibTest, getStartPos2){
+    Maze *matrix = new Maze(3,3);
+    matrix->setMazeField(0, 0, Maze::Wall);
+    matrix->setMazeField(1, 0, Maze::Wall);
+    matrix->setMazeField(2, 0, Maze::Result);
+
+    matrix->setMazeField(0, 1, Maze::End);
+    matrix->setMazeField(1, 1, Maze::Way);
+    matrix->setMazeField(2, 1, Maze::Way);
+
+    matrix->setMazeField(0, 2, Maze::Start);
+    matrix->setMazeField(1, 2, Maze::Way);
+    matrix->setMazeField(2, 2, Maze::Result);
+
+    Position *result = BreadthFirstSearchLib::getStartPos(3, 3, matrix, Maze::Start);
     EXPECT_EQ(0, result->getColumn());
     EXPECT_EQ(2, result->getRow());
-}*/
-
-/*TEST(BreathFirstSearchLibTest, getCharField0){
-    char matrix[] = {'a', 'b', 'c',
-                      'd', 'e', 'f',
-                      'g', 'h', 'i'};
-    char result = BreadthFirstSearchLib::getField(3, 3, matrix, 1, 1);
-    EXPECT_EQ('e', result);
 }
 
-TEST(BreathFirstSearchLibTest, getCharField1){
-    char matrix[] = {'a', 'b', 'c',
-                      'd', 'e', 'f',
-                      'g', 'h', 'i'};
-    char result = BreadthFirstSearchLib::getField(3, 3, matrix, 2, 0);
-    EXPECT_EQ('c', result);
-}
-
-TEST(BreathFirstSearchLibTest, getCharField2){
-    char matrix[] = {'a', 'b', 'c',
-                      'd', 'e', 'f',
-                      'g', 'h', 'i'};
-    char result = BreadthFirstSearchLib::getField(3, 3, matrix, 0, 2);
-    EXPECT_EQ('g', result);
-}*/
-
-TEST(BreathFirstSearchLibTest, setIntField0){
+TEST(BreadthFirstSearchLibTest, setIntField0){
     int matrix[] = {0, 0, 0,
                      0, 0, 0,
                      0, 0, 0};
@@ -84,7 +90,7 @@ TEST(BreathFirstSearchLibTest, setIntField0){
     EXPECT_EQ(1, result);
 }
 
-TEST(BreathFirstSearchLibTest, setIntField1){
+TEST(BreadthFirstSearchLibTest, setIntField1){
     int matrix[] = {0, 0, 0,
                      0, 0, 0,
                      0, 0, 0};
@@ -93,7 +99,7 @@ TEST(BreathFirstSearchLibTest, setIntField1){
     EXPECT_EQ(1, result);
 }
 
-TEST(BreathFirstSearchLibTest, settIntField2){
+TEST(BreadthFirstSearchLibTest, settIntField2){
     int matrix[] = {0, 0, 0,
                      0, 0, 0,
                      0, 0, 0};
@@ -101,31 +107,3 @@ TEST(BreathFirstSearchLibTest, settIntField2){
     int result = BreadthFirstSearchLib::getField(3, 3, matrix, 0, 2);
     EXPECT_EQ(1, result);
 }
-
-/*TEST(BreathFirstSearchLibTest, setCharField0){
-    char matrix[] = {BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN};
-    BreadthFirstSearchLib::setField(3, 3, matrix, 1, 1, new char('b'), BreadthFirstSearch::OPEN);
-    char result = BreadthFirstSearchLib::getField(3, 3, matrix, 1, 1);
-    EXPECT_EQ('b', result);
-}
-
-TEST(BreathFirstSearchLibTest, setCharField1){
-    char matrix[] = {BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN};
-    BreadthFirstSearchLib::setField(3, 3, matrix, 2, 0, new char ('b'), BreadthFirstSearch::OPEN);
-    char result = BreadthFirstSearchLib::getField(3, 3, matrix, 2, 0);
-    EXPECT_EQ('b', result);
-}
-
-TEST(BreathFirstSearchLibTest, setCharField2){
-    char matrix[] = {BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN,
-                      BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN, BreadthFirstSearch::OPEN};
-    BreadthFirstSearchLib::setField(3, 3, matrix, 0, 2, new char('b'), BreadthFirstSearch::OPEN);
-    char result = BreadthFirstSearchLib::getField(3, 3, matrix, 0, 2);
-    EXPECT_EQ('b', result);
-}*/
-
