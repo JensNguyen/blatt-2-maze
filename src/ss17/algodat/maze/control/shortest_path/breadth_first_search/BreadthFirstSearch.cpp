@@ -12,6 +12,7 @@ BreadthFirstSearch::BreadthFirstSearch(Maze *maze) :
     this->solution = new int[maze->getWidth() * maze->getHeight()]{};
     this->positionQueue = new queue<Position>();
     this->lastField = nullptr;
+    this->lengthOfShortestPath = -1;
 };
 
 BreadthFirstSearch::~BreadthFirstSearch(){
@@ -20,24 +21,21 @@ BreadthFirstSearch::~BreadthFirstSearch(){
 }
 
 bool BreadthFirstSearch::solve(int &steps){
-    //TODO: param steps??
-    return solve() != -1;
-}
-
-int BreadthFirstSearch::solve() {
-    int result = -1;
+    bool solved = false;
     pushFreeAdjacentFields(BreadthFirstSearchLib::getStartPos(
             m_maze->getWidth(), m_maze->getHeight(), m_maze, Maze::Start));
     while (!positionQueue->empty() && lastField == nullptr) {
         consumePosition();
+        steps++;
     }
 
     if (lastField != nullptr) {
-        result = BreadthFirstSearchLib::getField(m_maze->getWidth(),
-            m_maze->getHeight(), solution, lastField->getColumn(), lastField->getRow());
+        lengthOfShortestPath = BreadthFirstSearchLib::getField(m_maze->getWidth(),
+                                                 m_maze->getHeight(), solution, lastField->getColumn(), lastField->getRow());
         plotSolution(*lastField);
+        solved = true;
     }
-    return result;
+    return solved;
 }
 
 void BreadthFirstSearch::pushFreeAdjacentFields(Position *position) {

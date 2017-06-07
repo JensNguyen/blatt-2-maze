@@ -1,6 +1,4 @@
-//
-// Created by rudi on 04.05.2017.
-//
+
 
 #ifndef MAZE_BREATH_FIRST_H
 #define MAZE_BREATH_FIRST_H
@@ -16,7 +14,11 @@ class MazeGui;
 
 using namespace std;
 
+/**
+ * Algorithm to find shortest way through maze by using breadth fist search.
+ */
 class BreadthFirstSearch: public MazeSolveAlgorithm{
+
 private:
     /**
      * For each field at the maze, there is a field in solution. This field
@@ -37,6 +39,11 @@ private:
      * as lastField.
      */
     Position *lastField;
+
+    /**
+     * Length of shortest path through maze.
+     */
+    int lengthOfShortestPath;
 
     /**
      * Pushes unvisited, open fields reachable from given position into queue.
@@ -81,24 +88,22 @@ private:
 
 public:
     /**
-     *
-     * @param maze
+     * Initializes the breadth first search.
+     * @param maze  Maze to be solved.
      */
     BreadthFirstSearch(Maze *maze);
+
+    /**
+     * All objects associated to the algorithm on the heap.
+     */
     ~BreadthFirstSearch();
 
     /**
      * Starts solving the maze.
-     * @param steps     //TODO: ?
-     * @return  True if the maze have been solved. False if not.
+     * @param steps     Fields visited till termination of the algorithm.
+     * @return          True if the maze have been solved. False if not.
      */
     bool solve(int &steps);
-
-    /**
-     * Solve the maze. You can access the sulution via getSolution.
-     * @return  Length of shortest path through maze.
-     */
-    int solve();
 };
 
 #endif //MAZE_BREATH_FIRST_H
