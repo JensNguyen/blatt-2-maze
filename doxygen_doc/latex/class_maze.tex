@@ -1,0 +1,177 @@
+\hypertarget{class_maze}{\section{Maze Class Reference}
+\label{class_maze}\index{Maze@{Maze}}
+}
+
+
+The \hyperlink{class_maze}{Maze} class contains the model of the maze with functions to set an get fields of the maze.  
+
+
+
+
+{\ttfamily \#include $<$maze.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_maze_a7a19b706242876f2c597033b3374e7fa}{Maze\-Symbols} \{ \\*
+\hyperlink{class_maze_a7a19b706242876f2c597033b3374e7faa4b3509571b07cde9b535f8358157d676}{Wall} =0, 
+\hyperlink{class_maze_a7a19b706242876f2c597033b3374e7faac7cbc8392fac9738ef3dac458865d3eb}{Way}, 
+\hyperlink{class_maze_a7a19b706242876f2c597033b3374e7faaf68b987d7cff7378d76e7b4159aeea6d}{Start}, 
+\hyperlink{class_maze_a7a19b706242876f2c597033b3374e7faa752d570bd64e08ce1c7f358dd3cc6969}{End}, 
+\\*
+\hyperlink{class_maze_a7a19b706242876f2c597033b3374e7faaa87a698c7829b0c1f1b89cc93a44f2bc}{Result}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_maze_a1caad1867d6d3fa28fd3886272b2f618}{Maze} (const int width, const int height)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a1caad1867d6d3fa28fd3886272b2f618}{Maze\-::\-Maze} initializes the maze. \end{DoxyCompactList}\item 
+\hyperlink{class_maze_a4f187353f595193318ac66133a22287e}{$\sim$\-Maze} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a4f187353f595193318ac66133a22287e}{Maze\-::$\sim$\-Maze} deletes the mazearray on the heap. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{set\-Maze\-Field} (const int \&pos\-Width, const int \&pos\-Height, \hyperlink{class_maze_a7a19b706242876f2c597033b3374e7fa}{Maze\-Symbols} value)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{Maze\-::set\-Maze\-Field} sets a field of the maze. \end{DoxyCompactList}\item 
+int \hyperlink{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}{get\-Maze\-Field} (const int \&pos\-Width, const int \&pos\-Height)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}{Maze\-::get\-Maze\-Field} returns the field on the deleivered position. \end{DoxyCompactList}\item 
+int \hyperlink{class_maze_a55deabec3636694a2658ff902fe83a9b}{get\-Width} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a55deabec3636694a2658ff902fe83a9b}{Maze\-::get\-Width} getter for m\-\_\-width. \end{DoxyCompactList}\item 
+int \hyperlink{class_maze_a3cfe8e5f193ff2ed9d6915c8841d376a}{get\-Height} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a3cfe8e5f193ff2ed9d6915c8841d376a}{Maze\-::get\-Height} setter for m\-\_\-height. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_maze}{Maze} class contains the model of the maze with functions to set an get fields of the maze. 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_maze_a7a19b706242876f2c597033b3374e7fa}{\index{Maze@{Maze}!Maze\-Symbols@{Maze\-Symbols}}
+\index{Maze\-Symbols@{Maze\-Symbols}!Maze@{Maze}}
+\subsubsection[{Maze\-Symbols}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Maze\-::\-Maze\-Symbols}}}\label{class_maze_a7a19b706242876f2c597033b3374e7fa}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Wall@{Wall}!Maze@{Maze}}\index{Maze@{Maze}!Wall@{Wall}}\item[{\em 
+\hypertarget{class_maze_a7a19b706242876f2c597033b3374e7faa4b3509571b07cde9b535f8358157d676}{Wall}\label{class_maze_a7a19b706242876f2c597033b3374e7faa4b3509571b07cde9b535f8358157d676}
+}]\index{Way@{Way}!Maze@{Maze}}\index{Maze@{Maze}!Way@{Way}}\item[{\em 
+\hypertarget{class_maze_a7a19b706242876f2c597033b3374e7faac7cbc8392fac9738ef3dac458865d3eb}{Way}\label{class_maze_a7a19b706242876f2c597033b3374e7faac7cbc8392fac9738ef3dac458865d3eb}
+}]\index{Start@{Start}!Maze@{Maze}}\index{Maze@{Maze}!Start@{Start}}\item[{\em 
+\hypertarget{class_maze_a7a19b706242876f2c597033b3374e7faaf68b987d7cff7378d76e7b4159aeea6d}{Start}\label{class_maze_a7a19b706242876f2c597033b3374e7faaf68b987d7cff7378d76e7b4159aeea6d}
+}]\index{End@{End}!Maze@{Maze}}\index{Maze@{Maze}!End@{End}}\item[{\em 
+\hypertarget{class_maze_a7a19b706242876f2c597033b3374e7faa752d570bd64e08ce1c7f358dd3cc6969}{End}\label{class_maze_a7a19b706242876f2c597033b3374e7faa752d570bd64e08ce1c7f358dd3cc6969}
+}]\index{Result@{Result}!Maze@{Maze}}\index{Maze@{Maze}!Result@{Result}}\item[{\em 
+\hypertarget{class_maze_a7a19b706242876f2c597033b3374e7faaa87a698c7829b0c1f1b89cc93a44f2bc}{Result}\label{class_maze_a7a19b706242876f2c597033b3374e7faaa87a698c7829b0c1f1b89cc93a44f2bc}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_maze_a1caad1867d6d3fa28fd3886272b2f618}{\index{Maze@{Maze}!Maze@{Maze}}
+\index{Maze@{Maze}!Maze@{Maze}}
+\subsubsection[{Maze}]{\setlength{\rightskip}{0pt plus 5cm}Maze\-::\-Maze (
+\begin{DoxyParamCaption}
+\item[{const int}]{width, }
+\item[{const int}]{height}
+\end{DoxyParamCaption}
+)}}\label{class_maze_a1caad1867d6d3fa28fd3886272b2f618}
+
+
+\hyperlink{class_maze_a1caad1867d6d3fa28fd3886272b2f618}{Maze\-::\-Maze} initializes the maze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of the maze \\
+\hline
+{\em height} & height of the maze \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_maze_a4f187353f595193318ac66133a22287e}{\index{Maze@{Maze}!$\sim$\-Maze@{$\sim$\-Maze}}
+\index{$\sim$\-Maze@{$\sim$\-Maze}!Maze@{Maze}}
+\subsubsection[{$\sim$\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}Maze\-::$\sim$\-Maze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_maze_a4f187353f595193318ac66133a22287e}
+
+
+\hyperlink{class_maze_a4f187353f595193318ac66133a22287e}{Maze\-::$\sim$\-Maze} deletes the mazearray on the heap. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_maze_a3cfe8e5f193ff2ed9d6915c8841d376a}{\index{Maze@{Maze}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!Maze@{Maze}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}int Maze\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_maze_a3cfe8e5f193ff2ed9d6915c8841d376a}
+
+
+\hyperlink{class_maze_a3cfe8e5f193ff2ed9d6915c8841d376a}{Maze\-::get\-Height} setter for m\-\_\-height. 
+
+\begin{DoxyReturn}{Returns}
+height 
+\end{DoxyReturn}
+\hypertarget{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}{\index{Maze@{Maze}!get\-Maze\-Field@{get\-Maze\-Field}}
+\index{get\-Maze\-Field@{get\-Maze\-Field}!Maze@{Maze}}
+\subsubsection[{get\-Maze\-Field}]{\setlength{\rightskip}{0pt plus 5cm}int Maze\-::get\-Maze\-Field (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{pos\-Width, }
+\item[{const int \&}]{height}
+\end{DoxyParamCaption}
+)}}\label{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}
+
+
+\hyperlink{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}{Maze\-::get\-Maze\-Field} returns the field on the deleivered position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\-Width} & the x-\/position \\
+\hline
+{\em height} & the y-\/position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value on the selected field 
+\end{DoxyReturn}
+\hypertarget{class_maze_a55deabec3636694a2658ff902fe83a9b}{\index{Maze@{Maze}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!Maze@{Maze}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}int Maze\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_maze_a55deabec3636694a2658ff902fe83a9b}
+
+
+\hyperlink{class_maze_a55deabec3636694a2658ff902fe83a9b}{Maze\-::get\-Width} getter for m\-\_\-width. 
+
+\begin{DoxyReturn}{Returns}
+width 
+\end{DoxyReturn}
+\hypertarget{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{\index{Maze@{Maze}!set\-Maze\-Field@{set\-Maze\-Field}}
+\index{set\-Maze\-Field@{set\-Maze\-Field}!Maze@{Maze}}
+\subsubsection[{set\-Maze\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-::set\-Maze\-Field (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{pos\-Width, }
+\item[{const int \&}]{pos\-Height, }
+\item[{{\bf Maze\-Symbols}}]{value}
+\end{DoxyParamCaption}
+)}}\label{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}
+
+
+\hyperlink{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{Maze\-::set\-Maze\-Field} sets a field of the maze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\-Width} & the x-\/position of the element \\
+\hline
+{\em pos\-Height} & the y-\/position of the element \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/model/\hyperlink{maze_8h}{maze.\-h}\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/model/\hyperlink{maze_8cpp}{maze.\-cpp}\end{DoxyCompactItemize}

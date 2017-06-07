@@ -1,0 +1,173 @@
+\hypertarget{class_maze_gui}{\section{Maze\-Gui Class Reference}
+\label{class_maze_gui}\index{Maze\-Gui@{Maze\-Gui}}
+}
+
+
+{\ttfamily \#include $<$mazegui.\-h$>$}
+
+Inheritance diagram for Maze\-Gui\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_maze_gui}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_maze_gui_aa3b128bc77c97364bd0abcfab50facac}{start\-Algorithm} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_gui_aa3b128bc77c97364bd0abcfab50facac}{Maze\-Gui\-::start\-Algorithm} starts the algorithm choosen in the combo box, measures the time, sets the display for steps and the elapsed time. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_gui_a951cf062b683fc7b9e35f5e655b0f609}{generate\-Maze} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_gui_a951cf062b683fc7b9e35f5e655b0f609}{Maze\-Gui\-::generate\-Maze} Generates a random maze. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_gui_ad16d7a5be838ffbde722bfdeb05859a4}{update\-Maze\-Slot} ()
+\item 
+void \hyperlink{class_maze_gui_a11530ab74ba41b8013ecacc25aca3363}{update\-L\-C\-D\-Displays\-Slot} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_maze_gui_aea46561b3539431d4c71515cb50ec530}{Maze\-Gui} (Q\-Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_gui_aea46561b3539431d4c71515cb50ec530}{Maze\-Gui\-::\-Maze\-Gui} constructor sets up the gui such es the sockets and slots. \end{DoxyCompactList}\item 
+\hyperlink{class_maze_gui_af230996793f8246cd6f50f5c69ac2a79}{$\sim$\-Maze\-Gui} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_gui_af230996793f8246cd6f50f5c69ac2a79}{Maze\-Gui\-::$\sim$\-Maze\-Gui} delets all heap elements. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}{set\-Maze} (\hyperlink{class_maze}{Maze} $\ast$maze)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}{Maze\-Gui\-::set\-Maze} Sets the maze. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_gui_a42bc86307a9cfecf3f42084a0dabdfb3}{draw\-Empty\-Maze} ()
+\begin{DoxyCompactList}\small\item\em Maze\-Gui\-::generate\-Field Generates a \hyperlink{class_maze}{Maze} whith the delivered width and height. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_gui_ab6a12bf649ff8a9adf48696626f5c2a4}{draw\-Maze} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}{Maze\-Gui\-::set\-Maze} Gets an two dimensional Array which has the size of the field and contains a colorcode for every field. The colores where set and printed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_maze_gui_aea46561b3539431d4c71515cb50ec530}{\index{Maze\-Gui@{Maze\-Gui}!Maze\-Gui@{Maze\-Gui}}
+\index{Maze\-Gui@{Maze\-Gui}!MazeGui@{Maze\-Gui}}
+\subsubsection[{Maze\-Gui}]{\setlength{\rightskip}{0pt plus 5cm}Maze\-Gui\-::\-Maze\-Gui (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{class_maze_gui_aea46561b3539431d4c71515cb50ec530}
+
+
+\hyperlink{class_maze_gui_aea46561b3539431d4c71515cb50ec530}{Maze\-Gui\-::\-Maze\-Gui} constructor sets up the gui such es the sockets and slots. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_maze_gui_af230996793f8246cd6f50f5c69ac2a79}{\index{Maze\-Gui@{Maze\-Gui}!$\sim$\-Maze\-Gui@{$\sim$\-Maze\-Gui}}
+\index{$\sim$\-Maze\-Gui@{$\sim$\-Maze\-Gui}!MazeGui@{Maze\-Gui}}
+\subsubsection[{$\sim$\-Maze\-Gui}]{\setlength{\rightskip}{0pt plus 5cm}Maze\-Gui\-::$\sim$\-Maze\-Gui (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_maze_gui_af230996793f8246cd6f50f5c69ac2a79}
+
+
+\hyperlink{class_maze_gui_af230996793f8246cd6f50f5c69ac2a79}{Maze\-Gui\-::$\sim$\-Maze\-Gui} delets all heap elements. 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_maze_gui_a42bc86307a9cfecf3f42084a0dabdfb3}{\index{Maze\-Gui@{Maze\-Gui}!draw\-Empty\-Maze@{draw\-Empty\-Maze}}
+\index{draw\-Empty\-Maze@{draw\-Empty\-Maze}!MazeGui@{Maze\-Gui}}
+\subsubsection[{draw\-Empty\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::draw\-Empty\-Maze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_maze_gui_a42bc86307a9cfecf3f42084a0dabdfb3}
+
+
+Maze\-Gui\-::generate\-Field Generates a \hyperlink{class_maze}{Maze} whith the delivered width and height. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_maze_gui_ab6a12bf649ff8a9adf48696626f5c2a4}{\index{Maze\-Gui@{Maze\-Gui}!draw\-Maze@{draw\-Maze}}
+\index{draw\-Maze@{draw\-Maze}!MazeGui@{Maze\-Gui}}
+\subsubsection[{draw\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::draw\-Maze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_maze_gui_ab6a12bf649ff8a9adf48696626f5c2a4}
+
+
+\hyperlink{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}{Maze\-Gui\-::set\-Maze} Gets an two dimensional Array which has the size of the field and contains a colorcode for every field. The colores where set and printed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & maze field \\
+\hline
+{\em width} & the width of the maze \\
+\hline
+{\em height} & the height of the maze \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_maze_gui_a951cf062b683fc7b9e35f5e655b0f609}{\index{Maze\-Gui@{Maze\-Gui}!generate\-Maze@{generate\-Maze}}
+\index{generate\-Maze@{generate\-Maze}!MazeGui@{Maze\-Gui}}
+\subsubsection[{generate\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::generate\-Maze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_maze_gui_a951cf062b683fc7b9e35f5e655b0f609}
+
+
+\hyperlink{class_maze_gui_a951cf062b683fc7b9e35f5e655b0f609}{Maze\-Gui\-::generate\-Maze} Generates a random maze. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em maze} & array which contains all maze values \\
+\hline
+{\em width} & width of the maze \\
+\hline
+{\em height} & height of the maze \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+error code (0 if successful) 
+\end{DoxyReturn}
+\hypertarget{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}{\index{Maze\-Gui@{Maze\-Gui}!set\-Maze@{set\-Maze}}
+\index{set\-Maze@{set\-Maze}!MazeGui@{Maze\-Gui}}
+\subsubsection[{set\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::set\-Maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}}\label{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}
+
+
+\hyperlink{class_maze_gui_a5bcc8fc361cc77fd741c690775bf5a04}{Maze\-Gui\-::set\-Maze} Sets the maze. 
+
+\hypertarget{class_maze_gui_aa3b128bc77c97364bd0abcfab50facac}{\index{Maze\-Gui@{Maze\-Gui}!start\-Algorithm@{start\-Algorithm}}
+\index{start\-Algorithm@{start\-Algorithm}!MazeGui@{Maze\-Gui}}
+\subsubsection[{start\-Algorithm}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::start\-Algorithm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_maze_gui_aa3b128bc77c97364bd0abcfab50facac}
+
+
+\hyperlink{class_maze_gui_aa3b128bc77c97364bd0abcfab50facac}{Maze\-Gui\-::start\-Algorithm} starts the algorithm choosen in the combo box, measures the time, sets the display for steps and the elapsed time. 
+
+\hypertarget{class_maze_gui_a11530ab74ba41b8013ecacc25aca3363}{\index{Maze\-Gui@{Maze\-Gui}!update\-L\-C\-D\-Displays\-Slot@{update\-L\-C\-D\-Displays\-Slot}}
+\index{update\-L\-C\-D\-Displays\-Slot@{update\-L\-C\-D\-Displays\-Slot}!MazeGui@{Maze\-Gui}}
+\subsubsection[{update\-L\-C\-D\-Displays\-Slot}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::update\-L\-C\-D\-Displays\-Slot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_maze_gui_a11530ab74ba41b8013ecacc25aca3363}
+\hypertarget{class_maze_gui_ad16d7a5be838ffbde722bfdeb05859a4}{\index{Maze\-Gui@{Maze\-Gui}!update\-Maze\-Slot@{update\-Maze\-Slot}}
+\index{update\-Maze\-Slot@{update\-Maze\-Slot}!MazeGui@{Maze\-Gui}}
+\subsubsection[{update\-Maze\-Slot}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Gui\-::update\-Maze\-Slot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{class_maze_gui_ad16d7a5be838ffbde722bfdeb05859a4}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/view/\hyperlink{mazegui_8h}{mazegui.\-h}\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/view/\hyperlink{mazegui_8cpp}{mazegui.\-cpp}\end{DoxyCompactItemize}

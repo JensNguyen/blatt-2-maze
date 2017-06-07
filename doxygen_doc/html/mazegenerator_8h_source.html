@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Maze: Main Page</title>
+<title>Maze: /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/mazegenerator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -36,10 +36,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -58,7 +58,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,12 +78,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_30e96c78cf793158ee2c4345770fc706.html">src</a></li><li class="navelem"><a class="el" href="dir_7f925dee0079e047a065a095b3de6782.html">ss17</a></li><li class="navelem"><a class="el" href="dir_7881a737c94b99294496df167cb4b872.html">algodat</a></li><li class="navelem"><a class="el" href="dir_418f62d4c6a921a2fda9ed52e926db4b.html">maze</a></li><li class="navelem"><a class="el" href="dir_7a1f0a4306c1d8febe4e12361667dcc4.html">control</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Maze Documentation</div>  </div>
+<div class="title">mazegenerator.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<a href="mazegenerator_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="maze_8h.html">maze.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_maze_generator.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_maze_generator.html">MazeGenerator</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="class_maze_generator.html#ad2614d8adc80721dbae5660402d48573">MazeGenerator</a>();</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_maze.html">Maze</a>* <a class="code" href="class_maze_generator.html#ad4be0b35657e25065168e1d6fcebfb8d">generateMaze</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> width,<span class="keyword">const</span> <span class="keywordtype">int</span> hight);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
+<div class="ttc" id="class_maze_generator_html_ad2614d8adc80721dbae5660402d48573"><div class="ttname"><a href="class_maze_generator.html#ad2614d8adc80721dbae5660402d48573">MazeGenerator::MazeGenerator</a></div><div class="ttdeci">MazeGenerator()</div></div>
+<div class="ttc" id="class_maze_generator_html"><div class="ttname"><a href="class_maze_generator.html">MazeGenerator</a></div><div class="ttdef"><b>Definition:</b> mazegenerator.h:4</div></div>
+<div class="ttc" id="class_maze_html"><div class="ttname"><a href="class_maze.html">Maze</a></div><div class="ttdoc">The Maze class contains the model of the maze with functions to set an get fields of the maze...</div><div class="ttdef"><b>Definition:</b> maze.h:6</div></div>
+<div class="ttc" id="maze_8h_html"><div class="ttname"><a href="maze_8h.html">maze.h</a></div></div>
+<div class="ttc" id="class_maze_generator_html_ad4be0b35657e25065168e1d6fcebfb8d"><div class="ttname"><a href="class_maze_generator.html#ad4be0b35657e25065168e1d6fcebfb8d">MazeGenerator::generateMaze</a></div><div class="ttdeci">static Maze * generateMaze(const int width, const int hight)</div><div class="ttdef"><b>Definition:</b> mazegenerator.cpp:5</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

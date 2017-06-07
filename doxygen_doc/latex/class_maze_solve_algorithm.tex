@@ -1,0 +1,182 @@
+\hypertarget{class_maze_solve_algorithm}{\section{Maze\-Solve\-Algorithm Class Reference}
+\label{class_maze_solve_algorithm}\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}}
+}
+
+
+The Maze\-Algorithm class Baseclass have to be derived by all maze solve algorithm classes contains the datastructures for the maze such as methods to redrow.  
+
+
+
+
+{\ttfamily \#include $<$mazealgorithm.\-h$>$}
+
+Inheritance diagram for Maze\-Solve\-Algorithm\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_maze_solve_algorithm}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_maze_solve_algorithm_ad2903ca429a66b0f7558e169ff2c47c3}{redraw} ()
+\item 
+void \hyperlink{class_maze_solve_algorithm_abe3dc4ab4896e39d9ce9bc34138bb138}{signal\-L\-C\-D\-Displays} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_maze_solve_algorithm_a403d0adac396c5aad4500e8700b0309d}{Maze\-Solve\-Algorithm} (\hyperlink{class_maze}{Maze} $\ast$maze)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_solve_algorithm_a403d0adac396c5aad4500e8700b0309d}{Maze\-Solve\-Algorithm\-::\-Maze\-Solve\-Algorithm} sets the maze and initializes all variables. \end{DoxyCompactList}\item 
+int \hyperlink{class_maze_solve_algorithm_a69f1c6da39848354f26a5d6fb7dce3f6}{get\-Steps} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_solve_algorithm_a69f1c6da39848354f26a5d6fb7dce3f6}{Maze\-Solve\-Algorithm\-::get\-Steps} getter for m\-\_\-steps. \end{DoxyCompactList}\item 
+double \hyperlink{class_maze_solve_algorithm_a9522bc9a8fb6760e5bec78bfcc52ef53}{get\-Elapsed\-Time} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_solve_algorithm_a9522bc9a8fb6760e5bec78bfcc52ef53}{Maze\-Solve\-Algorithm\-::get\-Elapsed\-Time} getter for m\-\_\-elapsed\-Time. \end{DoxyCompactList}\item 
+bool \hyperlink{class_maze_solve_algorithm_ad1b31dffa81ae7ee84fd511aadc0fdb8}{is\-Solved} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_solve_algorithm_ad1b31dffa81ae7ee84fd511aadc0fdb8}{Maze\-Solve\-Algorithm\-::is\-Solved} getter for m\-\_\-is\-Solved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_maze}{Maze} $\ast$ \hyperlink{class_maze_solve_algorithm_a22988c0e0a5eaea83ce360be8e3a9ebb}{m\-\_\-maze}
+\item 
+int \hyperlink{class_maze_solve_algorithm_a16f9e281c4bcdc47575d7b75c244652e}{m\-\_\-steps}
+\item 
+double \hyperlink{class_maze_solve_algorithm_a1ca82a6e1f52cdb2f6bc3ea7b332e2f2}{m\-\_\-elapsed\-Time}
+\item 
+bool \hyperlink{class_maze_solve_algorithm_a1c7f66e1bc5c91f9d007ba0a79d239d0}{m\-\_\-solved}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_maze_solve_algorithm_a3e545c01367136ed0a02d9bb6c2b3ede}{run} ()
+\begin{DoxyCompactList}\small\item\em Maze\-Algorithm\-::run run method starts the solving algorithm such as the time measurement, signals the gui to display the values. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_maze_solve_algorithm_a3f957367c4afe52d29b0021766a478be}{solve} (int \&steps)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Maze\-Algorithm class Baseclass have to be derived by all maze solve algorithm classes contains the datastructures for the maze such as methods to redrow. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_maze_solve_algorithm_a403d0adac396c5aad4500e8700b0309d}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}}
+\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{Maze\-Solve\-Algorithm}]{\setlength{\rightskip}{0pt plus 5cm}Maze\-Solve\-Algorithm\-::\-Maze\-Solve\-Algorithm (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}}\label{class_maze_solve_algorithm_a403d0adac396c5aad4500e8700b0309d}
+
+
+\hyperlink{class_maze_solve_algorithm_a403d0adac396c5aad4500e8700b0309d}{Maze\-Solve\-Algorithm\-::\-Maze\-Solve\-Algorithm} sets the maze and initializes all variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em maze} & \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_maze_solve_algorithm_a9522bc9a8fb6760e5bec78bfcc52ef53}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!get\-Elapsed\-Time@{get\-Elapsed\-Time}}
+\index{get\-Elapsed\-Time@{get\-Elapsed\-Time}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{get\-Elapsed\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double Maze\-Solve\-Algorithm\-::get\-Elapsed\-Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_maze_solve_algorithm_a9522bc9a8fb6760e5bec78bfcc52ef53}
+
+
+\hyperlink{class_maze_solve_algorithm_a9522bc9a8fb6760e5bec78bfcc52ef53}{Maze\-Solve\-Algorithm\-::get\-Elapsed\-Time} getter for m\-\_\-elapsed\-Time. 
+
+\begin{DoxyReturn}{Returns}
+elapsed time 
+\end{DoxyReturn}
+\hypertarget{class_maze_solve_algorithm_a69f1c6da39848354f26a5d6fb7dce3f6}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!get\-Steps@{get\-Steps}}
+\index{get\-Steps@{get\-Steps}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{get\-Steps}]{\setlength{\rightskip}{0pt plus 5cm}int Maze\-Solve\-Algorithm\-::get\-Steps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_maze_solve_algorithm_a69f1c6da39848354f26a5d6fb7dce3f6}
+
+
+\hyperlink{class_maze_solve_algorithm_a69f1c6da39848354f26a5d6fb7dce3f6}{Maze\-Solve\-Algorithm\-::get\-Steps} getter for m\-\_\-steps. 
+
+\begin{DoxyReturn}{Returns}
+nr of steps 
+\end{DoxyReturn}
+\hypertarget{class_maze_solve_algorithm_ad1b31dffa81ae7ee84fd511aadc0fdb8}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!is\-Solved@{is\-Solved}}
+\index{is\-Solved@{is\-Solved}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{is\-Solved}]{\setlength{\rightskip}{0pt plus 5cm}bool Maze\-Solve\-Algorithm\-::is\-Solved (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_maze_solve_algorithm_ad1b31dffa81ae7ee84fd511aadc0fdb8}
+
+
+\hyperlink{class_maze_solve_algorithm_ad1b31dffa81ae7ee84fd511aadc0fdb8}{Maze\-Solve\-Algorithm\-::is\-Solved} getter for m\-\_\-is\-Solved. 
+
+\begin{DoxyReturn}{Returns}
+solved flag 
+\end{DoxyReturn}
+\hypertarget{class_maze_solve_algorithm_ad2903ca429a66b0f7558e169ff2c47c3}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!redraw@{redraw}}
+\index{redraw@{redraw}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{redraw}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Solve\-Algorithm\-::redraw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_maze_solve_algorithm_ad2903ca429a66b0f7558e169ff2c47c3}
+\hypertarget{class_maze_solve_algorithm_a3e545c01367136ed0a02d9bb6c2b3ede}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!run@{run}}
+\index{run@{run}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Solve\-Algorithm\-::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_maze_solve_algorithm_a3e545c01367136ed0a02d9bb6c2b3ede}
+
+
+Maze\-Algorithm\-::run run method starts the solving algorithm such as the time measurement, signals the gui to display the values. 
+
+\hypertarget{class_maze_solve_algorithm_abe3dc4ab4896e39d9ce9bc34138bb138}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!signal\-L\-C\-D\-Displays@{signal\-L\-C\-D\-Displays}}
+\index{signal\-L\-C\-D\-Displays@{signal\-L\-C\-D\-Displays}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{signal\-L\-C\-D\-Displays}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-Solve\-Algorithm\-::signal\-L\-C\-D\-Displays (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_maze_solve_algorithm_abe3dc4ab4896e39d9ce9bc34138bb138}
+\hypertarget{class_maze_solve_algorithm_a3f957367c4afe52d29b0021766a478be}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!solve@{solve}}
+\index{solve@{solve}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool Maze\-Solve\-Algorithm\-::solve (
+\begin{DoxyParamCaption}
+\item[{int \&}]{steps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_maze_solve_algorithm_a3f957367c4afe52d29b0021766a478be}
+
+
+Implemented in \hyperlink{class_breadth_first_search_a0fccce0a839583c2e80eaacc1be8ed2e}{Breadth\-First\-Search}, and \hyperlink{class_recursive_maze_solve_algorithm_a15c3571e131dffc45ab62a2073aa0da4}{Recursive\-Maze\-Solve\-Algorithm}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_maze_solve_algorithm_a1ca82a6e1f52cdb2f6bc3ea7b332e2f2}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!m\-\_\-elapsed\-Time@{m\-\_\-elapsed\-Time}}
+\index{m\-\_\-elapsed\-Time@{m\-\_\-elapsed\-Time}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{m\-\_\-elapsed\-Time}]{\setlength{\rightskip}{0pt plus 5cm}double Maze\-Solve\-Algorithm\-::m\-\_\-elapsed\-Time}}\label{class_maze_solve_algorithm_a1ca82a6e1f52cdb2f6bc3ea7b332e2f2}
+\hypertarget{class_maze_solve_algorithm_a22988c0e0a5eaea83ce360be8e3a9ebb}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!m\-\_\-maze@{m\-\_\-maze}}
+\index{m\-\_\-maze@{m\-\_\-maze}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{m\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Maze}$\ast$ Maze\-Solve\-Algorithm\-::m\-\_\-maze}}\label{class_maze_solve_algorithm_a22988c0e0a5eaea83ce360be8e3a9ebb}
+\hypertarget{class_maze_solve_algorithm_a1c7f66e1bc5c91f9d007ba0a79d239d0}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!m\-\_\-solved@{m\-\_\-solved}}
+\index{m\-\_\-solved@{m\-\_\-solved}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{m\-\_\-solved}]{\setlength{\rightskip}{0pt plus 5cm}bool Maze\-Solve\-Algorithm\-::m\-\_\-solved}}\label{class_maze_solve_algorithm_a1c7f66e1bc5c91f9d007ba0a79d239d0}
+\hypertarget{class_maze_solve_algorithm_a16f9e281c4bcdc47575d7b75c244652e}{\index{Maze\-Solve\-Algorithm@{Maze\-Solve\-Algorithm}!m\-\_\-steps@{m\-\_\-steps}}
+\index{m\-\_\-steps@{m\-\_\-steps}!MazeSolveAlgorithm@{Maze\-Solve\-Algorithm}}
+\subsubsection[{m\-\_\-steps}]{\setlength{\rightskip}{0pt plus 5cm}int Maze\-Solve\-Algorithm\-::m\-\_\-steps}}\label{class_maze_solve_algorithm_a16f9e281c4bcdc47575d7b75c244652e}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/control/\hyperlink{mazealgorithm_8h}{mazealgorithm.\-h}\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/control/\hyperlink{mazealgorithm_8cpp}{mazealgorithm.\-cpp}\end{DoxyCompactItemize}
