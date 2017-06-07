@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['drawemptymaze',['drawEmptyMaze',['../class_maze_gui.html#a42bc86307a9cfecf3f42084a0dabdfb3',1,'MazeGui']]],
-  ['drawmaze',['drawMaze',['../class_maze_gui.html#ab6a12bf649ff8a9adf48696626f5c2a4',1,'MazeGui']]]
+  ['consumefield',['consumeField',['../class_breadth_first_search.html#a87842502342c4e7390f7908df1735881',1,'BreadthFirstSearch']]],
+  ['consumeposition',['consumePosition',['../class_breadth_first_search.html#af9c4a8b5c59e843cef67ec233c565814',1,'BreadthFirstSearch']]]
 ];

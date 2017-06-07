@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['wall',['Wall',['../class_maze.html#a7a19b706242876f2c597033b3374e7faa4b3509571b07cde9b535f8358157d676',1,'Maze']]],
-  ['way',['Way',['../class_maze.html#a7a19b706242876f2c597033b3374e7faac7cbc8392fac9738ef3dac458865d3eb',1,'Maze']]]
+  ['ui',['Ui',['../namespace_ui.html',1,'']]],
+  ['updatelcddisplaysslot',['updateLCDDisplaysSlot',['../class_maze_gui.html#a11530ab74ba41b8013ecacc25aca3363',1,'MazeGui']]],
+  ['updatemazeslot',['updateMazeSlot',['../class_maze_gui.html#ad16d7a5be838ffbde722bfdeb05859a4',1,'MazeGui']]]
 ];

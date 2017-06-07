@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['end',['End',['../class_maze.html#a7a19b706242876f2c597033b3374e7faa752d570bd64e08ce1c7f358dd3cc6969',1,'Maze']]]
+  ['drawemptymaze',['drawEmptyMaze',['../class_maze_gui.html#a42bc86307a9cfecf3f42084a0dabdfb3',1,'MazeGui']]],
+  ['drawmaze',['drawMaze',['../class_maze_gui.html#ab6a12bf649ff8a9adf48696626f5c2a4',1,'MazeGui']]]
 ];

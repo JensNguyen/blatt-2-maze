@@ -1,0 +1,76 @@
+\hypertarget{class_breadth_first_search_gui_interaction}{\section{Breadth\-First\-Search\-Gui\-Interaction Class Reference}
+\label{class_breadth_first_search_gui_interaction}\index{Breadth\-First\-Search\-Gui\-Interaction@{Breadth\-First\-Search\-Gui\-Interaction}}
+}
+
+
+{\ttfamily \#include $<$Breadth\-First\-Search\-Gui\-Interaction.\-h$>$}
+
+Inheritance diagram for Breadth\-First\-Search\-Gui\-Interaction\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_breadth_first_search_gui_interaction}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_breadth_first_search_gui_interaction_a32769d981f2a07be1608288bfdb96efc}{Breadth\-First\-Search\-Gui\-Interaction} (\hyperlink{class_maze}{Maze} $\ast$maze)
+\item 
+\hyperlink{class_breadth_first_search_gui_interaction_a0277493bfd3ce130c0e95b3d841d8f9c}{$\sim$\-Breadth\-First\-Search\-Gui\-Interaction} ()
+\item 
+bool \hyperlink{class_breadth_first_search_gui_interaction_ad76cbe94351cb0d25fcf5d43468074e4}{solve} (int \&steps)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Wraps logic of Breath\-First\-Search into class extending \hyperlink{class_maze_solve_algorithm}{Maze\-Solve\-Algorithm}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_breadth_first_search_gui_interaction_a32769d981f2a07be1608288bfdb96efc}{\index{Breadth\-First\-Search\-Gui\-Interaction@{Breadth\-First\-Search\-Gui\-Interaction}!Breadth\-First\-Search\-Gui\-Interaction@{Breadth\-First\-Search\-Gui\-Interaction}}
+\index{Breadth\-First\-Search\-Gui\-Interaction@{Breadth\-First\-Search\-Gui\-Interaction}!BreadthFirstSearchGuiInteraction@{Breadth\-First\-Search\-Gui\-Interaction}}
+\subsubsection[{Breadth\-First\-Search\-Gui\-Interaction}]{\setlength{\rightskip}{0pt plus 5cm}Breadth\-First\-Search\-Gui\-Interaction\-::\-Breadth\-First\-Search\-Gui\-Interaction (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_breadth_first_search_gui_interaction_a32769d981f2a07be1608288bfdb96efc}
+Initializes both the breadth first search logic and its gui-\/representation. 
+\begin{DoxyParams}{Parameters}
+{\em maze} & \hyperlink{class_maze}{Maze} to be solved. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_breadth_first_search_gui_interaction_a0277493bfd3ce130c0e95b3d841d8f9c}{\index{Breadth\-First\-Search\-Gui\-Interaction@{Breadth\-First\-Search\-Gui\-Interaction}!$\sim$\-Breadth\-First\-Search\-Gui\-Interaction@{$\sim$\-Breadth\-First\-Search\-Gui\-Interaction}}
+\index{$\sim$\-Breadth\-First\-Search\-Gui\-Interaction@{$\sim$\-Breadth\-First\-Search\-Gui\-Interaction}!BreadthFirstSearchGuiInteraction@{Breadth\-First\-Search\-Gui\-Interaction}}
+\subsubsection[{$\sim$\-Breadth\-First\-Search\-Gui\-Interaction}]{\setlength{\rightskip}{0pt plus 5cm}Breadth\-First\-Search\-Gui\-Interaction\-::$\sim$\-Breadth\-First\-Search\-Gui\-Interaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_breadth_first_search_gui_interaction_a0277493bfd3ce130c0e95b3d841d8f9c}
+Deletes all objects associated to the algorithm and its gui representation from the heap. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_breadth_first_search_gui_interaction_ad76cbe94351cb0d25fcf5d43468074e4}{\index{Breadth\-First\-Search\-Gui\-Interaction@{Breadth\-First\-Search\-Gui\-Interaction}!solve@{solve}}
+\index{solve@{solve}!BreadthFirstSearchGuiInteraction@{Breadth\-First\-Search\-Gui\-Interaction}}
+\subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}bool Breadth\-First\-Search\-Gui\-Interaction\-::solve (
+\begin{DoxyParamCaption}
+\item[{int \&}]{steps}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_breadth_first_search_gui_interaction_ad76cbe94351cb0d25fcf5d43468074e4}
+Starts solving the maze. 
+\begin{DoxyParams}{Parameters}
+{\em steps} & Fields visited till termination of the algorithm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the maze have been solved. False if not. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_maze_solve_algorithm_a3f957367c4afe52d29b0021766a478be}{Maze\-Solve\-Algorithm}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/control/shortest\-\_\-path/breadth\-\_\-first\-\_\-search/\hyperlink{_breadth_first_search_gui_interaction_8h}{Breadth\-First\-Search\-Gui\-Interaction.\-h}\item 
+/home/travis/build/algdat/blatt-\/2-\/maze/src/ss17/algodat/maze/control/shortest\-\_\-path/breadth\-\_\-first\-\_\-search/\hyperlink{_breadth_first_search_gui_interaction_8cpp}{Breadth\-First\-Search\-Gui\-Interaction.\-cpp}\end{DoxyCompactItemize}
