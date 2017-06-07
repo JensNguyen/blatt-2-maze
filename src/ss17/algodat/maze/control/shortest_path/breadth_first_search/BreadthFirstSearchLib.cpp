@@ -7,12 +7,6 @@
 #include "../../../model/maze.h"
 #include <stdexcept>
 
-/**
- * Paint the matrix.
- * @param COLUMNS   Column count of matrix.
- * @param ROWS      Row count of matrix.
- * @param matrix    The matrix to be paint.
- */
 void BreadthFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
                                          int matrix[]){
     int x;
@@ -26,33 +20,6 @@ void BreadthFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
     cout<<endl;
 }
 
-/**
- * Paint the matrix.
- * @param COLUMNS   Column count of matrix.
- * @param ROWS      Row count of matrix.
- * @param matrix    The matrix to be paint.
- */
-void BreadthFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS,
-                                       char matrix[]){
-    for(int row = 0; row < ROWS; row++){
-        for(int column = 0; column < COLUMNS; column++){
-            cout<<matrix[row*COLUMNS + column];
-        }
-        cout<<endl;
-    }
-    cout<<endl;
-}
-
-/**
- * Looks for the position of start. The start field should be contained in the
- * boarder of the maze.
- * @param COLUMNS       Column count of matrix.
- * @param ROWS          Row count of matrix.
- * @param maze          Matrix to be checked.
- * @param START_ID      ID to be searched for.
- * @return              The position of the start field, or NULL if no start
- *                      field was found.
- */
 Position *BreadthFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
                                            Maze *maze, const char START_ID){
     // upper row
@@ -89,20 +56,6 @@ Position *BreadthFirstSearchLib::getStartPos(const int COLUMNS, const int ROWS,
     return nullptr;
 }
 
-/**
- * Returns the value in the specified column in the given row at the matrix.
- *    0 1 2 3
- *  0 x x x x
- *  1 x x x x
- *  2 x x x x
- *  3 x x x x
- * @param COLUMNS   Column count of matrix.
- * @param ROWS      Row count of matrix.
- * @param matrix    Matrix the value should be extracted from.
- * @param column    Column of value to be extracted.
- * @param row       Row of value to be extracted.
- * @return          Value of matrix given by column and row.
- */
 int BreadthFirstSearchLib::getField(const int COLUMNS, const int ROWS,
                                     int matrix[], const int column,
                                     const int row){
@@ -113,21 +66,6 @@ int BreadthFirstSearchLib::getField(const int COLUMNS, const int ROWS,
 }
 
 
-/**
- * Sets the field specified by column and row to the given content.
- * You can only edit fields which are set to zero!
- *    0 1 2 3
- *  0 x x x x
- *  1 x x x x
- *  2 x x x x
- *  3 x x x x
- * @param COLUMNS   Column count of matrix.
- * @param ROWS      Row count of matrix.
- * @param matrix    Matrix the value should be extracted from.
- * @param column    Column of field to be replaced.
- * @param row       Row of field to be replaced.
- * @param content   Content to be set.
- */
 void BreadthFirstSearchLib::setField(const int COLUMNS, const int ROWS,
                                  int matrix[], const int column,
                                  const int row, int *content){

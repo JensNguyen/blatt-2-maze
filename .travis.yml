@@ -57,5 +57,4 @@ script:
 # Generate and deploy documentation
 after_success:
   - cd $TRAVIS_BUILD_DIR
-  - chmod +x generateDocumentationAndDeploy.sh
-  - ./generateDocumentationAndDeploy.sh
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then documentation.sh; fi
