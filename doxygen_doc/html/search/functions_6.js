@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['paintmatrix',['paintMatrix',['../class_breadth_first_search_lib.html#af70b8250ad3c10b8b71c5913b46f8fca',1,'BreadthFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS, char matrix[])'],['../class_breadth_first_search_lib.html#acb4a80e7b47617c9ea478a6e5b286015',1,'BreadthFirstSearchLib::paintMatrix(const int COLUMNS, const int ROWS, int matrix[])']]],
-  ['position',['Position',['../class_position.html#ac331f7bbdd71ea036613c4335c042e8e',1,'Position']]]
+  ['recursivemazesolvealgorithm',['RecursiveMazeSolveAlgorithm',['../class_recursive_maze_solve_algorithm.html#a62a60de4fb81a35cae475eabc5a5a66e',1,'RecursiveMazeSolveAlgorithm']]],
+  ['redraw',['redraw',['../class_maze_solve_algorithm.html#ad2903ca429a66b0f7558e169ff2c47c3',1,'MazeSolveAlgorithm']]],
+  ['run',['run',['../class_maze_solve_algorithm.html#a3e545c01367136ed0a02d9bb6c2b3ede',1,'MazeSolveAlgorithm']]]
 ];

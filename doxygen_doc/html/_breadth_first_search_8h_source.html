@@ -88,51 +88,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">BreadthFirstSearch.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_breadth_first_search_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Created by rudi on 04.05.2017.</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef MAZE_BREATH_FIRST_H</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MAZE_BREATH_FIRST_H</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;../../mazealgorithm.h&quot;</span></div>
+<a href="_breadth_first_search_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef MAZE_BREATH_FIRST_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MAZE_BREATH_FIRST_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;../../mazealgorithm.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="class_maze_gui.html">MazeGui</a>;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="class_maze_gui.html">MazeGui</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../../../model/maze.h&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_position_8h.html">Position.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../../../model/maze.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_breadth_first_search.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_breadth_first_search.html">BreadthFirstSearch</a>: <span class="keyword">public</span> <a class="code" href="class_maze_solve_algorithm.html">MazeSolveAlgorithm</a>{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> *solution;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    queue&lt;Position&gt; *positionQueue;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_position.html">Position</a> *lastStep;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> pushFreeAdjacentFields(<a class="code" href="class_position.html">Position</a> *position);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> consumePosition();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> plotSolution(<a class="code" href="class_position.html">Position</a> position);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> consumeField(<a class="code" href="class_position.html">Position</a> position, <span class="keyword">const</span> <span class="keywordtype">int</span> columnOffset,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                      <span class="keyword">const</span> <span class="keywordtype">int</span> rowOffset);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_position.html">Position</a> *searchForNextFieldOnShortestPath(<a class="code" href="class_position.html">Position</a> position, <span class="keywordtype">int</span> steps);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_breadth_first_search.html">BreadthFirstSearch</a>(<a class="code" href="class_maze.html">Maze</a> *maze);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ~<a class="code" href="class_breadth_first_search.html">BreadthFirstSearch</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> solve(<span class="keywordtype">int</span> &amp;steps);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> solve();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">char</span> *getSolution();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> fillMazeGui(<span class="keyword">const</span> <span class="keywordtype">int</span> COLUMNS, <span class="keyword">const</span> <span class="keywordtype">int</span> ROWS, <span class="keyword">const</span> <span class="keywordtype">char</span> *maze);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif //MAZE_BREATH_FIRST_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_breadth_first_search.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_breadth_first_search.html">BreadthFirstSearch</a>: <span class="keyword">public</span> <a class="code" href="class_maze_solve_algorithm.html">MazeSolveAlgorithm</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> *solution;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    queue&lt;Position&gt; *positionQueue;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_position.html">Position</a> *lastField;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> lengthOfShortestPath;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> pushFreeAdjacentFields(<a class="code" href="class_position.html">Position</a> *position);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> consumePosition();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> plotSolution(<a class="code" href="class_position.html">Position</a> position);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> consumeField(<a class="code" href="class_position.html">Position</a> position, <span class="keyword">const</span> <span class="keywordtype">int</span> columnOffset,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                      <span class="keyword">const</span> <span class="keywordtype">int</span> rowOffset);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="class_position.html">Position</a> *searchForNextFieldOnShortestPath(<a class="code" href="class_position.html">Position</a> position, <span class="keywordtype">int</span> steps);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="class_breadth_first_search.html">BreadthFirstSearch</a>(<a class="code" href="class_maze.html">Maze</a> *maze);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    ~<a class="code" href="class_breadth_first_search.html">BreadthFirstSearch</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">bool</span> solve(<span class="keywordtype">int</span> &amp;steps);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif //MAZE_BREATH_FIRST_H</span></div>
 <div class="ttc" id="class_maze_html"><div class="ttname"><a href="class_maze.html">Maze</a></div><div class="ttdoc">The Maze class contains the model of the maze with functions to set an get fields of the maze...</div><div class="ttdef"><b>Definition:</b> maze.h:6</div></div>
-<div class="ttc" id="class_position_html"><div class="ttname"><a href="class_position.html">Position</a></div><div class="ttdef"><b>Definition:</b> Position.h:12</div></div>
-<div class="ttc" id="class_breadth_first_search_html"><div class="ttname"><a href="class_breadth_first_search.html">BreadthFirstSearch</a></div><div class="ttdef"><b>Definition:</b> BreadthFirstSearch.h:19</div></div>
+<div class="ttc" id="class_position_html"><div class="ttname"><a href="class_position.html">Position</a></div><div class="ttdef"><b>Definition:</b> Position.h:15</div></div>
+<div class="ttc" id="class_breadth_first_search_html"><div class="ttname"><a href="class_breadth_first_search.html">BreadthFirstSearch</a></div><div class="ttdef"><b>Definition:</b> BreadthFirstSearch.h:20</div></div>
 <div class="ttc" id="_position_8h_html"><div class="ttname"><a href="_position_8h.html">Position.h</a></div></div>
 <div class="ttc" id="class_maze_gui_html"><div class="ttname"><a href="class_maze_gui.html">MazeGui</a></div><div class="ttdef"><b>Definition:</b> mazegui.h:19</div></div>
 <div class="ttc" id="class_maze_solve_algorithm_html"><div class="ttname"><a href="class_maze_solve_algorithm.html">MazeSolveAlgorithm</a></div><div class="ttdoc">The MazeAlgorithm class Baseclass have to be derived by all maze solve algorithm classes contains the...</div><div class="ttdef"><b>Definition:</b> mazealgorithm.h:10</div></div>

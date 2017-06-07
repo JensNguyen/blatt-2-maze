@@ -94,8 +94,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af70b8250ad3c10b8b71c5913b46f8fca"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_breadth_first_search_lib.html#af70b8250ad3c10b8b71c5913b46f8fca">paintMatrix</a> (const int COLUMNS, const int ROWS, char matrix[])</td></tr>
-<tr class="separator:af70b8250ad3c10b8b71c5913b46f8fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb4a80e7b47617c9ea478a6e5b286015"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_breadth_first_search_lib.html#acb4a80e7b47617c9ea478a6e5b286015">paintMatrix</a> (const int COLUMNS, const int ROWS, int matrix[])</td></tr>
 <tr class="separator:acb4a80e7b47617c9ea478a6e5b286015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a590126086844fa974397714536ce3cbb"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_breadth_first_search_lib.html#a590126086844fa974397714536ce3cbb">getField</a> (const int COLUMNS, const int ROWS, int *matrix, const int column, const int row)</td></tr>
@@ -105,7 +103,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a21d08cb771c1cff3fb22863e0b345ab0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_breadth_first_search_lib.html#a21d08cb771c1cff3fb22863e0b345ab0">setField</a> (const int COLUMNS, const int ROWS, int *matrix, const int column, const int row, int *content)</td></tr>
 <tr class="separator:a21d08cb771c1cff3fb22863e0b345ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Collection of context-free library functions extracted from BreathFirstSearch. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a590126086844fa974397714536ce3cbb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returns the value in the specified column in the given row at the matrix. 0 1 2 3 0 x x x x 1 x x x x 2 x x x x 3 x x x x </p>
+<p>Returns the value in the specified column and row at the matrix. 0 1 2 3 0 x x x x 1 x x x x 2 x x x x 3 x x x x </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">COLUMNS</td><td>Column count of matrix. </td></tr>
@@ -166,7 +166,7 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Value of matrix given by column and row. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Value at matrix given by column- and rowindex. </dd></dl>
 
 </div>
 </div>
@@ -219,60 +219,11 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">COLUMNS</td><td>Column count of matrix. </td></tr>
     <tr><td class="paramname">ROWS</td><td>Row count of matrix. </td></tr>
     <tr><td class="paramname">maze</td><td>Matrix to be checked. </td></tr>
-    <tr><td class="paramname">START_ID</td><td>ID to be searched for. </td></tr>
+    <tr><td class="paramname">START_ID</td><td>Start-ID to be searched for. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The position of the start field, or NULL if no start field was found. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="af70b8250ad3c10b8b71c5913b46f8fca"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BreadthFirstSearchLib::paintMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>COLUMNS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>ROWS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>matrix</em>[]&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Paint the matrix. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">COLUMNS</td><td>Column count of matrix. </td></tr>
-    <tr><td class="paramname">ROWS</td><td>Row count of matrix. </td></tr>
-    <tr><td class="paramname">matrix</td><td>The matrix to be paint. </td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>The position of the start field, or nullptr if no start field was found. </dd></dl>
 
 </div>
 </div>

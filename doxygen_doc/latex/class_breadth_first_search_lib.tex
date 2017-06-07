@@ -8,8 +8,6 @@
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \hyperlink{class_breadth_first_search_lib_af70b8250ad3c10b8b71c5913b46f8fca}{paint\-Matrix} (const int C\-O\-L\-U\-M\-N\-S, const int R\-O\-W\-S, char matrix\mbox{[}$\,$\mbox{]})
-\item 
 static void \hyperlink{class_breadth_first_search_lib_acb4a80e7b47617c9ea478a6e5b286015}{paint\-Matrix} (const int C\-O\-L\-U\-M\-N\-S, const int R\-O\-W\-S, int matrix\mbox{[}$\,$\mbox{]})
 \item 
 static int \hyperlink{class_breadth_first_search_lib_a590126086844fa974397714536ce3cbb}{get\-Field} (const int C\-O\-L\-U\-M\-N\-S, const int R\-O\-W\-S, int $\ast$matrix, const int column, const int row)
@@ -19,6 +17,9 @@ static \hyperlink{class_position}{Position} $\ast$ \hyperlink{class_breadth_firs
 static void \hyperlink{class_breadth_first_search_lib_a21d08cb771c1cff3fb22863e0b345ab0}{set\-Field} (const int C\-O\-L\-U\-M\-N\-S, const int R\-O\-W\-S, int $\ast$matrix, const int column, const int row, int $\ast$content)
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Collection of context-\/free library functions extracted from Breath\-First\-Search. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_breadth_first_search_lib_a590126086844fa974397714536ce3cbb}{\index{Breadth\-First\-Search\-Lib@{Breadth\-First\-Search\-Lib}!get\-Field@{get\-Field}}
@@ -32,7 +33,7 @@ static void \hyperlink{class_breadth_first_search_lib_a21d08cb771c1cff3fb22863e0
 \item[{const int}]{row}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{class_breadth_first_search_lib_a590126086844fa974397714536ce3cbb}
-Returns the value in the specified column in the given row at the matrix. 0 1 2 3 0 x x x x 1 x x x x 2 x x x x 3 x x x x 
+Returns the value in the specified column and row at the matrix. 0 1 2 3 0 x x x x 1 x x x x 2 x x x x 3 x x x x 
 \begin{DoxyParams}{Parameters}
 {\em C\-O\-L\-U\-M\-N\-S} & Column count of matrix. \\
 \hline
@@ -46,7 +47,7 @@ Returns the value in the specified column in the given row at the matrix. 0 1 2 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Value of matrix given by column and row. 
+Value at matrix given by column-\/ and rowindex. 
 \end{DoxyReturn}
 \hypertarget{class_breadth_first_search_lib_a2426f93e31804b1e07ee3101c9507d63}{\index{Breadth\-First\-Search\-Lib@{Breadth\-First\-Search\-Lib}!get\-Start\-Pos@{get\-Start\-Pos}}
 \index{get\-Start\-Pos@{get\-Start\-Pos}!BreadthFirstSearchLib@{Breadth\-First\-Search\-Lib}}
@@ -66,30 +67,12 @@ Looks for the position of start. The start field should be contained in the boar
 \hline
 {\em maze} & Matrix to be checked. \\
 \hline
-{\em S\-T\-A\-R\-T\-\_\-\-I\-D} & I\-D to be searched for. \\
+{\em S\-T\-A\-R\-T\-\_\-\-I\-D} & Start-\/\-I\-D to be searched for. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The position of the start field, or N\-U\-L\-L if no start field was found. 
+The position of the start field, or nullptr if no start field was found. 
 \end{DoxyReturn}
-\hypertarget{class_breadth_first_search_lib_af70b8250ad3c10b8b71c5913b46f8fca}{\index{Breadth\-First\-Search\-Lib@{Breadth\-First\-Search\-Lib}!paint\-Matrix@{paint\-Matrix}}
-\index{paint\-Matrix@{paint\-Matrix}!BreadthFirstSearchLib@{Breadth\-First\-Search\-Lib}}
-\subsubsection[{paint\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-Lib\-::paint\-Matrix (
-\begin{DoxyParamCaption}
-\item[{const int}]{C\-O\-L\-U\-M\-N\-S, }
-\item[{const int}]{R\-O\-W\-S, }
-\item[{char}]{matrix\mbox{[}$\,$\mbox{]}}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_breadth_first_search_lib_af70b8250ad3c10b8b71c5913b46f8fca}
-Paint the matrix. 
-\begin{DoxyParams}{Parameters}
-{\em C\-O\-L\-U\-M\-N\-S} & Column count of matrix. \\
-\hline
-{\em R\-O\-W\-S} & Row count of matrix. \\
-\hline
-{\em matrix} & The matrix to be paint. \\
-\hline
-\end{DoxyParams}
 \hypertarget{class_breadth_first_search_lib_acb4a80e7b47617c9ea478a6e5b286015}{\index{Breadth\-First\-Search\-Lib@{Breadth\-First\-Search\-Lib}!paint\-Matrix@{paint\-Matrix}}
 \index{paint\-Matrix@{paint\-Matrix}!BreadthFirstSearchLib@{Breadth\-First\-Search\-Lib}}
 \subsubsection[{paint\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-Lib\-::paint\-Matrix (
