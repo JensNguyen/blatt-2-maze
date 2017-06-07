@@ -56,4 +56,4 @@ script:
 
 # Generate and deploy documentation
 after_success:
-  - ifMasterGenerateDocumentation.sh
+  - - if [ "$TRAVIS_BRANCH" = "master" ]; then documentation.sh; fi
