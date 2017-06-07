@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 
 # Jeder weitere Test muss mit allen drei Befehlen eingebunden werden.
 add_executable(BreadthFirstSearchTest
-        shortest_path/breadth_first_search/BreathFirstSearchLibTest.cpp
+        shortest_path/breadth_first_search/BreathFirstSearchTest.cpp
         shortest_path/breadth_first_search/PositionTest.cpp)
 target_link_libraries(BreadthFirstSearchTest
         BreathFirstSearchLibrary

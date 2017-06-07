@@ -6,10 +6,14 @@
 
 using namespace std;
 
-int Position::getColumn(){
-    return this->xPos;
+int
+Position::getColumn()
+{
+	return this->xPos;
 }
 
-int Position::getRow(){
-    return this->yPos;
+int
+Position::getRow()
+{
+	return this->yPos;
 }

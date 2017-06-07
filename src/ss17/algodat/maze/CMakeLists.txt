@@ -26,8 +26,8 @@ set(SOURCES
         control/mazegenerator.cpp
         view/mazegui.cpp
         control/recursive_solver/recursivemazesolvealgorithm.cpp
+        control/shortest_path/breadth_first_search/BreadthFirstSearchGuiInteraction.cpp
         control/shortest_path/breadth_first_search/BreadthFirstSearch.cpp
-        control/shortest_path/breadth_first_search/BreadthFirstSearchLib.cpp
         control/shortest_path/breadth_first_search/Position.cpp
         )
 
@@ -37,8 +37,8 @@ set(HEADERS
         control/mazegenerator.h
         view/mazegui.h
         control/recursive_solver/recursivemazesolvealgorithm.h
+        control/shortest_path/breadth_first_search/BreadthFirstSearchGuiInteraction.h
         control/shortest_path/breadth_first_search/BreadthFirstSearch.h
-        control/shortest_path/breadth_first_search/BreadthFirstSearchLib.h
         control/shortest_path/breadth_first_search/Position.h
         )
 
