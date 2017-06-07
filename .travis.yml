@@ -2,6 +2,12 @@ sudo: true
 dist: trusty
 language: cpp
 
+
+# Blacklist
+branches:
+  except:
+    - gh-pages
+
 # Environment variables
 env:
   global:
