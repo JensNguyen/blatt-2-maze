@@ -20,6 +20,8 @@ G = goal
 Compiler: c++11  
 JUnit-Tests: gTest  
 
+### <a href="https://algdat.github.io/blatt-2-maze/doxygen_doc/html/">Dokumentation</a>
+
 ### ToDo
 - Website
   
