@@ -28,7 +28,7 @@ matrix:
             - doxygen-latex
             - doxygen-gui
             - graphviz
-      env: COMPILER=g++-6
+      env: COMPILER=g++-6 GENERATE_DOC=true
 
 # For gcc-6
 before_install:
