@@ -43,6 +43,11 @@ private:
 	 */
 	int lengthOfShortestPath;
 
+	/**
+	 * Maze to be solved.
+	 */
+	Maze *maze;
+
 public:
 	/**
 	 * Initializes the breadth first search.
@@ -61,7 +66,7 @@ public:
 	 * @return          True if the maze have been solved. False if not.
 	 */
 	bool
-	solve(int &steps, Maze *maze);
+	solve(int &steps);
 
 	/**
 	 * Pushes unvisited, open fields reachable from given position into queue.
@@ -69,14 +74,14 @@ public:
 	 * @param maze    Maze to be solved.
 	 */
 	void
-	pushFreeAdjacentFields(Position *position, Maze *maze);
+	pushFreeAdjacentFields(Position *position);
 
 	/**
 	 * Takes a position from queue and analyses all adjacent fields.
 	 * @param maze    Maze to be solved.
 	 */
 	void
-	consumePosition(Maze *maze);
+	consumePosition();
 
 	/**
 	 * Plots the shortest way from position to start into maze.
@@ -84,7 +89,7 @@ public:
 	 * @param maze      Maze to be solved.
 	 */
 	void
-	plotSolution(Position position, Maze *maze);
+	plotSolution(Position position);
 
 	/**
 	 * A field given via position plus offset is checked for being open or the
@@ -101,7 +106,7 @@ public:
 	 */
 	void
 	consumeField(Position position, const int columnOffset,
-				 const int rowOffset, Maze *maze);
+				 const int rowOffset);
 
 	/**
 	 * Searches the positions next to the given position for the number of
@@ -113,8 +118,7 @@ public:
 	 *                  steps.
 	 */
 	Position *
-	searchForNextFieldOnShortestPath(Position position, int steps,
-									 Maze *maze);
+	searchForNextFieldOnShortestPath(Position position, int steps);
 
 	/**
 	 * Paint the matrix.
