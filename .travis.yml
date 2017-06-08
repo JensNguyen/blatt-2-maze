@@ -53,6 +53,8 @@ script:
   - cmake .. -G "Unix Makefiles"
   - dir
   - make && ctest
+  - cd $TRAVIS_BUILD_DIR
+  - chmod +x get_code_cov.sh
   - ./get_code_cov.sh
 
 # Generate and deploy documentation
