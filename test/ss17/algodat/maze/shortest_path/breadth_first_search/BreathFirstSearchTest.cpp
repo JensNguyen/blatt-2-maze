@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../../../../../../src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearch.h"
 
-TEST(BreadthFirstSearchLibTest, getIntField0)
+TEST(BreadthFirstSearchTest, getIntField0)
 {
 	int matrix[] = {1, 2, 3,
 					4, 5, 6,
@@ -10,7 +10,7 @@ TEST(BreadthFirstSearchLibTest, getIntField0)
 	EXPECT_EQ(5, result);
 }
 
-TEST(BreadthFirstSearchLibTest, getIntField1)
+TEST(BreadthFirstSearchTest, getIntField1)
 {
 	int matrix[] = {1, 2, 3,
 					4, 5, 6,
@@ -19,7 +19,7 @@ TEST(BreadthFirstSearchLibTest, getIntField1)
 	EXPECT_EQ(3, result);
 }
 
-TEST(BreadthFirstSearchLibTest, getIntField2)
+TEST(BreadthFirstSearchTest, getIntField2)
 {
 	int matrix[] = {1, 2, 3,
 					4, 5, 6,
@@ -28,7 +28,7 @@ TEST(BreadthFirstSearchLibTest, getIntField2)
 	EXPECT_EQ(7, result);
 }
 
-TEST(BreadthFirstSearchLibTest, getStartPos0)
+TEST(BreadthFirstSearchTest, getStartPos0)
 {
 	Maze *matrix = new Maze(3, 3);
 	matrix->setMazeField(0, 0, Maze::Wall);
@@ -48,7 +48,7 @@ TEST(BreadthFirstSearchLibTest, getStartPos0)
 	EXPECT_EQ(1, result->getRow());
 }
 
-TEST(BreadthFirstSearchLibTest, getStartPos1)
+TEST(BreadthFirstSearchTest, getStartPos1)
 {
 	Maze *matrix = new Maze(3, 3);
 	matrix->setMazeField(0, 0, Maze::Wall);
@@ -67,7 +67,7 @@ TEST(BreadthFirstSearchLibTest, getStartPos1)
 	EXPECT_EQ(1, result->getColumn());
 	EXPECT_EQ(0, result->getRow());
 }
-TEST(BreadthFirstSearchLibTest, getStartPos2)
+TEST(BreadthFirstSearchTest, getStartPos2)
 {
 	Maze *matrix = new Maze(3, 3);
 	matrix->setMazeField(0, 0, Maze::Wall);
@@ -87,7 +87,7 @@ TEST(BreadthFirstSearchLibTest, getStartPos2)
 	EXPECT_EQ(2, result->getRow());
 }
 
-TEST(BreadthFirstSearchLibTest, setIntField0)
+TEST(BreadthFirstSearchTest, setIntField0)
 {
 	int matrix[] = {0, 0, 0,
 					0, 0, 0,
@@ -97,7 +97,7 @@ TEST(BreadthFirstSearchLibTest, setIntField0)
 	EXPECT_EQ(1, result);
 }
 
-TEST(BreadthFirstSearchLibTest, setIntField1)
+TEST(BreadthFirstSearchTest, setIntField1)
 {
 	int matrix[] = {0, 0, 0,
 					0, 0, 0,
@@ -107,7 +107,7 @@ TEST(BreadthFirstSearchLibTest, setIntField1)
 	EXPECT_EQ(1, result);
 }
 
-TEST(BreadthFirstSearchLibTest, settIntField2)
+TEST(BreadthFirstSearchTest, settIntField2)
 {
 	int matrix[] = {0, 0, 0,
 					0, 0, 0,
@@ -115,4 +115,402 @@ TEST(BreadthFirstSearchLibTest, settIntField2)
 	BreadthFirstSearch::setField(3, 3, matrix, 0, 2, new int(1));
 	int result = BreadthFirstSearch::getField(3, 3, matrix, 0, 2);
 	EXPECT_EQ(1, result);
+}
+
+TEST(BreadthFirstSearchTest, pushFreeAdjacentFields)
+{
+	Maze *matrix = new Maze(3, 3);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Wall);
+	matrix->setMazeField(2, 2, Maze::Wall);
+	matrix->setMazeField(2, 2, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position *startPos = bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start);
+
+	bfs.pushFreeAdjacentFields(startPos);
+
+	EXPECT_EQ(1, bfs.getPositionQueue()->size());
+	EXPECT_EQ(Position(1, 1), bfs.getPositionQueue()->front());
+}
+
+TEST(BreadthFirstSearchTest, pushFreeAdjacentFields1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::Wall);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position *startPos = new Position(1, 1);
+
+	bfs.pushFreeAdjacentFields(startPos);
+
+	EXPECT_EQ(2, bfs.getPositionQueue()->size());
+
+	Position first = bfs.getPositionQueue()->front();
+	bfs.getPositionQueue()->pop();
+	Position second = bfs.getPositionQueue()->front();
+
+	EXPECT_TRUE((first == Position(1, 2) && second == Position(2, 1))
+					|| (first == Position(2, 1) && second == Position(1, 2)));
+}
+
+TEST(BreadthFirstSearchTest, pushFreeAdjacentFields2)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::Wall);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position *startPos = new Position(2, 2);
+
+	bfs.pushFreeAdjacentFields(startPos);
+
+	EXPECT_EQ(2, bfs.getPositionQueue()->size());
+
+	Position first = bfs.getPositionQueue()->front();
+	bfs.getPositionQueue()->pop();
+	Position second = bfs.getPositionQueue()->front();
+
+	EXPECT_TRUE((first == Position(2, 1) && second == Position(1, 2))
+					|| (first == Position(1, 2) && second == Position(2, 1)));
+}
+
+TEST(BreadthFirstSearchTest, consumePosition)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::Wall);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position *startPos = bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start);
+
+	bfs.pushFreeAdjacentFields(startPos);
+
+	bfs.consumePosition();
+
+	EXPECT_EQ(2, bfs.getPositionQueue()->size());
+
+	Position first = bfs.getPositionQueue()->front();
+	bfs.getPositionQueue()->pop();
+	Position second = bfs.getPositionQueue()->front();
+
+	EXPECT_TRUE((first == Position(1, 2) && second == Position(2, 1))
+					|| (first == Position(2, 1) && second == Position(1, 2)));
+}
+
+TEST(BreadthFirstSearchTest, consumeField)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::Wall);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::End);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position startPos = Position(2, 2);
+
+	bfs.consumeField(startPos, 0, -1);
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 0));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 1));
+	EXPECT_EQ(1, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 1));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 2));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 3));
+
+	EXPECT_TRUE(bfs.getLastField() == nullptr);
+}
+
+TEST(BreadthFirstSearchTest, consumeField1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position startPos = Position(2, 2);
+
+	bfs.consumeField(startPos, 1, 0);
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 0));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 1));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 2));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 3));
+
+	EXPECT_TRUE(*bfs.getLastField() == Position(2, 2));
+}
+
+TEST(BreadthFirstSearchTest, consumeField2)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	Position startPos = Position(2, 2);
+
+	bfs.consumeField(startPos, 0, 1);
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 0));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 0));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 1));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 1));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 2));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 2));
+
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 0, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 1, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 2, 3));
+	EXPECT_EQ(0, bfs.getField(matrix->getWidth(), matrix->getHeight(), bfs.getSolution(), 3, 3));
+
+	EXPECT_TRUE(bfs.getLastField() == nullptr);
+}
+
+TEST(BreadthFirstSearchTest, searchForNextFieldOnShortestPath)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Wall);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	bfs.pushFreeAdjacentFields(bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start));
+
+	bfs.consumePosition();
+	bfs.consumePosition();
+	bfs.consumePosition();
+
+	Position *result = bfs.searchForNextFieldOnShortestPath(*bfs.getLastField(), 2);
+
+	EXPECT_TRUE(*result == Position(2, 1));
+}
+
+TEST(BreadthFirstSearchTest, plotSolution)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Wall);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	bfs.pushFreeAdjacentFields(bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start));
+
+	bfs.consumePosition();
+	bfs.consumePosition();
+	bfs.consumePosition();
+
+	bfs.plotSolution(*bfs.getLastField());
+
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(0, 0));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(1, 0));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(2, 0));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(3, 0));
+
+	EXPECT_TRUE(Maze::Start == matrix->getMazeField(0, 1));
+	EXPECT_TRUE(Maze::Result == matrix->getMazeField(1, 1));
+	EXPECT_TRUE(Maze::Result == matrix->getMazeField(2, 1));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(3, 1));
+
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(0, 2));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(1, 2));
+	EXPECT_TRUE(Maze::Result == matrix->getMazeField(2, 2));
+	EXPECT_TRUE(Maze::End == matrix->getMazeField(3, 2));
+
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(0, 3));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(1, 3));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(2, 3));
+	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(3, 3));
 }

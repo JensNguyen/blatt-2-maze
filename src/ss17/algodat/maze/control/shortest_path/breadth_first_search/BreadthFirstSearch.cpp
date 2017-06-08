@@ -118,7 +118,7 @@ BreadthFirstSearch::consumeField(Position position,
 
 Position *
 BreadthFirstSearch::searchForNextFieldOnShortestPath(
-	Position position, int steps)
+	Position position, int steps) const
 {
 	int result = BreadthFirstSearch::getField(maze->getWidth(),
 											  maze->getHeight(), solution, position.getColumn(),
@@ -159,6 +159,40 @@ BreadthFirstSearch::paintMatrix(const int COLUMNS, const int ROWS,
 		{
 			x = matrix[row * COLUMNS + column];
 			cout << x;
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
+void
+BreadthFirstSearch::paintMatrix(Maze *maze)
+{
+	int x;
+	for (int row = 0; row < maze->getHeight(); row++)
+	{
+		for (int column = 0; column < maze->getWidth(); column++)
+		{
+			x = maze->getMazeField(column, row);
+			switch(x){
+				case Maze::Start:
+					cout << 'S';
+					break;
+				case Maze::Wall:
+					cout << '#';
+					break;
+				case Maze::Way:
+					cout << '.';
+					break;
+				case Maze::Result:
+					cout << '+';
+					break;
+				case Maze::End:
+					cout << 'G';
+					break;
+				default:
+					throw invalid_argument("Invalid maze field: " + x);
+			}
 		}
 		cout << endl;
 	}
@@ -231,4 +265,29 @@ BreadthFirstSearch::setField(const int COLUMNS, const int ROWS,
 		throw invalid_argument("You can only edit fields which are set "
 								   "to zero!");
 	matrix[index] = *content;
+}
+int *
+BreadthFirstSearch::getSolution() const
+{
+	return solution;
+}
+queue<Position> *
+BreadthFirstSearch::getPositionQueue() const
+{
+	return positionQueue;
+}
+Position *
+BreadthFirstSearch::getLastField() const
+{
+	return lastField;
+}
+int
+BreadthFirstSearch::getLengthOfShortestPath() const
+{
+	return lengthOfShortestPath;
+}
+Maze *
+BreadthFirstSearch::getMaze() const
+{
+	return maze;
 }

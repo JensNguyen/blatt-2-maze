@@ -118,7 +118,7 @@ public:
 	 *                  steps.
 	 */
 	Position *
-	searchForNextFieldOnShortestPath(Position position, int steps);
+	searchForNextFieldOnShortestPath(Position position, int steps) const;
 
 	/**
 	 * Paint the matrix.
@@ -128,6 +128,13 @@ public:
 	 */
 	static void
 	paintMatrix(const int COLUMNS, const int ROWS, int matrix[]);
+
+	/**
+	 * Paint the matrix.
+	 * @param maze	Maze to be painted.
+	 */
+	void
+	paintMatrix(Maze *maze);
 
 	/**
 	 * Returns the value in the specified column and row at the matrix.
@@ -181,6 +188,21 @@ public:
 	static void
 	setField(const int COLUMNS, const int ROWS, int *matrix,
 			 const int column, const int row, int *content);
+
+	int *
+	getSolution() const;
+
+	queue<Position> *
+	getPositionQueue() const;
+
+	Position *
+	getLastField() const;
+
+	int
+	getLengthOfShortestPath() const;
+
+	Maze *
+	getMaze() const;
 };
 
 #endif //MAZE_BREATHFIRSTSEARCHLIB_H
