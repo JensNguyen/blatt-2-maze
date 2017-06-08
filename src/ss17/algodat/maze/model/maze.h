@@ -13,6 +13,7 @@ public:
     enum MazeSymbols{Wall=0, Way, Start, End, Result};
 
     void setMazeField(const int &posWidth,const int &posHeight, MazeSymbols value);
+    void reset();
     int getMazeField(const int &posWidth, const int &posHeight);
     int getWidth() const;
     int getHeight() const;

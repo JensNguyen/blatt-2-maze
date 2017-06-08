@@ -33,6 +33,16 @@ void Maze::setMazeField(const int &posWidth,const int &posHeight, MazeSymbols va
 }
 
 /**
+ * @brief Maze::reset deletes the result path.
+ */
+void Maze::reset(){
+    for(int i = 0; i<(m_width*m_height); i++){
+        if(m_mazeArray[i] == Result)
+            m_mazeArray[i] = Way;
+    }
+}
+
+/**
  * @brief Maze::getMazeField returns the field on the deleivered position
  * @param posWidth the x-position
  * @param height the y-position

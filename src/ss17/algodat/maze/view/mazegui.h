@@ -32,6 +32,7 @@ public slots:
     void generateMaze();
     void updateMazeSlot();
     void updateLCDDisplaysSlot();
+    void resetMaze();
 
 private:
     Ui::MazeGui *ui;
