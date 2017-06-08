@@ -1,7 +1,9 @@
 # blatt-2-maze
 
-### build-Status
 [![Build Status](https://travis-ci.org/algdat/blatt-2-amf0.svg?branch=master)](https://travis-ci.org/algdat/blatt-2-maze.svg?branch=master)
+
+[![Build Status](https://codecov.io/gh/algdat/blatt-2-maze/coverage.svg?branch=master)](https://travis-ci.org/algdat/blatt-2-maze.svg?branch=master) 
+<a href="https://codecov.io/gh/algdat/blatt-2-maze/branch/master">details</a>
 
 ### Aufgabenverteilung
 Wall follower (Jens)  
@@ -21,8 +23,6 @@ Compiler: c++11
 JUnit-Tests: gTest  
 
 ### <a href="https://algdat.github.io/blatt-2-maze/doxygen_doc/html/">Dokumentation</a>
-
-### <a href="https://codecov.io/gh/algdat/blatt-2-maze/branch/master">Testabdeckung</a>
 
 ### ToDo
 - Website
