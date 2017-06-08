@@ -132,14 +132,14 @@ Generating docs for file /home/travis/build/algdat/blatt-2-m/home/travis/build/a
 /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearch.h:87: warning: argument 'maze' of command @param is not found in the argument list of BreadthFirstSearch::plotSolution(Position position)
 /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearch.h:72: warning: argument 'maze' of command @param is not found in the argument list of BreadthFirstSearch::pushFreeAdjacentFields(Position *position)
 /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/shortest_path/breadth_first_search/BreadthFirstSearch.h:112: warning: argument 'maze' of command @param is not found in the argument list of BreadthFirstSearch::searchForNextFieldOnShortestPath(Position position, int steps) const
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:40: warning: argument 'width' of command @param is not found in the argument list of MazeGui::drawEmptyMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:40: warning: argument 'height' of command @param is not found in the argument list of MazeGui::drawEmptyMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:62: warning: argument 'field' of command @param is not found in the argument list of MazeGui::drawMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:62: warning: argument 'width' of command @param is not found in the argument list of MazeGui::drawMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:62: warning: argument 'height' of command @param is not found in the argument list of MazeGui::drawMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:129: warning: argument 'maze' of command @param is not found in the argument list of MazeGui::generateMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:129: warning: argument 'width' of command @param is not found in the argument list of MazeGui::generateMaze()
-/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:129: warning: argument 'height' of command @param is not found in the argument list of MazeGui::generateMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:52: warning: argument 'width' of command @param is not found in the argument list of MazeGui::drawEmptyMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:52: warning: argument 'height' of command @param is not found in the argument list of MazeGui::drawEmptyMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:74: warning: argument 'field' of command @param is not found in the argument list of MazeGui::drawMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:74: warning: argument 'width' of command @param is not found in the argument list of MazeGui::drawMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:74: warning: argument 'height' of command @param is not found in the argument list of MazeGui::drawMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:142: warning: argument 'maze' of command @param is not found in the argument list of MazeGui::generateMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:142: warning: argument 'width' of command @param is not found in the argument list of MazeGui::generateMaze()
+/home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/view/mazegui.cpp:142: warning: argument 'height' of command @param is not found in the argument list of MazeGui::generateMaze()
 /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/mazealgorithm.cpp:4: warning: argument 'width' of command @param is not found in the argument list of MazeSolveAlgorithm::MazeSolveAlgorithm(Maze *maze)
 /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/mazealgorithm.cpp:4: warning: argument 'height' of command @param is not found in the argument list of MazeSolveAlgorithm::MazeSolveAlgorithm(Maze *maze)
 /home/travis/build/algdat/blatt-2-maze/src/ss17/algodat/maze/control/recursive_solver/recursivemazesolvealgorithm.cpp:4: warning: argument 'width' of command @param is not found in the argument list of RecursiveMazeSolveAlgorithm::RecursiveMazeSolveAlgorithm(Maze *maze)
@@ -192,5 +192,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 167/65536 hits=686 misses=173
+lookup cache used 169/65536 hits=700 misses=175
 finished...

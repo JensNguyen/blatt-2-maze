@@ -31,6 +31,8 @@ enum \hyperlink{class_maze_a7a19b706242876f2c597033b3374e7fa}{Maze\-Symbols} \{ 
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a4f187353f595193318ac66133a22287e}{Maze\-::$\sim$\-Maze} deletes the mazearray on the heap. \end{DoxyCompactList}\item 
 void \hyperlink{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{set\-Maze\-Field} (const int \&pos\-Width, const int \&pos\-Height, \hyperlink{class_maze_a7a19b706242876f2c597033b3374e7fa}{Maze\-Symbols} value)
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{Maze\-::set\-Maze\-Field} sets a field of the maze. \end{DoxyCompactList}\item 
+void \hyperlink{class_maze_aa3f5d822046f02e7a8ddf9dc2fba9a66}{reset} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_aa3f5d822046f02e7a8ddf9dc2fba9a66}{Maze\-::reset} deletes the result path. \end{DoxyCompactList}\item 
 int \hyperlink{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}{get\-Maze\-Field} (const int \&pos\-Width, const int \&pos\-Height)
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_maze_ac0fa84d55a0bf27854b1f8a7f0d7cebc}{Maze\-::get\-Maze\-Field} returns the field on the deleivered position. \end{DoxyCompactList}\item 
 int \hyperlink{class_maze_a55deabec3636694a2658ff902fe83a9b}{get\-Width} () const 
@@ -147,6 +149,17 @@ the value on the selected field
 \begin{DoxyReturn}{Returns}
 width 
 \end{DoxyReturn}
+\hypertarget{class_maze_aa3f5d822046f02e7a8ddf9dc2fba9a66}{\index{Maze@{Maze}!reset@{reset}}
+\index{reset@{reset}!Maze@{Maze}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_maze_aa3f5d822046f02e7a8ddf9dc2fba9a66}
+
+
+\hyperlink{class_maze_aa3f5d822046f02e7a8ddf9dc2fba9a66}{Maze\-::reset} deletes the result path. 
+
 \hypertarget{class_maze_a2d05ee06d2d4b6b9abe001e77a256c70}{\index{Maze@{Maze}!set\-Maze\-Field@{set\-Maze\-Field}}
 \index{set\-Maze\-Field@{set\-Maze\-Field}!Maze@{Maze}}
 \subsubsection[{set\-Maze\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void Maze\-::set\-Maze\-Field (
