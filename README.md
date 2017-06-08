@@ -22,6 +22,8 @@ JUnit-Tests: gTest
 
 ### <a href="https://algdat.github.io/blatt-2-maze/doxygen_doc/html/">Dokumentation</a>
 
+### <a href="https://codecov.io/gh/algdat/blatt-2-maze/branch/master">Testabdeckung</a>
+
 ### ToDo
 - Website
   
