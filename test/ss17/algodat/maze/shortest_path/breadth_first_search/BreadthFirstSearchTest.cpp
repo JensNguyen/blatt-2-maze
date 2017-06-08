@@ -67,6 +67,7 @@ TEST(BreadthFirstSearchTest, getStartPos1)
 	EXPECT_EQ(1, result->getColumn());
 	EXPECT_EQ(0, result->getRow());
 }
+
 TEST(BreadthFirstSearchTest, getStartPos2)
 {
 	Maze *matrix = new Maze(3, 3);
@@ -85,6 +86,24 @@ TEST(BreadthFirstSearchTest, getStartPos2)
 	Position *result = BreadthFirstSearch::getStartPos(3, 3, matrix, Maze::Start);
 	EXPECT_EQ(0, result->getColumn());
 	EXPECT_EQ(2, result->getRow());
+}
+
+TEST(BreadthFirstSearchTest, getStartPos3)
+{
+	Maze *matrix = new Maze(3, 3);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Result);
+
+	matrix->setMazeField(0, 1, Maze::End);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+
+	matrix->setMazeField(0, 2, Maze::Way);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Result);
+
+	EXPECT_TRUE(nullptr == BreadthFirstSearch::getStartPos(3, 3, matrix, Maze::Start));
 }
 
 TEST(BreadthFirstSearchTest, setIntField0)
@@ -461,6 +480,114 @@ TEST(BreadthFirstSearchTest, searchForNextFieldOnShortestPath)
 	EXPECT_TRUE(*result == Position(2, 1));
 }
 
+TEST(BreadthFirstSearchTest, searchForNextFieldOnShortestPath1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Wall);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	bfs.pushFreeAdjacentFields(bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start));
+
+	bfs.consumePosition();
+	bfs.consumePosition();
+	bfs.consumePosition();
+
+	Position *result = bfs.searchForNextFieldOnShortestPath(*bfs.getLastField(), 2);
+
+	EXPECT_TRUE(*result == Position(1, 2));
+}
+
+TEST(BreadthFirstSearchTest, searchForNextFieldOnShortestPath2)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::End);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Wall);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::Start);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	bfs.pushFreeAdjacentFields(bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start));
+
+	bfs.consumePosition();
+	bfs.consumePosition();
+	bfs.consumePosition();
+
+	Position *result = bfs.searchForNextFieldOnShortestPath(*bfs.getLastField(), 2);
+
+	EXPECT_TRUE(*result == Position(1, 2));
+}
+
+TEST(BreadthFirstSearchTest, searchForNextFieldOnShortestPath3)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::End);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Wall);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::Start);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	bfs.pushFreeAdjacentFields(bfs.getStartPos(matrix->getWidth(), matrix->getHeight(), matrix, Maze::Start));
+
+	bfs.consumePosition();
+	bfs.consumePosition();
+	bfs.consumePosition();
+
+	Position *result = bfs.searchForNextFieldOnShortestPath(*bfs.getLastField(), 2);
+
+	EXPECT_TRUE(*result == Position(2, 1));
+}
+
 TEST(BreadthFirstSearchTest, plotSolution)
 {
 	Maze *matrix = new Maze(4, 4);
@@ -513,4 +640,481 @@ TEST(BreadthFirstSearchTest, plotSolution)
 	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(1, 3));
 	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(2, 3));
 	EXPECT_TRUE(Maze::Wall == matrix->getMazeField(3, 3));
+}
+
+TEST(BreadthFirstSearchTest, solve)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Wall);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	int steps = -1;
+
+	EXPECT_TRUE(bfs.solve(steps));
+	EXPECT_EQ(2, steps);
+}
+
+TEST(BreadthFirstSearchTest, solve1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Wall);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	int steps = -1;
+
+	EXPECT_FALSE(bfs.solve(steps));
+	EXPECT_EQ(2, steps);
+}
+
+TEST(BreadthFirstSearchTest, lengthOfShortestPath)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Wall);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	int steps = -1;
+
+	bfs.solve(steps);
+	EXPECT_EQ(-1, bfs.getLengthOfShortestPath());
+}
+
+TEST(BreadthFirstSearchTest, lengthOfShortestPath1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	int steps = -1;
+
+	bfs.solve(steps);
+	EXPECT_EQ(3, bfs.getLengthOfShortestPath());
+}
+
+TEST(BreadthFirstSearchTest, getField)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.getField(3, 3, solution, -1, 2);
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, getField1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.getField(3, 3, solution, 1, 3);
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, getField2)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.getField(3, 3, solution, 2, -1);
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, getField3)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.getField(3, 3, solution, 3, 1);
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, setField)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.setField(3, 3, solution, -1, 2, new int(-1));
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, setField1)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.setField(3, 3, solution, 1, 3, new int(-1));
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, setField2)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.setField(3, 3, solution, 2, -1, new int(-1));
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, setField3)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.setField(3, 3, solution, 3, 1, new int(-1));
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "Row or column out of bounds!", err.what() );
+	}
+}
+
+TEST(BreadthFirstSearchTest, setField4)
+{
+	Maze *matrix = new Maze(4, 4);
+	matrix->setMazeField(0, 0, Maze::Wall);
+	matrix->setMazeField(1, 0, Maze::Wall);
+	matrix->setMazeField(2, 0, Maze::Wall);
+	matrix->setMazeField(3, 0, Maze::Wall);
+
+	matrix->setMazeField(0, 1, Maze::Start);
+	matrix->setMazeField(1, 1, Maze::Way);
+	matrix->setMazeField(2, 1, Maze::Way);
+	matrix->setMazeField(3, 1, Maze::Wall);
+
+	matrix->setMazeField(0, 2, Maze::Wall);
+	matrix->setMazeField(1, 2, Maze::Way);
+	matrix->setMazeField(2, 2, Maze::Way);
+	matrix->setMazeField(3, 2, Maze::End);
+
+	matrix->setMazeField(0, 3, Maze::Wall);
+	matrix->setMazeField(1, 3, Maze::Wall);
+	matrix->setMazeField(2, 3, Maze::Wall);
+	matrix->setMazeField(3, 3, Maze::Wall);
+
+	int *solution = new int[3 * 3]{};
+
+	BreadthFirstSearch bfs = BreadthFirstSearch(matrix);
+
+	try
+	{
+		bfs.setField(3, 3, solution, 1, 1, new int(1));
+		bfs.setField(3, 3, solution, 1, 1, new int(1));
+		FAIL();
+	}
+	catch( const invalid_argument& err )
+	{
+		// check exception
+		ASSERT_STREQ( "You can only edit fields which are set "
+						  "to zero!", err.what() );
+	}
 }

@@ -102,7 +102,7 @@ public:
 	 *                          field to check.
 	 * @param rowOffset         Adding this offset to the row-index of position
 	 *                          will give the row-index of the field to check.
-	 * @param maze            Maze to be solved.
+	 * @param maze            	Maze to be solved.
 	 */
 	void
 	consumeField(Position position, const int columnOffset,
