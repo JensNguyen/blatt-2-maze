@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['recursivemazesolvealgorithm',['RecursiveMazeSolveAlgorithm',['../class_recursive_maze_solve_algorithm.html#a62a60de4fb81a35cae475eabc5a5a66e',1,'RecursiveMazeSolveAlgorithm']]],
-  ['redraw',['redraw',['../class_maze_solve_algorithm.html#ad2903ca429a66b0f7558e169ff2c47c3',1,'MazeSolveAlgorithm']]],
-  ['run',['run',['../class_maze_solve_algorithm.html#a3e545c01367136ed0a02d9bb6c2b3ede',1,'MazeSolveAlgorithm']]]
+  ['paintmatrix',['paintMatrix',['../class_breadth_first_search.html#aa17fd4a24cc6c9765b64ba2e536d84c8',1,'BreadthFirstSearch::paintMatrix(const int COLUMNS, const int ROWS, int matrix[])'],['../class_breadth_first_search.html#a05f93f3345839fd43f4b1b4f7692b675',1,'BreadthFirstSearch::paintMatrix(Maze *maze)']]],
+  ['plotsolution',['plotSolution',['../class_breadth_first_search.html#aff710f432b18251df00018f9a1603f19',1,'BreadthFirstSearch']]],
+  ['position',['Position',['../class_position.html#ac331f7bbdd71ea036613c4335c042e8e',1,'Position']]],
+  ['pushfreeadjacentfields',['pushFreeAdjacentFields',['../class_breadth_first_search.html#a466d9907ad4223398e65c56743c887fe',1,'BreadthFirstSearch']]]
 ];

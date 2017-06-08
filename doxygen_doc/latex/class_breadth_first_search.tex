@@ -12,17 +12,29 @@
 \item 
 \hyperlink{class_breadth_first_search_af56e60466779aa47b1b3c10a1a84d8ca}{$\sim$\-Breadth\-First\-Search} ()
 \item 
-bool \hyperlink{class_breadth_first_search_a76cba5b073874b17548a1fc7f427b0ba}{solve} (int \&steps, \hyperlink{class_maze}{Maze} $\ast$maze)
+bool \hyperlink{class_breadth_first_search_a0fccce0a839583c2e80eaacc1be8ed2e}{solve} (int \&steps)
 \item 
-void \hyperlink{class_breadth_first_search_a3c2f4c387d1c9d7b2b77cd21b7cd5eaf}{push\-Free\-Adjacent\-Fields} (\hyperlink{class_position}{Position} $\ast$position, \hyperlink{class_maze}{Maze} $\ast$maze)
+void \hyperlink{class_breadth_first_search_a466d9907ad4223398e65c56743c887fe}{push\-Free\-Adjacent\-Fields} (\hyperlink{class_position}{Position} $\ast$position)
 \item 
-void \hyperlink{class_breadth_first_search_af9c4a8b5c59e843cef67ec233c565814}{consume\-Position} (\hyperlink{class_maze}{Maze} $\ast$maze)
+void \hyperlink{class_breadth_first_search_a71c86843e6fd1927280edbbb8fef9c23}{consume\-Position} ()
 \item 
-void \hyperlink{class_breadth_first_search_ae8a209ef80bcdb071197ff2513b81342}{plot\-Solution} (\hyperlink{class_position}{Position} position, \hyperlink{class_maze}{Maze} $\ast$maze)
+void \hyperlink{class_breadth_first_search_aff710f432b18251df00018f9a1603f19}{plot\-Solution} (\hyperlink{class_position}{Position} position)
 \item 
-void \hyperlink{class_breadth_first_search_a87842502342c4e7390f7908df1735881}{consume\-Field} (\hyperlink{class_position}{Position} position, const int column\-Offset, const int row\-Offset, \hyperlink{class_maze}{Maze} $\ast$maze)
+void \hyperlink{class_breadth_first_search_a83527ad23d6f10bea0a91fe0aad1056d}{consume\-Field} (\hyperlink{class_position}{Position} position, const int column\-Offset, const int row\-Offset)
 \item 
-\hyperlink{class_position}{Position} $\ast$ \hyperlink{class_breadth_first_search_a4b0b6aa9f4b8b8604924e7cddd19f809}{search\-For\-Next\-Field\-On\-Shortest\-Path} (\hyperlink{class_position}{Position} position, int steps, \hyperlink{class_maze}{Maze} $\ast$maze)
+\hyperlink{class_position}{Position} $\ast$ \hyperlink{class_breadth_first_search_a31746f6d04a82b21a8c81a320fa61023}{search\-For\-Next\-Field\-On\-Shortest\-Path} (\hyperlink{class_position}{Position} position, int steps) const 
+\item 
+void \hyperlink{class_breadth_first_search_a05f93f3345839fd43f4b1b4f7692b675}{paint\-Matrix} (\hyperlink{class_maze}{Maze} $\ast$maze)
+\item 
+int $\ast$ \hyperlink{class_breadth_first_search_a5e5e17159bdda443af254af3f793b80f}{get\-Solution} () const 
+\item 
+queue$<$ \hyperlink{class_position}{Position} $>$ $\ast$ \hyperlink{class_breadth_first_search_af5345d1f260e617dc3d1d0636341a71c}{get\-Position\-Queue} () const 
+\item 
+\hyperlink{class_position}{Position} $\ast$ \hyperlink{class_breadth_first_search_a72d8df8632e4b6bc86afea0793025a48}{get\-Last\-Field} () const 
+\item 
+int \hyperlink{class_breadth_first_search_a36963ae576749a6aa36f2075f757b925}{get\-Length\-Of\-Shortest\-Path} () const 
+\item 
+\hyperlink{class_maze}{Maze} $\ast$ \hyperlink{class_breadth_first_search_a6a261f54e17f89a6f55a8b11ee6c8e3b}{get\-Maze} () const 
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -63,16 +75,15 @@ Initializes the breadth first search.
 Deletes all objects associated to the algorithm from the heap. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_breadth_first_search_a87842502342c4e7390f7908df1735881}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!consume\-Field@{consume\-Field}}
+\hypertarget{class_breadth_first_search_a83527ad23d6f10bea0a91fe0aad1056d}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!consume\-Field@{consume\-Field}}
 \index{consume\-Field@{consume\-Field}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{consume\-Field}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::consume\-Field (
 \begin{DoxyParamCaption}
 \item[{{\bf Position}}]{position, }
 \item[{const int}]{column\-Offset, }
-\item[{const int}]{row\-Offset, }
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{const int}]{row\-Offset}
 \end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_a87842502342c4e7390f7908df1735881}
+)}}\label{class_breadth_first_search_a83527ad23d6f10bea0a91fe0aad1056d}
 A field given via position plus offset is checked for being open or the goal. If the field is open it will be added to the queue and the number of steps required to reach it will be wrote to it. If it is the goal this will be communicated by setting last\-Field to position. 
 \begin{DoxyParams}{Parameters}
 {\em position} & Base position. \\
@@ -84,13 +95,13 @@ A field given via position plus offset is checked for being open or the goal. If
 {\em maze} & \hyperlink{class_maze}{Maze} to be solved. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_breadth_first_search_af9c4a8b5c59e843cef67ec233c565814}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!consume\-Position@{consume\-Position}}
+\hypertarget{class_breadth_first_search_a71c86843e6fd1927280edbbb8fef9c23}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!consume\-Position@{consume\-Position}}
 \index{consume\-Position@{consume\-Position}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{consume\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::consume\-Position (
 \begin{DoxyParamCaption}
-\item[{{\bf Maze} $\ast$}]{maze}
+{}
 \end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_af9c4a8b5c59e843cef67ec233c565814}
+)}}\label{class_breadth_first_search_a71c86843e6fd1927280edbbb8fef9c23}
 Takes a position from queue and analyses all adjacent fields. 
 \begin{DoxyParams}{Parameters}
 {\em maze} & \hyperlink{class_maze}{Maze} to be solved. \\
@@ -123,6 +134,41 @@ Returns the value in the specified column and row at the matrix. 0 1 2 3 0 x x x
 \begin{DoxyReturn}{Returns}
 Value at matrix given by column-\/ and rowindex. 
 \end{DoxyReturn}
+\hypertarget{class_breadth_first_search_a72d8df8632e4b6bc86afea0793025a48}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Last\-Field@{get\-Last\-Field}}
+\index{get\-Last\-Field@{get\-Last\-Field}!BreadthFirstSearch@{Breadth\-First\-Search}}
+\subsubsection[{get\-Last\-Field}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} $\ast$ Breadth\-First\-Search\-::get\-Last\-Field (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_breadth_first_search_a72d8df8632e4b6bc86afea0793025a48}
+\hypertarget{class_breadth_first_search_a36963ae576749a6aa36f2075f757b925}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Length\-Of\-Shortest\-Path@{get\-Length\-Of\-Shortest\-Path}}
+\index{get\-Length\-Of\-Shortest\-Path@{get\-Length\-Of\-Shortest\-Path}!BreadthFirstSearch@{Breadth\-First\-Search}}
+\subsubsection[{get\-Length\-Of\-Shortest\-Path}]{\setlength{\rightskip}{0pt plus 5cm}int Breadth\-First\-Search\-::get\-Length\-Of\-Shortest\-Path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_breadth_first_search_a36963ae576749a6aa36f2075f757b925}
+\hypertarget{class_breadth_first_search_a6a261f54e17f89a6f55a8b11ee6c8e3b}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Maze@{get\-Maze}}
+\index{get\-Maze@{get\-Maze}!BreadthFirstSearch@{Breadth\-First\-Search}}
+\subsubsection[{get\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Maze} $\ast$ Breadth\-First\-Search\-::get\-Maze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_breadth_first_search_a6a261f54e17f89a6f55a8b11ee6c8e3b}
+\hypertarget{class_breadth_first_search_af5345d1f260e617dc3d1d0636341a71c}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Position\-Queue@{get\-Position\-Queue}}
+\index{get\-Position\-Queue@{get\-Position\-Queue}!BreadthFirstSearch@{Breadth\-First\-Search}}
+\subsubsection[{get\-Position\-Queue}]{\setlength{\rightskip}{0pt plus 5cm}queue$<$ {\bf Position} $>$ $\ast$ Breadth\-First\-Search\-::get\-Position\-Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_breadth_first_search_af5345d1f260e617dc3d1d0636341a71c}
+\hypertarget{class_breadth_first_search_a5e5e17159bdda443af254af3f793b80f}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Solution@{get\-Solution}}
+\index{get\-Solution@{get\-Solution}!BreadthFirstSearch@{Breadth\-First\-Search}}
+\subsubsection[{get\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ Breadth\-First\-Search\-::get\-Solution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_breadth_first_search_a5e5e17159bdda443af254af3f793b80f}
 \hypertarget{class_breadth_first_search_a533670621ed3c1e3bfba89d667dab4c3}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Start\-Pos@{get\-Start\-Pos}}
 \index{get\-Start\-Pos@{get\-Start\-Pos}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{get\-Start\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} $\ast$ Breadth\-First\-Search\-::get\-Start\-Pos (
@@ -165,14 +211,25 @@ Paint the matrix.
 {\em matrix} & The matrix to be paint. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_breadth_first_search_ae8a209ef80bcdb071197ff2513b81342}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!plot\-Solution@{plot\-Solution}}
+\hypertarget{class_breadth_first_search_a05f93f3345839fd43f4b1b4f7692b675}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!paint\-Matrix@{paint\-Matrix}}
+\index{paint\-Matrix@{paint\-Matrix}!BreadthFirstSearch@{Breadth\-First\-Search}}
+\subsubsection[{paint\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::paint\-Matrix (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}}\label{class_breadth_first_search_a05f93f3345839fd43f4b1b4f7692b675}
+Paint the matrix. 
+\begin{DoxyParams}{Parameters}
+{\em maze} & \hyperlink{class_maze}{Maze} to be painted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_breadth_first_search_aff710f432b18251df00018f9a1603f19}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!plot\-Solution@{plot\-Solution}}
 \index{plot\-Solution@{plot\-Solution}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{plot\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::plot\-Solution (
 \begin{DoxyParamCaption}
-\item[{{\bf Position}}]{position, }
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{{\bf Position}}]{position}
 \end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_ae8a209ef80bcdb071197ff2513b81342}
+)}}\label{class_breadth_first_search_aff710f432b18251df00018f9a1603f19}
 Plots the shortest way from position to start into maze. 
 \begin{DoxyParams}{Parameters}
 {\em position} & \hyperlink{class_position}{Position} to plot the shortest way from start to. \\
@@ -180,14 +237,13 @@ Plots the shortest way from position to start into maze.
 {\em maze} & \hyperlink{class_maze}{Maze} to be solved. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_breadth_first_search_a3c2f4c387d1c9d7b2b77cd21b7cd5eaf}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!push\-Free\-Adjacent\-Fields@{push\-Free\-Adjacent\-Fields}}
+\hypertarget{class_breadth_first_search_a466d9907ad4223398e65c56743c887fe}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!push\-Free\-Adjacent\-Fields@{push\-Free\-Adjacent\-Fields}}
 \index{push\-Free\-Adjacent\-Fields@{push\-Free\-Adjacent\-Fields}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{push\-Free\-Adjacent\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::push\-Free\-Adjacent\-Fields (
 \begin{DoxyParamCaption}
-\item[{{\bf Position} $\ast$}]{position, }
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{{\bf Position} $\ast$}]{position}
 \end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_a3c2f4c387d1c9d7b2b77cd21b7cd5eaf}
+)}}\label{class_breadth_first_search_a466d9907ad4223398e65c56743c887fe}
 Pushes unvisited, open fields reachable from given position into queue. 
 \begin{DoxyParams}{Parameters}
 {\em position} & Actual position in maze. \\
@@ -195,15 +251,14 @@ Pushes unvisited, open fields reachable from given position into queue.
 {\em maze} & \hyperlink{class_maze}{Maze} to be solved. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_breadth_first_search_a4b0b6aa9f4b8b8604924e7cddd19f809}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!search\-For\-Next\-Field\-On\-Shortest\-Path@{search\-For\-Next\-Field\-On\-Shortest\-Path}}
+\hypertarget{class_breadth_first_search_a31746f6d04a82b21a8c81a320fa61023}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!search\-For\-Next\-Field\-On\-Shortest\-Path@{search\-For\-Next\-Field\-On\-Shortest\-Path}}
 \index{search\-For\-Next\-Field\-On\-Shortest\-Path@{search\-For\-Next\-Field\-On\-Shortest\-Path}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{search\-For\-Next\-Field\-On\-Shortest\-Path}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} $\ast$ Breadth\-First\-Search\-::search\-For\-Next\-Field\-On\-Shortest\-Path (
 \begin{DoxyParamCaption}
 \item[{{\bf Position}}]{position, }
-\item[{int}]{steps, }
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{int}]{steps}
 \end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_a4b0b6aa9f4b8b8604924e7cddd19f809}
+) const}}\label{class_breadth_first_search_a31746f6d04a82b21a8c81a320fa61023}
 Searches the positions next to the given position for the number of steps given. 
 \begin{DoxyParams}{Parameters}
 {\em position} & Base position. \\
@@ -243,14 +298,13 @@ Sets the field specified by column and row to the given content. You can only ed
 {\em content} & Content to be set. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_breadth_first_search_a76cba5b073874b17548a1fc7f427b0ba}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!solve@{solve}}
+\hypertarget{class_breadth_first_search_a0fccce0a839583c2e80eaacc1be8ed2e}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!solve@{solve}}
 \index{solve@{solve}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{solve}]{\setlength{\rightskip}{0pt plus 5cm}bool Breadth\-First\-Search\-::solve (
 \begin{DoxyParamCaption}
-\item[{int \&}]{steps, }
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{int \&}]{steps}
 \end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_a76cba5b073874b17548a1fc7f427b0ba}
+)}}\label{class_breadth_first_search_a0fccce0a839583c2e80eaacc1be8ed2e}
 Starts solving the maze. 
 \begin{DoxyParams}{Parameters}
 {\em steps} & Fields visited till termination of the algorithm. \\
