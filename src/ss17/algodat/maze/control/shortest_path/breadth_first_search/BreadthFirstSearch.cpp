@@ -11,6 +11,7 @@ BreadthFirstSearch::BreadthFirstSearch(Maze *maze)
 	this->positionQueue = new queue<Position>();
 	this->lastField = nullptr;
 	this->lengthOfShortestPath = -1;
+	this->maze = maze;
 };
 
 BreadthFirstSearch::~BreadthFirstSearch()
@@ -20,14 +21,14 @@ BreadthFirstSearch::~BreadthFirstSearch()
 }
 
 bool
-BreadthFirstSearch::solve(int &steps, Maze *maze)
+BreadthFirstSearch::solve(int &steps)
 {
 	bool solved = false;
 	pushFreeAdjacentFields(BreadthFirstSearch::getStartPos(
-		maze->getWidth(), maze->getHeight(), maze, Maze::Start), maze);
+		maze->getWidth(), maze->getHeight(), maze, Maze::Start));
 	while (!positionQueue->empty() && lastField == nullptr)
 	{
-		consumePosition(maze);
+		consumePosition();
 		steps++;
 	}
 
@@ -36,39 +37,38 @@ BreadthFirstSearch::solve(int &steps, Maze *maze)
 		lengthOfShortestPath = BreadthFirstSearch::getField(maze->getWidth(),
 															maze->getHeight(), solution, lastField->getColumn(),
 															lastField->getRow());
-		plotSolution(*lastField, maze);
+		plotSolution(*lastField);
 		solved = true;
 	}
 	return solved;
 }
 
 void
-BreadthFirstSearch::pushFreeAdjacentFields(Position *position,
-										   Maze *maze)
+BreadthFirstSearch::pushFreeAdjacentFields(Position *position)
 {
 	// consume right field
-	consumeField(*position, 1, 0, maze);
+	consumeField(*position, 1, 0);
 	// consume left field
 	if (lastField == nullptr)
-		consumeField(*position, -1, 0, maze);
+		consumeField(*position, -1, 0);
 	// consume upper field
 	if (lastField == nullptr)
-		consumeField(*position, 0, 1, maze);
+		consumeField(*position, 0, 1);
 	// consume lower field
 	if (lastField == nullptr)
-		consumeField(*position, 0, -1, maze);
+		consumeField(*position, 0, -1);
 }
 
 void
-BreadthFirstSearch::consumePosition(Maze *maze)
+BreadthFirstSearch::consumePosition()
 {
 	Position position = positionQueue->front();
-	pushFreeAdjacentFields(&position, maze);
+	pushFreeAdjacentFields(&position);
 	positionQueue->pop();
 }
 
 void
-BreadthFirstSearch::plotSolution(Position position, Maze *maze)
+BreadthFirstSearch::plotSolution(Position position)
 {
 	maze->setMazeField(position.getColumn(), position.getRow(), Maze::Result);
 	int steps = BreadthFirstSearch::getField(maze->getWidth(),
@@ -76,14 +76,13 @@ BreadthFirstSearch::plotSolution(Position position, Maze *maze)
 	int newSteps = steps - 1;
 	if (newSteps != 0)
 		plotSolution(*searchForNextFieldOnShortestPath(
-			position, newSteps, maze),
-					 maze);
+			position, newSteps));
 }
 
 void
 BreadthFirstSearch::consumeField(Position position,
 								 const int columnOffset,
-								 const int rowOffset, Maze *maze)
+								 const int rowOffset)
 {
 	Position fieldToBeConsumed = Position(position.getColumn() + columnOffset,
 										  position.getRow() + rowOffset);
@@ -119,7 +118,7 @@ BreadthFirstSearch::consumeField(Position position,
 
 Position *
 BreadthFirstSearch::searchForNextFieldOnShortestPath(
-	Position position, int steps, Maze *maze)
+	Position position, int steps) const
 {
 	int result = BreadthFirstSearch::getField(maze->getWidth(),
 											  maze->getHeight(), solution, position.getColumn(),
@@ -160,6 +159,40 @@ BreadthFirstSearch::paintMatrix(const int COLUMNS, const int ROWS,
 		{
 			x = matrix[row * COLUMNS + column];
 			cout << x;
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
+void
+BreadthFirstSearch::paintMatrix(Maze *maze)
+{
+	int x;
+	for (int row = 0; row < maze->getHeight(); row++)
+	{
+		for (int column = 0; column < maze->getWidth(); column++)
+		{
+			x = maze->getMazeField(column, row);
+			switch(x){
+				case Maze::Start:
+					cout << 'S';
+					break;
+				case Maze::Wall:
+					cout << '#';
+					break;
+				case Maze::Way:
+					cout << '.';
+					break;
+				case Maze::Result:
+					cout << '+';
+					break;
+				case Maze::End:
+					cout << 'G';
+					break;
+				default:
+					throw invalid_argument("Invalid maze field: " + x);
+			}
 		}
 		cout << endl;
 	}
@@ -232,4 +265,29 @@ BreadthFirstSearch::setField(const int COLUMNS, const int ROWS,
 		throw invalid_argument("You can only edit fields which are set "
 								   "to zero!");
 	matrix[index] = *content;
+}
+int *
+BreadthFirstSearch::getSolution() const
+{
+	return solution;
+}
+queue<Position> *
+BreadthFirstSearch::getPositionQueue() const
+{
+	return positionQueue;
+}
+Position *
+BreadthFirstSearch::getLastField() const
+{
+	return lastField;
+}
+int
+BreadthFirstSearch::getLengthOfShortestPath() const
+{
+	return lengthOfShortestPath;
+}
+Maze *
+BreadthFirstSearch::getMaze() const
+{
+	return maze;
 }

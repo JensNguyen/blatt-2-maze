@@ -46,6 +46,8 @@ public:
 	 */
 	int
 	getRow();
+
+	bool operator==(const Position& other) const;
 };
 
 #endif //MAZE_POSITION_H
