@@ -57,5 +57,6 @@ script:
 # Generate and deploy documentation
 after_success:
   - cd $TRAVIS_BUILD_DIR
-  - chmod +x documentation.sh
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./documentation.sh; fi
+  - chmod +x generateDocumentationAndDeploy.sh
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./generateDocumentationAndDeploy.sh; fi
+  - bash <(curl -s https://codecov.io/bash)

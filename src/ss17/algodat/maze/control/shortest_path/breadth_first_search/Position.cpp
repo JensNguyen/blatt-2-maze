@@ -17,3 +17,8 @@ Position::getRow()
 {
 	return this->yPos;
 }
+
+bool Position::operator==(const Position& other) const {
+	return this->xPos == other.xPos
+		&& this->yPos == other.yPos;
+}
