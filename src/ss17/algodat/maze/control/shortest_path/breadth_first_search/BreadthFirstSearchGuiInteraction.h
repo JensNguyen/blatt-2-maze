@@ -16,7 +16,7 @@ class MazeGui;
 using namespace std;
 
 /**
- * Wraps logic of BreathFirstSearch into class extending MazeSolveAlgorithm.
+ * @brief	Wraps logic of BreathFirstSearch into class extending MazeSolveAlgorithm.
  */
 class BreadthFirstSearchGuiInteraction : public MazeSolveAlgorithm
 {

@@ -12,7 +12,7 @@
 using namespace std;
 
 /**
- * Algorithm to find shortest way through maze by using breadth fist search.
+ * @brief	Algorithm to find shortest way through maze by using breadth fist search.
  */
 class BreadthFirstSearch
 {

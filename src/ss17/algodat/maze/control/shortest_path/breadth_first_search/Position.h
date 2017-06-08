@@ -10,7 +10,7 @@
 using namespace std;
 
 /**
- * Structure allowing to exchange positions with two dimensions.
+ * @brief	Structure allowing to exchange positions with two dimensions.
  */
 class Position
 {
