@@ -7,7 +7,6 @@ var searchData=
   ['getheight',['getHeight',['../class_maze.html#a3cfe8e5f193ff2ed9d6915c8841d376a',1,'Maze']]],
   ['getlastfield',['getLastField',['../class_breadth_first_search.html#a72d8df8632e4b6bc86afea0793025a48',1,'BreadthFirstSearch']]],
   ['getlengthofshortestpath',['getLengthOfShortestPath',['../class_breadth_first_search.html#a36963ae576749a6aa36f2075f757b925',1,'BreadthFirstSearch']]],
-  ['getmaze',['getMaze',['../class_breadth_first_search.html#a6a261f54e17f89a6f55a8b11ee6c8e3b',1,'BreadthFirstSearch']]],
   ['getmazefield',['getMazeField',['../class_maze.html#ac0fa84d55a0bf27854b1f8a7f0d7cebc',1,'Maze']]],
   ['getpositionqueue',['getPositionQueue',['../class_breadth_first_search.html#af5345d1f260e617dc3d1d0636341a71c',1,'BreadthFirstSearch']]],
   ['getrow',['getRow',['../class_position.html#a2f652c11ca0721d8335297e28cc26805',1,'Position']]],

@@ -24,8 +24,6 @@ void \hyperlink{class_breadth_first_search_a83527ad23d6f10bea0a91fe0aad1056d}{co
 \item 
 \hyperlink{class_position}{Position} $\ast$ \hyperlink{class_breadth_first_search_a31746f6d04a82b21a8c81a320fa61023}{search\-For\-Next\-Field\-On\-Shortest\-Path} (\hyperlink{class_position}{Position} position, int steps) const 
 \item 
-void \hyperlink{class_breadth_first_search_a05f93f3345839fd43f4b1b4f7692b675}{paint\-Matrix} (\hyperlink{class_maze}{Maze} $\ast$maze)
-\item 
 int $\ast$ \hyperlink{class_breadth_first_search_a5e5e17159bdda443af254af3f793b80f}{get\-Solution} () const 
 \item 
 queue$<$ \hyperlink{class_position}{Position} $>$ $\ast$ \hyperlink{class_breadth_first_search_af5345d1f260e617dc3d1d0636341a71c}{get\-Position\-Queue} () const 
@@ -33,13 +31,9 @@ queue$<$ \hyperlink{class_position}{Position} $>$ $\ast$ \hyperlink{class_breadt
 \hyperlink{class_position}{Position} $\ast$ \hyperlink{class_breadth_first_search_a72d8df8632e4b6bc86afea0793025a48}{get\-Last\-Field} () const 
 \item 
 int \hyperlink{class_breadth_first_search_a36963ae576749a6aa36f2075f757b925}{get\-Length\-Of\-Shortest\-Path} () const 
-\item 
-\hyperlink{class_maze}{Maze} $\ast$ \hyperlink{class_breadth_first_search_a6a261f54e17f89a6f55a8b11ee6c8e3b}{get\-Maze} () const 
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-static void \hyperlink{class_breadth_first_search_aa17fd4a24cc6c9765b64ba2e536d84c8}{paint\-Matrix} (const int C\-O\-L\-U\-M\-N\-S, const int R\-O\-W\-S, int matrix\mbox{[}$\,$\mbox{]})
 \item 
 static int \hyperlink{class_breadth_first_search_a1e5271b5561e4fe52b7e67917f72511e}{get\-Field} (const int C\-O\-L\-U\-M\-N\-S, const int R\-O\-W\-S, int $\ast$matrix, const int column, const int row)
 \item 
@@ -148,13 +142,6 @@ Value at matrix given by column-\/ and rowindex.
 {}
 \end{DoxyParamCaption}
 ) const}}\label{class_breadth_first_search_a36963ae576749a6aa36f2075f757b925}
-\hypertarget{class_breadth_first_search_a6a261f54e17f89a6f55a8b11ee6c8e3b}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Maze@{get\-Maze}}
-\index{get\-Maze@{get\-Maze}!BreadthFirstSearch@{Breadth\-First\-Search}}
-\subsubsection[{get\-Maze}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Maze} $\ast$ Breadth\-First\-Search\-::get\-Maze (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const}}\label{class_breadth_first_search_a6a261f54e17f89a6f55a8b11ee6c8e3b}
 \hypertarget{class_breadth_first_search_af5345d1f260e617dc3d1d0636341a71c}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!get\-Position\-Queue@{get\-Position\-Queue}}
 \index{get\-Position\-Queue@{get\-Position\-Queue}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{get\-Position\-Queue}]{\setlength{\rightskip}{0pt plus 5cm}queue$<$ {\bf Position} $>$ $\ast$ Breadth\-First\-Search\-::get\-Position\-Queue (
@@ -193,36 +180,6 @@ Looks for the position of start. The start field should be contained in the boar
 \begin{DoxyReturn}{Returns}
 The position of the start field, or nullptr if no start field was found. 
 \end{DoxyReturn}
-\hypertarget{class_breadth_first_search_aa17fd4a24cc6c9765b64ba2e536d84c8}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!paint\-Matrix@{paint\-Matrix}}
-\index{paint\-Matrix@{paint\-Matrix}!BreadthFirstSearch@{Breadth\-First\-Search}}
-\subsubsection[{paint\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::paint\-Matrix (
-\begin{DoxyParamCaption}
-\item[{const int}]{C\-O\-L\-U\-M\-N\-S, }
-\item[{const int}]{R\-O\-W\-S, }
-\item[{int}]{matrix\mbox{[}$\,$\mbox{]}}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_breadth_first_search_aa17fd4a24cc6c9765b64ba2e536d84c8}
-Paint the matrix. 
-\begin{DoxyParams}{Parameters}
-{\em C\-O\-L\-U\-M\-N\-S} & Column count of matrix. \\
-\hline
-{\em R\-O\-W\-S} & Row count of matrix. \\
-\hline
-{\em matrix} & The matrix to be paint. \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_breadth_first_search_a05f93f3345839fd43f4b1b4f7692b675}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!paint\-Matrix@{paint\-Matrix}}
-\index{paint\-Matrix@{paint\-Matrix}!BreadthFirstSearch@{Breadth\-First\-Search}}
-\subsubsection[{paint\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::paint\-Matrix (
-\begin{DoxyParamCaption}
-\item[{{\bf Maze} $\ast$}]{maze}
-\end{DoxyParamCaption}
-)}}\label{class_breadth_first_search_a05f93f3345839fd43f4b1b4f7692b675}
-Paint the matrix. 
-\begin{DoxyParams}{Parameters}
-{\em maze} & \hyperlink{class_maze}{Maze} to be painted. \\
-\hline
-\end{DoxyParams}
 \hypertarget{class_breadth_first_search_aff710f432b18251df00018f9a1603f19}{\index{Breadth\-First\-Search@{Breadth\-First\-Search}!plot\-Solution@{plot\-Solution}}
 \index{plot\-Solution@{plot\-Solution}!BreadthFirstSearch@{Breadth\-First\-Search}}
 \subsubsection[{plot\-Solution}]{\setlength{\rightskip}{0pt plus 5cm}void Breadth\-First\-Search\-::plot\-Solution (
