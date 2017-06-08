@@ -25,6 +25,10 @@ MazeGui::MazeGui(QWidget *parent) :
     //button generate random maze
     connect(ui->generateMazeButton, SIGNAL(pressed()),
             this,SLOT(generateMaze()));
+
+    //bottn to reset the maze
+    connect(ui->resetButton, SIGNAL(pressed()),
+            this,SLOT(resetMaze()));
 }
 
 /**
@@ -35,6 +39,14 @@ void MazeGui::setMaze(Maze *maze)
   m_maze = maze;
 }
 
+/**
+ * @brief MazeGui::resetMaze resets the maze.
+ */
+void MazeGui::resetMaze()
+{
+    m_maze->reset();
+    drawMaze();
+}
 
 /**
  * @brief MazeGui::generateField Generates a Maze whith the delivered width and height
@@ -116,6 +128,7 @@ void MazeGui::startAlgorithm()
        case ShortestPath:
         m_algorithm = new BreadthFirstSearchGuiInteraction(m_maze);
         break;
+
     default:
         break;
     }
