@@ -1,2 +1,4 @@
 .idea
 cmake-build-debug
+/src/ss17/algodat/maze/control/shortest_path/breadth_first_search/DebugHelper.cpp
+/src/ss17/algodat/maze/control/shortest_path/breadth_first_search/DebugHelper.h

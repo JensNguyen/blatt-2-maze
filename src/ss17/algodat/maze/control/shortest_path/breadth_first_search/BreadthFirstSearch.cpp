@@ -148,57 +148,6 @@ BreadthFirstSearch::searchForNextFieldOnShortestPath(
 	return nullptr;
 }
 
-void
-BreadthFirstSearch::paintMatrix(const int COLUMNS, const int ROWS,
-								int matrix[])
-{
-	int x;
-	for (int row = 0; row < ROWS; row++)
-	{
-		for (int column = 0; column < COLUMNS; column++)
-		{
-			x = matrix[row * COLUMNS + column];
-			cout << x;
-		}
-		cout << endl;
-	}
-	cout << endl;
-}
-
-void
-BreadthFirstSearch::paintMatrix(Maze *maze)
-{
-	int x;
-	for (int row = 0; row < maze->getHeight(); row++)
-	{
-		for (int column = 0; column < maze->getWidth(); column++)
-		{
-			x = maze->getMazeField(column, row);
-			switch(x){
-				case Maze::Start:
-					cout << 'S';
-					break;
-				case Maze::Wall:
-					cout << '#';
-					break;
-				case Maze::Way:
-					cout << '.';
-					break;
-				case Maze::Result:
-					cout << '+';
-					break;
-				case Maze::End:
-					cout << 'G';
-					break;
-				default:
-					throw invalid_argument("Invalid maze field: " + x);
-			}
-		}
-		cout << endl;
-	}
-	cout << endl;
-}
-
 Position *
 BreadthFirstSearch::getStartPos(const int COLUMNS, const int ROWS,
 								Maze *maze, const int START_ID)
@@ -266,28 +215,27 @@ BreadthFirstSearch::setField(const int COLUMNS, const int ROWS,
 								   "to zero!");
 	matrix[index] = *content;
 }
+
 int *
 BreadthFirstSearch::getSolution() const
 {
 	return solution;
 }
+
 queue<Position> *
 BreadthFirstSearch::getPositionQueue() const
 {
 	return positionQueue;
 }
+
 Position *
 BreadthFirstSearch::getLastField() const
 {
 	return lastField;
 }
+
 int
 BreadthFirstSearch::getLengthOfShortestPath() const
 {
 	return lengthOfShortestPath;
-}
-Maze *
-BreadthFirstSearch::getMaze() const
-{
-	return maze;
 }

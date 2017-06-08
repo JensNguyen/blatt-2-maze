@@ -40,7 +40,7 @@ set(HEADERS
         control/shortest_path/breadth_first_search/BreadthFirstSearchGuiInteraction.h
         control/shortest_path/breadth_first_search/BreadthFirstSearch.h
         control/shortest_path/breadth_first_search/Position.h
-        )
+        control/shortest_path/breadth_first_search/DebugHelper.cpp control/shortest_path/breadth_first_search/DebugHelper.h)
 
 set(UI
         view/mazegui.ui
