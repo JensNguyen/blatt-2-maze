@@ -37,7 +37,6 @@ before_install:
 
 install:
   - sudo apt-get -y install qt55[QTPACKAGE]
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
 
 before_script:
    - QT_ENV_SCRIPT=$(find /opt -name 'qt*-env.sh')
