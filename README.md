@@ -6,10 +6,23 @@
 <a href="https://codecov.io/gh/algdat/blatt-2-maze/branch/master">details</a>
 
 ### Aufgabenverteilung
-Wall follower (Jens)  
+~~Wall follower~~/ReadMe.md (Jens)  
 Tremaux's algorithm (Emir)  
-Recursive (Flo)  
+Recursive(Wall Follower) (Flo)  
 Shortest path algorithm (breadth-first search) (Rudi)  
+
+### Erläuterung der Algorithmen
+Wall follower:
+Man legt einfach seine link/rechte Hand an die Wand des Labyrinths und läuft and dieser entlang ohne den Kontakt zu verlieren. 
+Falls alle Mauern zusammenhängen oder mit der Außenseite verbunden sind dieser Algorithmus, dass man entweder einen anderen Ausgang erreicht, oder wieder zum Eingang zurückkehrt.
+
+Tremaux's algorithm:
+Ein Weg ist entweder unbesucht, einfach oder zweifach markiert. Am Anfang wird eine beliebige Richtung gewählt (wenn es mehr als eine gibt). Dann wird jeder beschrittene Gang von Kreuzung zu Kreuzung zum Beispiel mit einem Strich am Boden markiert. Erreicht man eine Kreuzung, an die man noch nie gekommen ist (erkenntlich daran, dass es keine Markierungen am Boden gibt), wählt man einen beliebigen Gang, um weiterzugehen (und markiert ihn wie beschrieben). Erreicht man dagegen eine markierte Kreuzung und ist der Gang, aus dem man gerade kommt, nur einmal markiert, dreht man um und geht zurück (und markiert den Gang ein zweites Mal). Ansonsten wählt man einen Gang mit möglichst wenigen Markierungen (und markiert ihn wie immer). Erreicht man schließlich sein Ziel, so ist der direkte Weg zurück zum Start mit genau einem Strich markiert.
+Sollte es keinen Ausgang geben, erreicht man schließlich wieder den Ausgangspunkt, und alle Gänge des Irrgartens sind mit genau zwei Strichen markiert.
+
+Shortest path algorithm (breadth-first search):
+ Dieser Algorithmus wandelt den Weg durch das Labyrinth als Pfad zum Blatt eines Baumes um. Jede Fläche im Labyrinth ist ein Knoten im Baum und jede neue Fläche zu dem man von dort gelangen kann ist ein Kind dieses Knotens.
+ Dieser Algorithmus geht nun immer erst die gesamte Breite einer Tiefe durch, bevor es eine Ebene weiter runter geht.
 
 ### Bezeichnungen für Startfeld
 . = open (Weg)  
